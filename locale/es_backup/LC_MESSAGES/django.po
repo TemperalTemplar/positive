@@ -450,6 +450,9 @@ msgstr "Editar Elemento de Biblioteca"
 msgid "Edit Timer"
 msgstr "Editar Temporizador"
 
+msgid "Active Timers"
+msgstr "Temporizadores Activos"
+
 msgid "Leave empty to keep existing images."
 msgstr "Deja vacío para mantener las imágenes existentes."
 
