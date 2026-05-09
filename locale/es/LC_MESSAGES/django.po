@@ -317,3 +317,150 @@ msgstr "Registrado."
 
 msgid "SOVEREIGN INTENT ENGINE"
 msgstr "MOTOR DE INTENCIÓN SOBERANA"
+
+msgid "Active Timers"
+msgstr "Temporizadores Activos"
+
+msgid "View"
+msgstr "Ver"
+
+msgid "Download"
+msgstr "Descargar"
+
+msgid "Read"
+msgstr "Leer"
+
+msgid "Track"
+msgstr "Seguir"
+
+msgid "Start"
+msgstr "Iniciar"
+
+msgid "Complete + Relay"
+msgstr "Completar + Notificar"
+
+msgid "Stop Session"
+msgstr "Detener Sesión"
+
+msgid "Active Session"
+msgstr "Sesión Activa"
+
+msgid "min"
+msgstr "min"
+
+msgid "Page"
+msgstr "Página"
+
+msgid "of"
+msgstr "de"
+
+msgid "by"
+msgstr "por"
+
+msgid "images"
+msgstr "imágenes"
+
+msgid "Public"
+msgstr "Pública"
+
+msgid "Private"
+msgstr "Privada"
+
+msgid "Community Boards"
+msgstr "Tableros Comunitarios"
+
+msgid "None yet."
+msgstr "Ninguno todavía."
+
+msgid "READY"
+msgstr "LISTO"
+
+msgid "PAUSED"
+msgstr "EN PAUSA"
+
+msgid "IN PROGRESS"
+msgstr "EN PROGRESO"
+
+msgid "COMPLETE"
+msgstr "COMPLETADO"
+
+msgid "Resume Session"
+msgstr "Reanudar Sesión"
+
+msgid "Pause"
+msgstr "Pausar"
+
+msgid "Relayed"
+msgstr "Notificado"
+
+msgid "Delete this timer?"
+msgstr "¿Eliminar este temporizador?"
+
+msgid "Delete this item from the library?"
+msgstr "¿Eliminar este elemento de la biblioteca?"
+
+msgid "Delete this vision board? This cannot be undone."
+msgstr "¿Eliminar este tablero? Esta acción no se puede deshacer."
+
+msgid "Approve this user?"
+msgstr "¿Aprobar este usuario?"
+
+msgid "Deny this request?"
+msgstr "¿Rechazar esta solicitud?"
+
+msgid "approved — they can now log in."
+msgstr "aprobado — ahora puede iniciar sesión."
+
+msgid "denied."
+msgstr "rechazado."
+
+msgid "pages"
+msgstr "páginas"
+
+msgid "Admin Panel"
+msgstr "Panel de Administración"
+
+msgid "Manage Users"
+msgstr "Gestionar Usuarios"
+
+msgid "Role"
+msgstr "Rol"
+
+msgid "Joined"
+msgstr "Unido"
+
+msgid "Notify Me Via"
+msgstr "Notificarme Por"
+
+msgid "No audio uploaded yet."
+msgstr "No se ha subido audio todavía."
+
+msgid "No video uploaded yet."
+msgstr "No se ha subido video todavía."
+
+msgid "No texts uploaded yet."
+msgstr "No se han subido textos todavía."
+
+msgid "Edit Vision Board"
+msgstr "Editar Tablero de Visión"
+
+msgid "Edit Library Item"
+msgstr "Editar Elemento de Biblioteca"
+
+msgid "Edit Timer"
+msgstr "Editar Temporizador"
+
+msgid "Active Timers"
+msgstr "Temporizadores Activos"
+
+msgid "Leave empty to keep existing images."
+msgstr "Deja vacío para mantener las imágenes existentes."
+
+msgid "Make public"
+msgstr "Hacer pública"
+
+msgid "Replace Images (optional)"
+msgstr "Reemplazar Imágenes (opcional)"
+
+msgid "Current page number?"
+msgstr "¿Número de página actual?"

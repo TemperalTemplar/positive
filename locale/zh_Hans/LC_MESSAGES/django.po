@@ -317,3 +317,144 @@ msgstr "已记录。"
 
 msgid "SOVEREIGN INTENT ENGINE"
 msgstr "主权意图引擎"
+
+msgid "Active Timers"
+msgstr "活跃计时器"
+
+msgid "View"
+msgstr "查看"
+
+msgid "Download"
+msgstr "下载"
+
+msgid "Read"
+msgstr "阅读"
+
+msgid "Track"
+msgstr "跟踪"
+
+msgid "Start"
+msgstr "开始"
+
+msgid "Complete + Relay"
+msgstr "完成 + 通知"
+
+msgid "Stop Session"
+msgstr "停止课程"
+
+msgid "Active Session"
+msgstr "活跃课程"
+
+msgid "min"
+msgstr "分钟"
+
+msgid "Page"
+msgstr "第"
+
+msgid "of"
+msgstr "页，共"
+
+msgid "by"
+msgstr "作者"
+
+msgid "images"
+msgstr "张图片"
+
+msgid "Public"
+msgstr "公开"
+
+msgid "Private"
+msgstr "私有"
+
+msgid "None yet."
+msgstr "暂无。"
+
+msgid "READY"
+msgstr "准备就绪"
+
+msgid "PAUSED"
+msgstr "已暂停"
+
+msgid "IN PROGRESS"
+msgstr "进行中"
+
+msgid "COMPLETE"
+msgstr "已完成"
+
+msgid "Resume Session"
+msgstr "恢复课程"
+
+msgid "Pause"
+msgstr "暂停"
+
+msgid "Relayed"
+msgstr "已通知"
+
+msgid "Delete this timer?"
+msgstr "删除此计时器？"
+
+msgid "Delete this item from the library?"
+msgstr "从资料库中删除此项目？"
+
+msgid "Delete this vision board? This cannot be undone."
+msgstr "删除此愿景板？此操作无法撤销。"
+
+msgid "Approve this user?"
+msgstr "批准此用户？"
+
+msgid "Deny this request?"
+msgstr "拒绝此请求？"
+
+msgid "approved — they can now log in."
+msgstr "已批准 — 现在可以登录。"
+
+msgid "denied."
+msgstr "已拒绝。"
+
+msgid "pages"
+msgstr "页"
+
+msgid "Admin Panel"
+msgstr "管理员面板"
+
+msgid "Manage Users"
+msgstr "管理用户"
+
+msgid "Role"
+msgstr "角色"
+
+msgid "Joined"
+msgstr "加入时间"
+
+msgid "Notify Me Via"
+msgstr "通知方式"
+
+msgid "No audio uploaded yet."
+msgstr "尚未上传音频。"
+
+msgid "No video uploaded yet."
+msgstr "尚未上传视频。"
+
+msgid "No texts uploaded yet."
+msgstr "尚未上传文本。"
+
+msgid "Edit Vision Board"
+msgstr "编辑愿景板"
+
+msgid "Edit Library Item"
+msgstr "编辑资料库项目"
+
+msgid "Edit Timer"
+msgstr "编辑计时器"
+
+msgid "Leave empty to keep existing images."
+msgstr "留空以保留现有图片。"
+
+msgid "Make public"
+msgstr "设为公开"
+
+msgid "Replace Images (optional)"
+msgstr "替换图片（可选）"
+
+msgid "Current page number?"
+msgstr "当前页码？"

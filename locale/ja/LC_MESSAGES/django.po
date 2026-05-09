@@ -191,3 +191,144 @@ msgstr "編集"
 
 msgid "SOVEREIGN INTENT ENGINE"
 msgstr "主権的意図エンジン"
+
+msgid "Active Timers"
+msgstr "アクティブなタイマー"
+
+msgid "View"
+msgstr "表示"
+
+msgid "Download"
+msgstr "ダウンロード"
+
+msgid "Read"
+msgstr "読む"
+
+msgid "Track"
+msgstr "追跡"
+
+msgid "Start"
+msgstr "開始"
+
+msgid "Complete + Relay"
+msgstr "完了 + 通知"
+
+msgid "Stop Session"
+msgstr "セッション停止"
+
+msgid "Active Session"
+msgstr "アクティブセッション"
+
+msgid "min"
+msgstr "分"
+
+msgid "Page"
+msgstr "ページ"
+
+msgid "of"
+msgstr "の"
+
+msgid "by"
+msgstr "作者"
+
+msgid "images"
+msgstr "画像"
+
+msgid "Public"
+msgstr "公開"
+
+msgid "Private"
+msgstr "非公開"
+
+msgid "None yet."
+msgstr "まだありません。"
+
+msgid "READY"
+msgstr "準備完了"
+
+msgid "PAUSED"
+msgstr "一時停止"
+
+msgid "IN PROGRESS"
+msgstr "進行中"
+
+msgid "COMPLETE"
+msgstr "完了"
+
+msgid "Resume Session"
+msgstr "セッション再開"
+
+msgid "Pause"
+msgstr "一時停止"
+
+msgid "Relayed"
+msgstr "通知済み"
+
+msgid "Delete this timer?"
+msgstr "このタイマーを削除しますか？"
+
+msgid "Delete this item from the library?"
+msgstr "このアイテムをライブラリから削除しますか？"
+
+msgid "Delete this vision board? This cannot be undone."
+msgstr "このビジョンボードを削除しますか？この操作は元に戻せません。"
+
+msgid "Approve this user?"
+msgstr "このユーザーを承認しますか？"
+
+msgid "Deny this request?"
+msgstr "このリクエストを拒否しますか？"
+
+msgid "approved — they can now log in."
+msgstr "承認済み — ログインできます。"
+
+msgid "denied."
+msgstr "拒否されました。"
+
+msgid "pages"
+msgstr "ページ"
+
+msgid "Admin Panel"
+msgstr "管理パネル"
+
+msgid "Manage Users"
+msgstr "ユーザー管理"
+
+msgid "Role"
+msgstr "役割"
+
+msgid "Joined"
+msgstr "参加日"
+
+msgid "Notify Me Via"
+msgstr "通知方法"
+
+msgid "No audio uploaded yet."
+msgstr "まだオーディオがアップロードされていません。"
+
+msgid "No video uploaded yet."
+msgstr "まだビデオがアップロードされていません。"
+
+msgid "No texts uploaded yet."
+msgstr "まだテキストがアップロードされていません。"
+
+msgid "Edit Vision Board"
+msgstr "ビジョンボードを編集"
+
+msgid "Edit Library Item"
+msgstr "ライブラリアイテムを編集"
+
+msgid "Edit Timer"
+msgstr "タイマーを編集"
+
+msgid "Leave empty to keep existing images."
+msgstr "既存の画像を保持するには空のままにしてください。"
+
+msgid "Make public"
+msgstr "公開する"
+
+msgid "Replace Images (optional)"
+msgstr "画像を置き換える（オプション）"
+
+msgid "Current page number?"
+msgstr "現在のページ番号？"

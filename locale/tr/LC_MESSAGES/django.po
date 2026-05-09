@@ -317,3 +317,144 @@ msgstr "Kaydedildi."
 
 msgid "SOVEREIGN INTENT ENGINE"
 msgstr "EGEMENLİK NİYET MOTORU"
+
+msgid "Active Timers"
+msgstr "Aktif Zamanlayıcılar"
+
+msgid "View"
+msgstr "Görüntüle"
+
+msgid "Download"
+msgstr "İndir"
+
+msgid "Read"
+msgstr "Oku"
+
+msgid "Track"
+msgstr "Takip Et"
+
+msgid "Start"
+msgstr "Başlat"
+
+msgid "Complete + Relay"
+msgstr "Tamamla + Bildir"
+
+msgid "Stop Session"
+msgstr "Oturumu Durdur"
+
+msgid "Active Session"
+msgstr "Aktif Oturum"
+
+msgid "min"
+msgstr "dak"
+
+msgid "Page"
+msgstr "Sayfa"
+
+msgid "of"
+msgstr "içinde"
+
+msgid "by"
+msgstr "tarafından"
+
+msgid "images"
+msgstr "görsel"
+
+msgid "Public"
+msgstr "Herkese Açık"
+
+msgid "Private"
+msgstr "Özel"
+
+msgid "None yet."
+msgstr "Henüz yok."
+
+msgid "READY"
+msgstr "HAZIR"
+
+msgid "PAUSED"
+msgstr "DURAKLATILDI"
+
+msgid "IN PROGRESS"
+msgstr "DEVAM EDİYOR"
+
+msgid "COMPLETE"
+msgstr "TAMAMLANDI"
+
+msgid "Resume Session"
+msgstr "Oturumu Devam Ettir"
+
+msgid "Pause"
+msgstr "Duraklat"
+
+msgid "Relayed"
+msgstr "Bildirildi"
+
+msgid "Delete this timer?"
+msgstr "Bu zamanlayıcıyı sil?"
+
+msgid "Delete this item from the library?"
+msgstr "Bu öğeyi kütüphaneden sil?"
+
+msgid "Delete this vision board? This cannot be undone."
+msgstr "Bu panoyu sil? Bu işlem geri alınamaz."
+
+msgid "Approve this user?"
+msgstr "Bu kullanıcıyı onayla?"
+
+msgid "Deny this request?"
+msgstr "Bu talebi reddet?"
+
+msgid "approved — they can now log in."
+msgstr "onaylandı — artık giriş yapabilirler."
+
+msgid "denied."
+msgstr "reddedildi."
+
+msgid "pages"
+msgstr "sayfa"
+
+msgid "Admin Panel"
+msgstr "Yönetici Paneli"
+
+msgid "Manage Users"
+msgstr "Kullanıcıları Yönet"
+
+msgid "Role"
+msgstr "Rol"
+
+msgid "Joined"
+msgstr "Katılım"
+
+msgid "Notify Me Via"
+msgstr "Bildir"
+
+msgid "No audio uploaded yet."
+msgstr "Henüz ses yüklenmedi."
+
+msgid "No video uploaded yet."
+msgstr "Henüz video yüklenmedi."
+
+msgid "No texts uploaded yet."
+msgstr "Henüz metin yüklenmedi."
+
+msgid "Edit Vision Board"
+msgstr "Vizyon Panosunu Düzenle"
+
+msgid "Edit Library Item"
+msgstr "Kütüphane Öğesini Düzenle"
+
+msgid "Edit Timer"
+msgstr "Zamanlayıcıyı Düzenle"
+
+msgid "Leave empty to keep existing images."
+msgstr "Mevcut görüntüleri korumak için boş bırakın."
+
+msgid "Make public"
+msgstr "Herkese açık yap"
+
+msgid "Replace Images (optional)"
+msgstr "Görselleri Değiştir (isteğe bağlı)"
+
+msgid "Current page number?"
+msgstr "Mevcut sayfa numarası?"

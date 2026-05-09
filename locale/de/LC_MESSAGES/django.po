@@ -317,3 +317,144 @@ msgstr "Protokolliert."
 
 msgid "SOVEREIGN INTENT ENGINE"
 msgstr "SOUVERÄNE ABSICHTSMASCHINE"
+
+msgid "Active Timers"
+msgstr "Aktive Timer"
+
+msgid "View"
+msgstr "Ansehen"
+
+msgid "Download"
+msgstr "Herunterladen"
+
+msgid "Read"
+msgstr "Lesen"
+
+msgid "Track"
+msgstr "Verfolgen"
+
+msgid "Start"
+msgstr "Starten"
+
+msgid "Complete + Relay"
+msgstr "Abschließen + Benachrichtigen"
+
+msgid "Stop Session"
+msgstr "Sitzung Stoppen"
+
+msgid "Active Session"
+msgstr "Aktive Sitzung"
+
+msgid "min"
+msgstr "Min"
+
+msgid "Page"
+msgstr "Seite"
+
+msgid "of"
+msgstr "von"
+
+msgid "by"
+msgstr "von"
+
+msgid "images"
+msgstr "Bilder"
+
+msgid "Public"
+msgstr "Öffentlich"
+
+msgid "Private"
+msgstr "Privat"
+
+msgid "None yet."
+msgstr "Noch keine."
+
+msgid "READY"
+msgstr "BEREIT"
+
+msgid "PAUSED"
+msgstr "PAUSIERT"
+
+msgid "IN PROGRESS"
+msgstr "IN BEARBEITUNG"
+
+msgid "COMPLETE"
+msgstr "ABGESCHLOSSEN"
+
+msgid "Resume Session"
+msgstr "Sitzung Fortsetzen"
+
+msgid "Pause"
+msgstr "Pausieren"
+
+msgid "Relayed"
+msgstr "Weitergeleitet"
+
+msgid "Delete this timer?"
+msgstr "Diesen Timer löschen?"
+
+msgid "Delete this item from the library?"
+msgstr "Dieses Element aus der Bibliothek löschen?"
+
+msgid "Delete this vision board? This cannot be undone."
+msgstr "Diese Visionstafel löschen? Dies kann nicht rückgängig gemacht werden."
+
+msgid "Approve this user?"
+msgstr "Diesen Benutzer genehmigen?"
+
+msgid "Deny this request?"
+msgstr "Diese Anfrage ablehnen?"
+
+msgid "approved — they can now log in."
+msgstr "genehmigt — sie können sich jetzt anmelden."
+
+msgid "denied."
+msgstr "abgelehnt."
+
+msgid "pages"
+msgstr "Seiten"
+
+msgid "Admin Panel"
+msgstr "Administrationsbereich"
+
+msgid "Manage Users"
+msgstr "Benutzer Verwalten"
+
+msgid "Role"
+msgstr "Rolle"
+
+msgid "Joined"
+msgstr "Beigetreten"
+
+msgid "Notify Me Via"
+msgstr "Benachrichtige Mich Per"
+
+msgid "No audio uploaded yet."
+msgstr "Noch kein Audio hochgeladen."
+
+msgid "No video uploaded yet."
+msgstr "Noch kein Video hochgeladen."
+
+msgid "No texts uploaded yet."
+msgstr "Noch keine Texte hochgeladen."
+
+msgid "Edit Vision Board"
+msgstr "Visionstafel Bearbeiten"
+
+msgid "Edit Library Item"
+msgstr "Bibliothekselement Bearbeiten"
+
+msgid "Edit Timer"
+msgstr "Timer Bearbeiten"
+
+msgid "Leave empty to keep existing images."
+msgstr "Leer lassen, um vorhandene Bilder zu behalten."
+
+msgid "Make public"
+msgstr "Öffentlich machen"
+
+msgid "Replace Images (optional)"
+msgstr "Bilder Ersetzen (optional)"
+
+msgid "Current page number?"
+msgstr "Aktuelle Seitenzahl?"

@@ -317,3 +317,147 @@ msgstr "Enregistré."
 
 msgid "SOVEREIGN INTENT ENGINE"
 msgstr "MOTEUR D'INTENTION SOUVERAINE"
+
+msgid "Active Timers"
+msgstr "Minuteries Actives"
+
+msgid "View"
+msgstr "Voir"
+
+msgid "Download"
+msgstr "Télécharger"
+
+msgid "Read"
+msgstr "Lire"
+
+msgid "Track"
+msgstr "Suivre"
+
+msgid "Start"
+msgstr "Démarrer"
+
+msgid "Complete + Relay"
+msgstr "Terminer + Notifier"
+
+msgid "Stop Session"
+msgstr "Arrêter la Session"
+
+msgid "Active Session"
+msgstr "Session Active"
+
+msgid "min"
+msgstr "min"
+
+msgid "Page"
+msgstr "Page"
+
+msgid "of"
+msgstr "de"
+
+msgid "by"
+msgstr "par"
+
+msgid "images"
+msgstr "images"
+
+msgid "Public"
+msgstr "Publique"
+
+msgid "Private"
+msgstr "Privé"
+
+msgid "Community Boards"
+msgstr "Tableaux Communautaires"
+
+msgid "None yet."
+msgstr "Aucun encore."
+
+msgid "READY"
+msgstr "PRÊT"
+
+msgid "PAUSED"
+msgstr "EN PAUSE"
+
+msgid "IN PROGRESS"
+msgstr "EN COURS"
+
+msgid "COMPLETE"
+msgstr "TERMINÉ"
+
+msgid "Resume Session"
+msgstr "Reprendre la Session"
+
+msgid "Pause"
+msgstr "Pause"
+
+msgid "Relayed"
+msgstr "Notifié"
+
+msgid "Delete this timer?"
+msgstr "Supprimer cette minuterie ?"
+
+msgid "Delete this item from the library?"
+msgstr "Supprimer cet élément de la bibliothèque ?"
+
+msgid "Delete this vision board? This cannot be undone."
+msgstr "Supprimer ce tableau ? Cette action est irréversible."
+
+msgid "Approve this user?"
+msgstr "Approuver cet utilisateur ?"
+
+msgid "Deny this request?"
+msgstr "Refuser cette demande ?"
+
+msgid "approved — they can now log in."
+msgstr "approuvé — il peut maintenant se connecter."
+
+msgid "denied."
+msgstr "refusé."
+
+msgid "pages"
+msgstr "pages"
+
+msgid "Admin Panel"
+msgstr "Panneau d'Administration"
+
+msgid "Manage Users"
+msgstr "Gérer les Utilisateurs"
+
+msgid "Role"
+msgstr "Rôle"
+
+msgid "Joined"
+msgstr "Inscrit"
+
+msgid "Notify Me Via"
+msgstr "Me Notifier Via"
+
+msgid "No audio uploaded yet."
+msgstr "Pas encore d'audio téléversé."
+
+msgid "No video uploaded yet."
+msgstr "Pas encore de vidéo téléversée."
+
+msgid "No texts uploaded yet."
+msgstr "Pas encore de textes téléversés."
+
+msgid "Edit Vision Board"
+msgstr "Modifier le Tableau de Vision"
+
+msgid "Edit Library Item"
+msgstr "Modifier l'Élément de Bibliothèque"
+
+msgid "Edit Timer"
+msgstr "Modifier la Minuterie"
+
+msgid "Leave empty to keep existing images."
+msgstr "Laisser vide pour conserver les images existantes."
+
+msgid "Make public"
+msgstr "Rendre public"
+
+msgid "Replace Images (optional)"
+msgstr "Remplacer les Images (optionnel)"
+
+msgid "Current page number?"
+msgstr "Numéro de page actuel ?"

@@ -149,3 +149,144 @@ msgstr "편집"
 
 msgid "SOVEREIGN INTENT ENGINE"
 msgstr "주권적 의도 엔진"
+
+msgid "Active Timers"
+msgstr "활성 타이머"
+
+msgid "View"
+msgstr "보기"
+
+msgid "Download"
+msgstr "다운로드"
+
+msgid "Read"
+msgstr "읽기"
+
+msgid "Track"
+msgstr "추적"
+
+msgid "Start"
+msgstr "시작"
+
+msgid "Complete + Relay"
+msgstr "완료 + 알림"
+
+msgid "Stop Session"
+msgstr "세션 중지"
+
+msgid "Active Session"
+msgstr "활성 세션"
+
+msgid "min"
+msgstr "분"
+
+msgid "Page"
+msgstr "페이지"
+
+msgid "of"
+msgstr "의"
+
+msgid "by"
+msgstr "작성자"
+
+msgid "images"
+msgstr "이미지"
+
+msgid "Public"
+msgstr "공개"
+
+msgid "Private"
+msgstr "비공개"
+
+msgid "None yet."
+msgstr "아직 없습니다."
+
+msgid "READY"
+msgstr "준비"
+
+msgid "PAUSED"
+msgstr "일시정지"
+
+msgid "IN PROGRESS"
+msgstr "진행 중"
+
+msgid "COMPLETE"
+msgstr "완료"
+
+msgid "Resume Session"
+msgstr "세션 재개"
+
+msgid "Pause"
+msgstr "일시정지"
+
+msgid "Relayed"
+msgstr "알림 전송됨"
+
+msgid "Delete this timer?"
+msgstr "이 타이머를 삭제하시겠습니까?"
+
+msgid "Delete this item from the library?"
+msgstr "이 항목을 라이브러리에서 삭제하시겠습니까?"
+
+msgid "Delete this vision board? This cannot be undone."
+msgstr "이 비전 보드를 삭제하시겠습니까? 되돌릴 수 없습니다."
+
+msgid "Approve this user?"
+msgstr "이 사용자를 승인하시겠습니까?"
+
+msgid "Deny this request?"
+msgstr "이 요청을 거부하시겠습니까?"
+
+msgid "approved — they can now log in."
+msgstr "승인됨 — 이제 로그인할 수 있습니다."
+
+msgid "denied."
+msgstr "거부됨."
+
+msgid "pages"
+msgstr "페이지"
+
+msgid "Admin Panel"
+msgstr "관리자 패널"
+
+msgid "Manage Users"
+msgstr "사용자 관리"
+
+msgid "Role"
+msgstr "역할"
+
+msgid "Joined"
+msgstr "가입일"
+
+msgid "Notify Me Via"
+msgstr "알림 방법"
+
+msgid "No audio uploaded yet."
+msgstr "아직 오디오가 업로드되지 않았습니다."
+
+msgid "No video uploaded yet."
+msgstr "아직 비디오가 업로드되지 않았습니다."
+
+msgid "No texts uploaded yet."
+msgstr "아직 텍스트가 업로드되지 않았습니다."
+
+msgid "Edit Vision Board"
+msgstr "비전 보드 편집"
+
+msgid "Edit Library Item"
+msgstr "라이브러리 항목 편집"
+
+msgid "Edit Timer"
+msgstr "타이머 편집"
+
+msgid "Leave empty to keep existing images."
+msgstr "기존 이미지를 유지하려면 비워 두십시오."
+
+msgid "Make public"
+msgstr "공개로 설정"
+
+msgid "Replace Images (optional)"
+msgstr "이미지 교체 (선택 사항)"
+
+msgid "Current page number?"
+msgstr "현재 페이지 번호?"

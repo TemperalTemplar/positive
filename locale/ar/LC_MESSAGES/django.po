@@ -149,3 +149,183 @@ msgstr "هل تريد حذف هذا الإدخال؟"
 
 msgid "SOVEREIGN INTENT ENGINE"
 msgstr "محرك النية السيادية"
+
+msgid "No boards yet."
+msgstr "لا توجد لوحات بعد."
+
+msgid "Create one"
+msgstr "إنشاء واحدة"
+
+msgid "Manage Boards"
+msgstr "إدارة اللوحات"
+
+msgid "No active reading."
+msgstr "لا توجد قراءة نشطة."
+
+msgid "Visit library"
+msgstr "زيارة المكتبة"
+
+msgid "Active Timers"
+msgstr "المؤقتات النشطة"
+
+msgid "No timers."
+msgstr "لا توجد مؤقتات."
+
+msgid "No audio yet."
+msgstr "لا يوجد صوت بعد."
+
+msgid "Upload in library"
+msgstr "رفع إلى المكتبة"
+
+msgid "No entries yet. Log your first intent above."
+msgstr "لا توجد إدخالات بعد. سجل نيتك الأولى أعلاه."
+
+msgid "shared"
+msgstr "مشترك"
+
+msgid "View"
+msgstr "عرض"
+
+msgid "Download"
+msgstr "تنزيل"
+
+msgid "Read"
+msgstr "قراءة"
+
+msgid "Track"
+msgstr "تتبع"
+
+msgid "Start"
+msgstr "بدء"
+
+msgid "Complete + Relay"
+msgstr "إكمال + إشعار"
+
+msgid "Stop Session"
+msgstr "إيقاف الجلسة"
+
+msgid "Active Session"
+msgstr "الجلسة النشطة"
+
+msgid "min"
+msgstr "دقيقة"
+
+msgid "Page"
+msgstr "صفحة"
+
+msgid "of"
+msgstr "من"
+
+msgid "by"
+msgstr "بواسطة"
+
+msgid "images"
+msgstr "صور"
+
+msgid "Public"
+msgstr "عام"
+
+msgid "Private"
+msgstr "خاص"
+
+msgid "Community Boards"
+msgstr "لوحات المجتمع"
+
+msgid "None yet."
+msgstr "لا شيء بعد."
+
+msgid "No pending requests."
+msgstr "لا توجد طلبات معلقة."
+
+msgid "READY"
+msgstr "جاهز"
+
+msgid "PAUSED"
+msgstr "متوقف مؤقتاً"
+
+msgid "IN PROGRESS"
+msgstr "قيد التنفيذ"
+
+msgid "COMPLETE"
+msgstr "مكتمل"
+
+msgid "Resume Session"
+msgstr "استئناف الجلسة"
+
+msgid "Pause"
+msgstr "إيقاف مؤقت"
+
+msgid "Relayed"
+msgstr "تم الإشعار"
+
+msgid "Delete this timer?"
+msgstr "حذف هذا المؤقت؟"
+
+msgid "Delete this item from the library?"
+msgstr "حذف هذا العنصر من المكتبة؟"
+
+msgid "Delete this vision board? This cannot be undone."
+msgstr "حذف هذه اللوحة؟ لا يمكن التراجع عن هذا."
+
+msgid "Approve this user?"
+msgstr "الموافقة على هذا المستخدم؟"
+
+msgid "Deny this request?"
+msgstr "رفض هذا الطلب؟"
+
+msgid "approved — they can now log in."
+msgstr "تمت الموافقة — يمكنهم الآن تسجيل الدخول."
+
+msgid "denied."
+msgstr "مرفوض."
+
+msgid "pages"
+msgstr "صفحات"
+
+msgid "Admin Panel"
+msgstr "لوحة الإدارة"
+
+msgid "Manage Users"
+msgstr "إدارة المستخدمين"
+
+msgid "Role"
+msgstr "الدور"
+
+msgid "Joined"
+msgstr "انضم"
+
+msgid "Notify Me Via"
+msgstr "أشعرني عبر"
+
+msgid "No audio uploaded yet."
+msgstr "لم يتم رفع أي صوت بعد."
+
+msgid "No video uploaded yet."
+msgstr "لم يتم رفع أي فيديو بعد."
+
+msgid "No texts uploaded yet."
+msgstr "لم يتم رفع أي نصوص بعد."
+
+msgid "Edit Vision Board"
+msgstr "تعديل لوحة الرؤية"
+
+msgid "Edit Library Item"
+msgstr "تعديل عنصر المكتبة"
+
+msgid "Edit Timer"
+msgstr "تعديل المؤقت"
+
+msgid "SOVEREIGN INTENT ENGINE"
+msgstr "محرك النية السيادية"
+
+msgid "Upload to Library"
+msgstr "رفع إلى المكتبة"
+
+msgid "Build Vision Board"
+msgstr "بناء لوحة الرؤية"
+
+msgid "Save Timer"
+msgstr "حفظ المؤقت"
+
+msgid "Save Profile"
+msgstr "حفظ الملف الشخصي"

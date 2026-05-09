@@ -314,3 +314,144 @@ msgstr "Записано."
 
 msgid "SOVEREIGN INTENT ENGINE"
 msgstr "СУВЕРЕННЫЙ ДВИЖОК НАМЕРЕНИЙ"
+
+msgid "Active Timers"
+msgstr "Активные Таймеры"
+
+msgid "View"
+msgstr "Просмотр"
+
+msgid "Download"
+msgstr "Скачать"
+
+msgid "Read"
+msgstr "Читать"
+
+msgid "Track"
+msgstr "Отслеживать"
+
+msgid "Start"
+msgstr "Начать"
+
+msgid "Complete + Relay"
+msgstr "Завершить + Уведомить"
+
+msgid "Stop Session"
+msgstr "Остановить Сеанс"
+
+msgid "Active Session"
+msgstr "Активный Сеанс"
+
+msgid "min"
+msgstr "мин"
+
+msgid "Page"
+msgstr "Страница"
+
+msgid "of"
+msgstr "из"
+
+msgid "by"
+msgstr "от"
+
+msgid "images"
+msgstr "изображения"
+
+msgid "Public"
+msgstr "Публичная"
+
+msgid "Private"
+msgstr "Частная"
+
+msgid "None yet."
+msgstr "Пока ничего."
+
+msgid "READY"
+msgstr "ГОТОВО"
+
+msgid "PAUSED"
+msgstr "НА ПАУЗЕ"
+
+msgid "IN PROGRESS"
+msgstr "В ПРОЦЕССЕ"
+
+msgid "COMPLETE"
+msgstr "ЗАВЕРШЕНО"
+
+msgid "Resume Session"
+msgstr "Возобновить Сеанс"
+
+msgid "Pause"
+msgstr "Пауза"
+
+msgid "Relayed"
+msgstr "Отправлено"
+
+msgid "Delete this timer?"
+msgstr "Удалить этот таймер?"
+
+msgid "Delete this item from the library?"
+msgstr "Удалить этот элемент из библиотеки?"
+
+msgid "Delete this vision board? This cannot be undone."
+msgstr "Удалить эту доску? Это действие нельзя отменить."
+
+msgid "Approve this user?"
+msgstr "Одобрить этого пользователя?"
+
+msgid "Deny this request?"
+msgstr "Отклонить этот запрос?"
+
+msgid "approved — they can now log in."
+msgstr "одобрен — теперь может войти."
+
+msgid "denied."
+msgstr "отклонён."
+
+msgid "pages"
+msgstr "страниц"
+
+msgid "Admin Panel"
+msgstr "Панель Администратора"
+
+msgid "Manage Users"
+msgstr "Управление Пользователями"
+
+msgid "Role"
+msgstr "Роль"
+
+msgid "Joined"
+msgstr "Присоединился"
+
+msgid "Notify Me Via"
+msgstr "Уведомлять Меня Через"
+
+msgid "No audio uploaded yet."
+msgstr "Аудио ещё не загружено."
+
+msgid "No video uploaded yet."
+msgstr "Видео ещё не загружено."
+
+msgid "No texts uploaded yet."
+msgstr "Тексты ещё не загружены."
+
+msgid "Edit Vision Board"
+msgstr "Редактировать Доску Видения"
+
+msgid "Edit Library Item"
+msgstr "Редактировать Элемент Библиотеки"
+
+msgid "Edit Timer"
+msgstr "Редактировать Таймер"
+
+msgid "Leave empty to keep existing images."
+msgstr "Оставьте пустым, чтобы сохранить существующие изображения."
+
+msgid "Make public"
+msgstr "Сделать публичной"
+
+msgid "Replace Images (optional)"
+msgstr "Заменить Изображения (необязательно)"
+
+msgid "Current page number?"
+msgstr "Текущий номер страницы?"

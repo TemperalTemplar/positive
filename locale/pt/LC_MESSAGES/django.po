@@ -143,3 +143,144 @@ msgstr "Excluir esta entrada?"
 
 msgid "SOVEREIGN INTENT ENGINE"
 msgstr "MOTOR DE INTENÇÃO SOBERANA"
+
+msgid "Active Timers"
+msgstr "Temporizadores Ativos"
+
+msgid "View"
+msgstr "Ver"
+
+msgid "Download"
+msgstr "Baixar"
+
+msgid "Read"
+msgstr "Ler"
+
+msgid "Track"
+msgstr "Rastrear"
+
+msgid "Start"
+msgstr "Iniciar"
+
+msgid "Complete + Relay"
+msgstr "Completar + Notificar"
+
+msgid "Stop Session"
+msgstr "Parar Sessão"
+
+msgid "Active Session"
+msgstr "Sessão Ativa"
+
+msgid "min"
+msgstr "min"
+
+msgid "Page"
+msgstr "Página"
+
+msgid "of"
+msgstr "de"
+
+msgid "by"
+msgstr "por"
+
+msgid "images"
+msgstr "imagens"
+
+msgid "Public"
+msgstr "Pública"
+
+msgid "Private"
+msgstr "Privada"
+
+msgid "None yet."
+msgstr "Nenhum ainda."
+
+msgid "READY"
+msgstr "PRONTO"
+
+msgid "PAUSED"
+msgstr "PAUSADO"
+
+msgid "IN PROGRESS"
+msgstr "EM ANDAMENTO"
+
+msgid "COMPLETE"
+msgstr "CONCLUÍDO"
+
+msgid "Resume Session"
+msgstr "Retomar Sessão"
+
+msgid "Pause"
+msgstr "Pausar"
+
+msgid "Relayed"
+msgstr "Notificado"
+
+msgid "Delete this timer?"
+msgstr "Excluir este temporizador?"
+
+msgid "Delete this item from the library?"
+msgstr "Excluir este item da biblioteca?"
+
+msgid "Delete this vision board? This cannot be undone."
+msgstr "Excluir este quadro? Esta ação não pode ser desfeita."
+
+msgid "Approve this user?"
+msgstr "Aprovar este usuário?"
+
+msgid "Deny this request?"
+msgstr "Recusar esta solicitação?"
+
+msgid "approved — they can now log in."
+msgstr "aprovado — agora pode fazer login."
+
+msgid "denied."
+msgstr "recusado."
+
+msgid "pages"
+msgstr "páginas"
+
+msgid "Admin Panel"
+msgstr "Painel Administrativo"
+
+msgid "Manage Users"
+msgstr "Gerenciar Usuários"
+
+msgid "Role"
+msgstr "Função"
+
+msgid "Joined"
+msgstr "Entrou"
+
+msgid "Notify Me Via"
+msgstr "Notificar-me Via"
+
+msgid "No audio uploaded yet."
+msgstr "Nenhum áudio carregado ainda."
+
+msgid "No video uploaded yet."
+msgstr "Nenhum vídeo carregado ainda."
+
+msgid "No texts uploaded yet."
+msgstr "Nenhum texto carregado ainda."
+
+msgid "Edit Vision Board"
+msgstr "Editar Quadro de Visão"
+
+msgid "Edit Library Item"
+msgstr "Editar Item da Biblioteca"
+
+msgid "Edit Timer"
+msgstr "Editar Temporizador"
+
+msgid "Leave empty to keep existing images."
+msgstr "Deixe vazio para manter as imagens existentes."
+
+msgid "Make public"
+msgstr "Tornar público"
+
+msgid "Replace Images (optional)"
+msgstr "Substituir Imagens (opcional)"
+
+msgid "Current page number?"
+msgstr "Número da página atual?"

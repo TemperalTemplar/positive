@@ -6,6 +6,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it\n"
 
+msgid "POSITIVE"
+msgstr "POSITIVE"
+
 msgid "Dashboard"
 msgstr "Pannello"
 
@@ -51,11 +54,23 @@ msgstr "Sessione di Lettura — 30 min"
 msgid "Custom…"
 msgstr "Personalizzato…"
 
+msgid "Custom Duration (minutes)"
+msgstr "Durata Personalizzata (minuti)"
+
 msgid "Begin Session"
 msgstr "Inizia Sessione"
 
 msgid "Reset"
 msgstr "Reimposta"
+
+msgid "Quick Play"
+msgstr "Riproduzione Rapida"
+
+msgid "No audio yet."
+msgstr "Nessun audio ancora."
+
+msgid "Upload in library"
+msgstr "Carica nella biblioteca"
 
 msgid "Repository of Light"
 msgstr "Archivio della Luce"
@@ -72,17 +87,26 @@ msgstr "Preghiera"
 msgid "Gratitude"
 msgstr "Gratitudine"
 
+msgid "Share with group (posts to Discord / Rocket.Chat)"
+msgstr "Condividi con il gruppo (pubblica su Discord / Rocket.Chat)"
+
 msgid "Log Intent"
 msgstr "Registra Intenzione"
 
 msgid "Recent Entries"
 msgstr "Voci Recenti"
 
+msgid "shared"
+msgstr "condiviso"
+
 msgid "Mark Answered"
 msgstr "Segna come Esaudita"
 
 msgid "Answered"
 msgstr "Esaudita"
+
+msgid "No entries yet. Log your first intent above."
+msgstr "Nessuna voce ancora. Registra la tua prima intenzione sopra."
 
 msgid "Manifestation"
 msgstr "Manifestazione"
@@ -93,14 +117,32 @@ msgstr "Pensieri"
 msgid "Prayers"
 msgstr "Preghiere"
 
+msgid "No boards yet."
+msgstr "Nessuna bacheca ancora."
+
+msgid "Create one"
+msgstr "Creane una"
+
+msgid "Manage Boards"
+msgstr "Gestisci Bacheche"
+
 msgid "Reading Hub"
 msgstr "Centro di Lettura"
+
+msgid "No active reading."
+msgstr "Nessuna lettura attiva."
+
+msgid "Visit library"
+msgstr "Visita la biblioteca"
 
 msgid "Prayer Tracker"
 msgstr "Tracciamento Preghiere"
 
 msgid "Active"
 msgstr "Attive"
+
+msgid "No timers."
+msgstr "Nessun timer."
 
 msgid "ENTER THE SANCTUARY"
 msgstr "ENTRA NEL SANTUARIO"
@@ -111,8 +153,14 @@ msgstr "Non hai un account?"
 msgid "Request Access"
 msgstr "Richiedi Accesso"
 
+msgid "REQUEST ACCESS"
+msgstr "RICHIEDI ACCESSO"
+
 msgid "Username"
 msgstr "Nome utente"
+
+msgid "Email (optional — for notifications)"
+msgstr "Email (opzionale — per le notifiche)"
 
 msgid "Password"
 msgstr "Password"
@@ -120,17 +168,137 @@ msgstr "Password"
 msgid "Confirm Password"
 msgstr "Conferma Password"
 
+msgid "Note to admin (optional)"
+msgstr "Nota per l'amministratore (opzionale)"
+
+msgid "Tell the admin why you'd like access…"
+msgstr "Dì all'amministratore perché vorresti accedere…"
+
 msgid "SUBMIT REQUEST"
 msgstr "INVIA RICHIESTA"
 
 msgid "Back to login"
 msgstr "Torna al login"
 
+msgid "REQUEST SUBMITTED"
+msgstr "RICHIESTA INVIATA"
+
+msgid "Pending Requests"
+msgstr "Richieste in Attesa"
+
 msgid "Approve"
 msgstr "Approva"
 
 msgid "Deny"
 msgstr "Rifiuta"
+
+msgid "Recently Approved"
+msgstr "Approvati Recentemente"
+
+msgid "Recently Denied"
+msgstr "Rifiutati Recentemente"
+
+msgid "Audio — Chants & Guides"
+msgstr "Audio — Canti e Guide"
+
+msgid "Video — Meditations & Prayers"
+msgstr "Video — Meditazioni e Preghiere"
+
+msgid "Texts — Books & Scripture"
+msgstr "Testi — Libri e Scritture"
+
+msgid "Upload to Library"
+msgstr "Carica nella Biblioteca"
+
+msgid "Title"
+msgstr "Titolo"
+
+msgid "Type"
+msgstr "Tipo"
+
+msgid "Access"
+msgstr "Accesso"
+
+msgid "Description (optional)"
+msgstr "Descrizione (opzionale)"
+
+msgid "Total Pages"
+msgstr "Pagine Totali"
+
+msgid "File"
+msgstr "File"
+
+msgid "Upload"
+msgstr "Carica"
+
+msgid "Your Vision Boards"
+msgstr "Le Tue Bacheche della Visione"
+
+msgid "Create New Board"
+msgstr "Crea Nuova Bacheca"
+
+msgid "Board Name"
+msgstr "Nome della Bacheca"
+
+msgid "Images (select multiple)"
+msgstr "Immagini (seleziona più file)"
+
+msgid "Make public (visible to all users + relay to Discord/RC)"
+msgstr "Rendi pubblica (visibile a tutti + invia a Discord/RC)"
+
+msgid "Build Vision Board"
+msgstr "Crea Bacheca della Visione"
+
+msgid "Your Intent Timers"
+msgstr "I Tuoi Timer d'Intenzione"
+
+msgid "Create Timer"
+msgstr "Crea Timer"
+
+msgid "Session Name"
+msgstr "Nome Sessione"
+
+msgid "Duration (minutes)"
+msgstr "Durata (minuti)"
+
+msgid "Linked Audio (optional)"
+msgstr "Audio Collegato (opzionale)"
+
+msgid "Relay on Complete"
+msgstr "Notifica al Completamento"
+
+msgid "Send email notification"
+msgstr "Invia notifica email"
+
+msgid "Post to Discord"
+msgstr "Pubblica su Discord"
+
+msgid "Post to Rocket.Chat"
+msgstr "Pubblica su Rocket.Chat"
+
+msgid "Create .ics calendar event"
+msgstr "Crea evento calendario .ics"
+
+msgid "Save Timer"
+msgstr "Salva Timer"
+
+msgid "Your Relay Profile"
+msgstr "Il Tuo Profilo di Notifica"
+
+msgid "Personal Email (for timer notifications)"
+msgstr "Email Personale (per notifiche timer)"
+
+msgid "Save Profile"
+msgstr "Salva Profilo"
+
+msgid "Server Config"
+msgstr "Configurazione Server"
+
+msgid "Account"
+msgstr "Account"
+
+msgid "edit"
+msgstr "modifica"
 
 msgid "Save"
 msgstr "Salva"
@@ -141,20 +309,68 @@ msgstr "Annulla"
 msgid "Delete this entry?"
 msgstr "Eliminare questa voce?"
 
+msgid "Please write something first."
+msgstr "Per favore scrivi qualcosa prima."
+
+msgid "Logged."
+msgstr "Registrato."
+
 msgid "SOVEREIGN INTENT ENGINE"
 msgstr "MOTORE D'INTENZIONE SOVRANA"
 
-msgid "Upload to Library"
-msgstr "Carica nella Biblioteca"
+msgid "View"
+msgstr "Visualizza"
 
-msgid "Build Vision Board"
-msgstr "Crea Bacheca della Visione"
+msgid "Download"
+msgstr "Scarica"
 
-msgid "Save Timer"
-msgstr "Salva Timer"
+msgid "Read"
+msgstr "Leggi"
 
-msgid "Save Profile"
-msgstr "Salva Profilo"
+msgid "Track"
+msgstr "Traccia"
+
+msgid "Start"
+msgstr "Avvia"
+
+msgid "Complete + Relay"
+msgstr "Completa + Notifica"
+
+msgid "Stop Session"
+msgstr "Ferma Sessione"
+
+msgid "Active Session"
+msgstr "Sessione Attiva"
+
+msgid "min"
+msgstr "min"
+
+msgid "Page"
+msgstr "Pagina"
+
+msgid "of"
+msgstr "di"
+
+msgid "by"
+msgstr "di"
+
+msgid "images"
+msgstr "immagini"
+
+msgid "Public"
+msgstr "Pubblica"
+
+msgid "Private"
+msgstr "Privata"
+
+msgid "Community Boards"
+msgstr "Bacheche della Comunità"
+
+msgid "None yet."
+msgstr "Nessuno ancora."
+
+msgid "No pending requests."
+msgstr "Nessuna richiesta in attesa."
 
 msgid "READY"
 msgstr "PRONTO"
@@ -167,3 +383,81 @@ msgstr "IN CORSO"
 
 msgid "COMPLETE"
 msgstr "COMPLETATO"
+
+msgid "Resume Session"
+msgstr "Riprendi Sessione"
+
+msgid "Pause"
+msgstr "Pausa"
+
+msgid "Relayed"
+msgstr "Notificato"
+
+msgid "Delete this timer?"
+msgstr "Eliminare questo timer?"
+
+msgid "Delete this item from the library?"
+msgstr "Eliminare questo elemento dalla biblioteca?"
+
+msgid "Delete this vision board? This cannot be undone."
+msgstr "Eliminare questa bacheca? Questa azione non può essere annullata."
+
+msgid "Approve this user?"
+msgstr "Approvare questo utente?"
+
+msgid "Deny this request?"
+msgstr "Rifiutare questa richiesta?"
+
+msgid "approved — they can now log in."
+msgstr "approvato — ora può accedere."
+
+msgid "denied."
+msgstr "rifiutato."
+
+msgid "pages"
+msgstr "pagine"
+
+msgid "Admin Panel"
+msgstr "Pannello Admin"
+
+msgid "Manage Users"
+msgstr "Gestisci Utenti"
+
+msgid "Role"
+msgstr "Ruolo"
+
+msgid "Joined"
+msgstr "Iscritto"
+
+msgid "Notify Me Via"
+msgstr "Notificami Via"
+
+msgid "Current page number?"
+msgstr "Numero di pagina corrente?"
+
+msgid "No audio uploaded yet."
+msgstr "Nessun audio caricato ancora."
+
+msgid "No video uploaded yet."
+msgstr "Nessun video caricato ancora."
+
+msgid "No texts uploaded yet."
+msgstr "Nessun testo caricato ancora."
+
+msgid "Leave empty to keep existing images."
+msgstr "Lascia vuoto per mantenere le immagini esistenti."
+
+msgid "Make public"
+msgstr "Rendi pubblica"
+
+msgid "Replace Images (optional)"
+msgstr "Sostituisci Immagini (opzionale)"
+
+msgid "Edit Vision Board"
+msgstr "Modifica Bacheca della Visione"
+
+msgid "Edit Library Item"
+msgstr "Modifica Elemento Biblioteca"
+
+msgid "Edit Timer"
+msgstr "Modifica Timer"
