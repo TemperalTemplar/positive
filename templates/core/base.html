@@ -213,6 +213,7 @@ progress::-moz-progress-bar{background:var(--accent);border-radius:2px}
     {% if request.user.is_superuser or request.user.profile.role == 'ARCHITECT' %}
     <a href="{% url 'approvals' %}" class="{% block nav_approvals %}{% endblock %}" style="color:var(--warn);border-color:var(--warn)" {% if request.resolver_match.url_name == 'approvals' %}aria-current="page"{% endif %}>{% trans "Approvals" %}</a>
     {% endif %}
+    <a href="{% url 'group_hub' %}" class="{% block nav_group %}{% endblock %}" style="color:var(--accent2);border-color:var(--accent2)" {% if request.resolver_match.url_name == 'group_hub' %}aria-current="page"{% endif %}>{% trans "Group" %}</a>
   </nav>
 
   <div class="user-chip">
