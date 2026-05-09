@@ -86,6 +86,7 @@ LANGUAGES = [
     ('he', _('Hebrew')),
     ('ur', _('Urdu')),
     ('fa', _('Persian/Farsi')),
+    ('hi', _('Hindi')),
 ]
 
 LOCALE_PATHS = [BASE_DIR / 'locale']

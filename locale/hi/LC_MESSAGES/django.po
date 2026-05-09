@@ -1,0 +1,553 @@
+# POSITIVE — Sovereign Intent Engine
+# Hindi Translation
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: hi\n"
+
+msgid "POSITIVE"
+msgstr "POSITIVE"
+
+msgid "Dashboard"
+msgstr "डैशबोर्ड"
+
+msgid "Library"
+msgstr "पुस्तकालय"
+
+msgid "Vision Boards"
+msgstr "दृष्टि बोर्ड"
+
+msgid "Timers"
+msgstr "टाइमर"
+
+msgid "Settings"
+msgstr "सेटिंग्स"
+
+msgid "Approvals"
+msgstr "अनुमोदन"
+
+msgid "logout"
+msgstr "लॉग आउट"
+
+msgid "Group"
+msgstr "समूह"
+
+msgid "Search"
+msgstr "खोज"
+
+msgid "The Sanctuary"
+msgstr "आश्रय"
+
+msgid "Session Type"
+msgstr "सत्र प्रकार"
+
+msgid "Meditation — 15 min"
+msgstr "ध्यान — 15 मिनट"
+
+msgid "Morning Prayer — 10 min"
+msgstr "सुबह की प्रार्थना — 10 मिनट"
+
+msgid "Deep Focus — 20 min"
+msgstr "गहरा ध्यान — 20 मिनट"
+
+msgid "Gratitude Practice — 5 min"
+msgstr "कृतज्ञता अभ्यास — 5 मिनट"
+
+msgid "Reading Session — 30 min"
+msgstr "पाठन सत्र — 30 मिनट"
+
+msgid "Custom…"
+msgstr "कस्टम…"
+
+msgid "Custom Duration (minutes)"
+msgstr "कस्टम अवधि (मिनट)"
+
+msgid "Begin Session"
+msgstr "सत्र शुरू करें"
+
+msgid "Reset"
+msgstr "रीसेट"
+
+msgid "Quick Play"
+msgstr "त्वरित चलाएं"
+
+msgid "No audio yet."
+msgstr "अभी तक कोई ऑडियो नहीं।"
+
+msgid "Upload in library"
+msgstr "पुस्तकालय में अपलोड करें"
+
+msgid "Repository of Light"
+msgstr "प्रकाश का भंडार"
+
+msgid "Enter a good thought, prayer, or gratitude…"
+msgstr "एक अच्छा विचार, प्रार्थना, या कृतज्ञता दर्ज करें…"
+
+msgid "Good Thought"
+msgstr "अच्छा विचार"
+
+msgid "Prayer"
+msgstr "प्रार्थना"
+
+msgid "Gratitude"
+msgstr "कृतज्ञता"
+
+msgid "Share with group (posts to Discord / Rocket.Chat)"
+msgstr "समूह के साथ साझा करें (Discord / Rocket.Chat पर पोस्ट करता है)"
+
+msgid "Log Intent"
+msgstr "इरादा दर्ज करें"
+
+msgid "Recent Entries"
+msgstr "हालिया प्रविष्टियाँ"
+
+msgid "shared"
+msgstr "साझा"
+
+msgid "Mark Answered"
+msgstr "उत्तरित चिह्नित करें"
+
+msgid "Answered"
+msgstr "उत्तरित"
+
+msgid "No entries yet. Log your first intent above."
+msgstr "अभी तक कोई प्रविष्टि नहीं। ऊपर अपना पहला इरादा दर्ज करें।"
+
+msgid "Manifestation"
+msgstr "अभिव्यक्ति"
+
+msgid "Thoughts"
+msgstr "विचार"
+
+msgid "Prayers"
+msgstr "प्रार्थनाएं"
+
+msgid "No boards yet."
+msgstr "अभी तक कोई बोर्ड नहीं।"
+
+msgid "Create one"
+msgstr "एक बनाएं"
+
+msgid "Manage Boards"
+msgstr "बोर्ड प्रबंधित करें"
+
+msgid "Reading Hub"
+msgstr "पठन केंद्र"
+
+msgid "No active reading."
+msgstr "कोई सक्रिय पठन नहीं।"
+
+msgid "Visit library"
+msgstr "पुस्तकालय जाएं"
+
+msgid "Prayer Tracker"
+msgstr "प्रार्थना ट्रैकर"
+
+msgid "Active"
+msgstr "सक्रिय"
+
+msgid "No timers."
+msgstr "कोई टाइमर नहीं।"
+
+msgid "ENTER THE SANCTUARY"
+msgstr "आश्रय में प्रवेश करें"
+
+msgid "Don't have an account?"
+msgstr "खाता नहीं है?"
+
+msgid "Request Access"
+msgstr "पहुंच का अनुरोध करें"
+
+msgid "Username"
+msgstr "उपयोगकर्ता नाम"
+
+msgid "Email (optional — for notifications)"
+msgstr "ईमेल (वैकल्पिक — सूचनाओं के लिए)"
+
+msgid "Password"
+msgstr "पासवर्ड"
+
+msgid "Confirm Password"
+msgstr "पासवर्ड की पुष्टि करें"
+
+msgid "Note to admin (optional)"
+msgstr "व्यवस्थापक को नोट (वैकल्पिक)"
+
+msgid "Tell the admin why you'd like access…"
+msgstr "व्यवस्थापक को बताएं कि आप पहुंच क्यों चाहते हैं…"
+
+msgid "SUBMIT REQUEST"
+msgstr "अनुरोध सबमिट करें"
+
+msgid "Back to login"
+msgstr "लॉगिन पर वापस जाएं"
+
+msgid "REQUEST SUBMITTED"
+msgstr "अनुरोध सबमिट किया गया"
+
+msgid "Pending Requests"
+msgstr "लंबित अनुरोध"
+
+msgid "Approve"
+msgstr "अनुमोदित करें"
+
+msgid "Deny"
+msgstr "अस्वीकार करें"
+
+msgid "Recently Approved"
+msgstr "हाल ही में अनुमोदित"
+
+msgid "Recently Denied"
+msgstr "हाल ही में अस्वीकृत"
+
+msgid "Audio — Chants & Guides"
+msgstr "ऑडियो — भजन और मार्गदर्शन"
+
+msgid "Video — Meditations & Prayers"
+msgstr "वीडियो — ध्यान और प्रार्थनाएं"
+
+msgid "Texts — Books & Scripture"
+msgstr "ग्रंथ — पुस्तकें और शास्त्र"
+
+msgid "Upload to Library"
+msgstr "पुस्तकालय में अपलोड करें"
+
+msgid "Title"
+msgstr "शीर्षक"
+
+msgid "Type"
+msgstr "प्रकार"
+
+msgid "Access"
+msgstr "पहुंच"
+
+msgid "Description (optional)"
+msgstr "विवरण (वैकल्पिक)"
+
+msgid "Total Pages"
+msgstr "कुल पृष्ठ"
+
+msgid "File"
+msgstr "फ़ाइल"
+
+msgid "Upload"
+msgstr "अपलोड"
+
+msgid "Your Vision Boards"
+msgstr "आपके दृष्टि बोर्ड"
+
+msgid "Create New Board"
+msgstr "नया बोर्ड बनाएं"
+
+msgid "Board Name"
+msgstr "बोर्ड का नाम"
+
+msgid "Images (select multiple)"
+msgstr "चित्र (एकाधिक चुनें)"
+
+msgid "Make public (visible to all users + relay to Discord/RC)"
+msgstr "सार्वजनिक करें (सभी को दिखाई दे + Discord/RC पर भेजें)"
+
+msgid "Build Vision Board"
+msgstr "दृष्टि बोर्ड बनाएं"
+
+msgid "Your Intent Timers"
+msgstr "आपके इरादे टाइमर"
+
+msgid "Create Timer"
+msgstr "टाइमर बनाएं"
+
+msgid "Session Name"
+msgstr "सत्र का नाम"
+
+msgid "Duration (minutes)"
+msgstr "अवधि (मिनट)"
+
+msgid "Linked Audio (optional)"
+msgstr "लिंक्ड ऑडियो (वैकल्पिक)"
+
+msgid "Relay on Complete"
+msgstr "पूर्ण होने पर सूचित करें"
+
+msgid "Send email notification"
+msgstr "ईमेल सूचना भेजें"
+
+msgid "Post to Discord"
+msgstr "Discord पर पोस्ट करें"
+
+msgid "Post to Rocket.Chat"
+msgstr "Rocket.Chat पर पोस्ट करें"
+
+msgid "Create .ics calendar event"
+msgstr ".ics कैलेंडर इवेंट बनाएं"
+
+msgid "Save Timer"
+msgstr "टाइमर सहेजें"
+
+msgid "Save Profile"
+msgstr "प्रोफ़ाइल सहेजें"
+
+msgid "Account"
+msgstr "खाता"
+
+msgid "edit"
+msgstr "संपादित करें"
+
+msgid "Save"
+msgstr "सहेजें"
+
+msgid "Cancel"
+msgstr "रद्द करें"
+
+msgid "Delete this entry?"
+msgstr "यह प्रविष्टि हटाएं?"
+
+msgid "Please write something first."
+msgstr "पहले कुछ लिखें।"
+
+msgid "Logged."
+msgstr "दर्ज किया गया।"
+
+msgid "SOVEREIGN INTENT ENGINE"
+msgstr "संप्रभु इरादा इंजन"
+
+msgid "Active Timers"
+msgstr "सक्रिय टाइमर"
+
+msgid "View"
+msgstr "देखें"
+
+msgid "Download"
+msgstr "डाउनलोड"
+
+msgid "Read"
+msgstr "पढ़ें"
+
+msgid "Track"
+msgstr "ट्रैक करें"
+
+msgid "Start"
+msgstr "शुरू करें"
+
+msgid "Complete + Relay"
+msgstr "पूर्ण + सूचित करें"
+
+msgid "Stop Session"
+msgstr "सत्र रोकें"
+
+msgid "Active Session"
+msgstr "सक्रिय सत्र"
+
+msgid "min"
+msgstr "मिनट"
+
+msgid "Page"
+msgstr "पृष्ठ"
+
+msgid "of"
+msgstr "का"
+
+msgid "by"
+msgstr "द्वारा"
+
+msgid "images"
+msgstr "चित्र"
+
+msgid "Public"
+msgstr "सार्वजनिक"
+
+msgid "Private"
+msgstr "निजी"
+
+msgid "Community Boards"
+msgstr "समुदाय बोर्ड"
+
+msgid "None yet."
+msgstr "अभी तक कुछ नहीं।"
+
+msgid "READY"
+msgstr "तैयार"
+
+msgid "PAUSED"
+msgstr "रुका हुआ"
+
+msgid "IN PROGRESS"
+msgstr "प्रगति में"
+
+msgid "COMPLETE"
+msgstr "पूर्ण"
+
+msgid "Resume Session"
+msgstr "सत्र फिर से शुरू करें"
+
+msgid "Pause"
+msgstr "रोकें"
+
+msgid "Relayed"
+msgstr "सूचित किया गया"
+
+msgid "Delete this timer?"
+msgstr "यह टाइमर हटाएं?"
+
+msgid "Delete this item from the library?"
+msgstr "इस आइटम को पुस्तकालय से हटाएं?"
+
+msgid "Delete this vision board? This cannot be undone."
+msgstr "यह दृष्टि बोर्ड हटाएं? यह पूर्ववत नहीं किया जा सकता।"
+
+msgid "Approve this user?"
+msgstr "इस उपयोगकर्ता को अनुमोदित करें?"
+
+msgid "Deny this request?"
+msgstr "यह अनुरोध अस्वीकार करें?"
+
+msgid "approved — they can now log in."
+msgstr "अनुमोदित — वे अब लॉग इन कर सकते हैं।"
+
+msgid "denied."
+msgstr "अस्वीकृत।"
+
+msgid "pages"
+msgstr "पृष्ठ"
+
+msgid "Admin Panel"
+msgstr "व्यवस्थापक पैनल"
+
+msgid "Manage Users"
+msgstr "उपयोगकर्ता प्रबंधित करें"
+
+msgid "Role"
+msgstr "भूमिका"
+
+msgid "Joined"
+msgstr "शामिल हुए"
+
+msgid "Notify Me Via"
+msgstr "मुझे इसके द्वारा सूचित करें"
+
+msgid "No audio uploaded yet."
+msgstr "अभी तक कोई ऑडियो अपलोड नहीं हुआ।"
+
+msgid "No video uploaded yet."
+msgstr "अभी तक कोई वीडियो अपलोड नहीं हुआ।"
+
+msgid "No texts uploaded yet."
+msgstr "अभी तक कोई पाठ अपलोड नहीं हुआ।"
+
+msgid "Edit Vision Board"
+msgstr "दृष्टि बोर्ड संपादित करें"
+
+msgid "Edit Library Item"
+msgstr "पुस्तकालय आइटम संपादित करें"
+
+msgid "Edit Timer"
+msgstr "टाइमर संपादित करें"
+
+msgid "Leave empty to keep existing images."
+msgstr "मौजूदा चित्र रखने के लिए खाली छोड़ें।"
+
+msgid "Make public"
+msgstr "सार्वजनिक करें"
+
+msgid "Replace Images (optional)"
+msgstr "चित्र बदलें (वैकल्पिक)"
+
+msgid "Current page number?"
+msgstr "वर्तमान पृष्ठ संख्या?"
+
+msgid "No pending requests."
+msgstr "कोई लंबित अनुरोध नहीं।"
+
+msgid "Install Positive"
+msgstr "Positive इंस्टॉल करें"
+
+msgid "Add to your home screen for the full app experience."
+msgstr "पूर्ण ऐप अनुभव के लिए अपनी होम स्क्रीन पर जोड़ें।"
+
+msgid "Install"
+msgstr "इंस्टॉल करें"
+
+msgid "Not now"
+msgstr "अभी नहीं"
+
+msgid "Skip to main content"
+msgstr "मुख्य सामग्री पर जाएं"
+
+msgid "Forgot password?"
+msgstr "पासवर्ड भूल गए?"
+
+msgid "Change Password"
+msgstr "पासवर्ड बदलें"
+
+msgid "Current Password"
+msgstr "वर्तमान पासवर्ड"
+
+msgid "New Password"
+msgstr "नया पासवर्ड"
+
+msgid "Confirm New Password"
+msgstr "नया पासवर्ड पुष्टि करें"
+
+msgid "Export Your Data"
+msgstr "अपना डेटा निर्यात करें"
+
+msgid "Security"
+msgstr "सुरक्षा"
+
+msgid "Email Verification"
+msgstr "ईमेल सत्यापन"
+
+msgid "Two-Factor Authentication"
+msgstr "दो-कारक प्रमाणीकरण"
+
+msgid "Shared Timer"
+msgstr "साझा टाइमर"
+
+msgid "Community Prayer Wall"
+msgstr "समुदाय प्रार्थना दीवार"
+
+msgid "Broadcast to Group"
+msgstr "समूह को प्रसारण"
+
+msgid "Group Reading"
+msgstr "समूह पाठन"
+
+msgid "Add to Prayer Wall"
+msgstr "प्रार्थना दीवार में जोड़ें"
+
+msgid "Search Entries"
+msgstr "प्रविष्टियाँ खोजें"
+
+msgid "Search thoughts, prayers, gratitude…"
+msgstr "विचार, प्रार्थनाएं, कृतज्ञता खोजें…"
+
+msgid "Daily"
+msgstr "दैनिक"
+
+msgid "Weekdays only"
+msgstr "केवल कार्यदिवस"
+
+msgid "Weekly (Mondays)"
+msgstr "साप्ताहिक (सोमवार)"
+
+msgid "Set Reminder"
+msgstr "रिमाइंडर सेट करें"
+
+msgid "Reading Reminders"
+msgstr "पाठन रिमाइंडर"
+
+msgid "Avatar & Appearance"
+msgstr "अवतार और रूप"
+
+msgid "Theme"
+msgstr "थीम"
+
+msgid "Dark"
+msgstr "गहरा"
+
+msgid "Light"
+msgstr "हल्का"
+
+msgid "High Contrast"
+msgstr "उच्च कंट्रास्ट"
