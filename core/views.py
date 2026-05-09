@@ -40,6 +40,23 @@ def dashboard(request):
         'gratitude': Entry.objects.filter(user=user, category='GRATITUDE').count(),
     }
 
+    # Group activity
+    from django.utils import timezone as tz
+    import django.db.models as dm
+    now = tz.now()
+    dismissed_ids = BroadcastDismissal.objects.filter(user=user).values_list('broadcast_id', flat=True)
+    broadcasts = BroadcastMessage.objects.filter(
+        is_active=True
+    ).exclude(id__in=dismissed_ids).filter(
+        dm.Q(expires_at__isnull=True) | dm.Q(expires_at__gt=now)
+    )
+    group_timer = GroupTimer.objects.filter(is_active=True).first()
+    if group_timer and group_timer.is_expired:
+        group_timer.is_active = False
+        group_timer.save()
+        group_timer = None
+    group_reading = GroupReadingSession.objects.filter(is_active=True).first()
+
     return render(request, 'core/dashboard.html', {
         'entries': entries,
         'audio_items': audio_items,
@@ -49,6 +66,9 @@ def dashboard(request):
         'boards': boards,
         'reading': reading,
         'stats': stats,
+        'broadcasts': broadcasts,
+        'group_timer': group_timer,
+        'group_reading': group_reading,
     })
 
 

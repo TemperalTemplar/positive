@@ -3,6 +3,55 @@
 {% block title %}{% trans "Dashboard" %}{% endblock %}
 {% block nav_dash %}active{% endblock %}
 {% block content %}
+
+{% load i18n %}
+
+<!-- Broadcast banners -->
+{% for broadcast in broadcasts %}
+<div style="background:rgba(0,212,160,0.1);border:1px solid var(--accent);border-radius:8px;padding:12px 16px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:12px" id="broadcast-{{ broadcast.id }}" role="alert" aria-live="polite">
+  <div style="display:flex;align-items:center;gap:10px">
+    <span style="color:var(--accent);font-size:18px" aria-hidden="true">&#128226;</span>
+    <div>
+      <div style="font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:2px">{% trans "MESSAGE FROM" %} {{ broadcast.author.username|upper }}</div>
+      <div style="font-size:13px;color:var(--text)">{{ broadcast.message }}</div>
+    </div>
+  </div>
+  <button onclick="dismissBroadcastDash({{ broadcast.id }},this)" class="btn btn-sm btn-muted" aria-label="{% trans 'Dismiss message' %}">&#x2715;</button>
+</div>
+{% endfor %}
+
+<!-- Active group timer -->
+{% if group_timer %}
+<div style="background:rgba(127,119,221,0.1);border:1px solid var(--accent2);border-radius:8px;padding:12px 16px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:12px" role="complementary" aria-label="{% trans 'Active group session' %}">
+  <div style="display:flex;align-items:center;gap:12px">
+    <span style="font-size:24px" aria-hidden="true">&#9203;</span>
+    <div>
+      <div style="font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:2px">{% trans "GROUP SESSION IN PROGRESS" %}</div>
+      <div style="font-size:13px;color:var(--accent2)">{{ group_timer.title }}</div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <div style="font-size:24px;color:var(--accent2);font-weight:300;letter-spacing:2px" id="dash-timer-display" role="timer" aria-live="polite">00:00</div>
+    <a href="{% url 'group_hub' %}" class="btn btn-sm" style="border-color:var(--accent2);color:var(--accent2)">{% trans "Join" %}</a>
+  </div>
+</div>
+{% endif %}
+
+<!-- Active group reading -->
+{% if group_reading %}
+<div style="background:rgba(239,159,39,0.08);border:1px solid var(--warn);border-radius:8px;padding:12px 16px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+  <div style="display:flex;align-items:center;gap:12px">
+    <span style="font-size:20px" aria-hidden="true">&#128214;</span>
+    <div>
+      <div style="font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:2px">{% trans "GROUP READING IN PROGRESS" %}</div>
+      <div style="font-size:13px;color:var(--warn)">{{ group_reading.library_item.title }} &mdash; {% trans "Page" %} {{ group_reading.current_page }}</div>
+      {% if group_reading.note %}<div style="font-size:11px;color:var(--muted);margin-top:2px">{{ group_reading.note }}</div>{% endif %}
+    </div>
+  </div>
+  <a href="{% url 'group_hub' %}" class="btn btn-sm" style="border-color:var(--warn);color:var(--warn)">{% trans "Join" %}</a>
+</div>
+{% endif %}
+
 <div class="grid-3">
 
 <!-- LEFT: SANCTUARY -->
@@ -173,5 +222,20 @@ function editEntry(id){document.querySelector('.entry-content-'+id).style.displa
 function cancelEdit(id){document.querySelector('.entry-content-'+id).style.display='block';document.querySelector('.entry-edit-form-'+id).style.display='none';}
 function saveEdit(id){var content=document.querySelector('.entry-edit-text-'+id).value.trim();if(!content)return;fetch('/entries/'+id+'/edit/',{method:'POST',headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'},body:'content='+encodeURIComponent(content)}).then(function(r){return r.json();}).then(function(d){if(d.error)return;document.querySelector('.entry-content-'+id).textContent=d.content;cancelEdit(id);});}
 function deleteEntry(id){if(!confirm(msgDelete))return;fetch('/entries/'+id+'/delete/',{method:'POST',headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'}}).then(function(r){return r.json();}).then(function(d){if(d.status==='ok'){var el=document.getElementById('entry-'+id);el.style.opacity='0';el.style.transition='opacity 0.3s';setTimeout(function(){el.remove();},300);}});}
+
+function dismissBroadcastDash(id,btn){
+  fetch('/group/broadcast/'+id+'/dismiss/',{method:'POST',headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'}})
+  .then(function(){var el=document.getElementById('broadcast-'+id);el.style.opacity='0';el.style.transition='opacity 0.3s';setTimeout(function(){el.remove();},300);});
+}
+
+{% if group_timer %}
+(function(){
+  var secs = {{ group_timer.seconds_remaining }};
+  var el = document.getElementById('dash-timer-display');
+  function upd(){var m=Math.floor(secs/60),s=secs%60;if(el)el.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+  upd();
+  var iv = setInterval(function(){if(secs<=0){clearInterval(iv);return;}secs--;upd();},1000);
+})();
+{% endif %}
 </script>
 {% endblock %}
