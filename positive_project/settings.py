@@ -1,12 +1,10 @@
 import os
 from pathlib import Path
-from django.utils.translation import gettext_lazy as _
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-only-insecure-key-change-in-production')
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
-CSRF_TRUSTED_ORIGINS = [x for x in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',') if x]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -32,13 +30,37 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'positive_project.urls'
 
-TEMPLATES = [{'BACKEND': 'django.template.backends.django.DjangoTemplates','DIRS': [BASE_DIR / 'templates'],'APP_DIRS': True,'OPTIONS': {'context_processors': ['django.template.context_processors.debug','django.template.context_processors.request','django.contrib.auth.context_processors.auth','django.contrib.messages.context_processors.messages','django.template.context_processors.media','django.template.context_processors.i18n',],},}]
+TEMPLATES = [{
+    'BACKEND': 'django.template.backends.django.DjangoTemplates',
+    'DIRS': [BASE_DIR / 'templates'],
+    'APP_DIRS': True,
+    'OPTIONS': {
+        'context_processors': [
+            'django.template.context_processors.debug',
+            'django.template.context_processors.request',
+            'django.contrib.auth.context_processors.auth',
+            'django.contrib.messages.context_processors.messages',
+            'django.template.context_processors.media',
+            'django.template.context_processors.i18n',
+        ],
+    },
+}]
 
 WSGI_APPLICATION = 'positive_project.wsgi.application'
 
-DATABASES = {'default': {'ENGINE': 'django.db.backends.sqlite3','NAME': BASE_DIR / 'data' / 'positive.sqlite3',}}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'data' / 'positive.sqlite3',
+    }
+}
 
-AUTH_PASSWORD_VALIDATORS = [{'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},{'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},{'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},{'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},]
+AUTH_PASSWORD_VALIDATORS = [
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+]
 
 LANGUAGE_CODE = 'en'
 TIME_ZONE = 'UTC'
@@ -46,19 +68,39 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-LANGUAGES = [('en', _('English')),('es', _('Spanish')),('fr', _('French')),('de', _('German')),('pt', _('Portuguese')),('ar', _('Arabic')),('zh-hans', _('Chinese (Simplified)')),('ja', _('Japanese')),('ko', _('Korean')),('ru', _('Russian')),('tr', _('Turkish')),
-    ('it', _('Italian')),]
+# Supported languages
+from django.utils.translation import gettext_lazy as _
+LANGUAGES = [
+    ('en', _('English')),
+    ('es', _('Spanish')),
+    ('fr', _('French')),
+    ('de', _('German')),
+    ('pt', _('Portuguese')),
+    ('ar', _('Arabic')),
+    ('zh-hans', _('Chinese (Simplified)')),
+    ('ja', _('Japanese')),
+    ('ko', _('Korean')),
+    ('ru', _('Russian')),
+    ('tr', _('Turkish')),
+    ('it', _('Italian')),
+    ('he', _('Hebrew')),
+    ('ur', _('Urdu')),
+    ('fa', _('Persian/Farsi')),
+]
 
 LOCALE_PATHS = [BASE_DIR / 'locale']
+
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
+
 DISCORD_WEBHOOK = os.environ.get('DISCORD_WEBHOOK', '')
 ROCKETCHAT_WEBHOOK = os.environ.get('ROCKETCHAT_WEBHOOK', '')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

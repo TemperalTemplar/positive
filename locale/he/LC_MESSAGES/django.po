@@ -1,0 +1,466 @@
+# POSITIVE — Sovereign Intent Engine
+# Hebrew Translation (RTL)
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: he\n"
+
+msgid "POSITIVE"
+msgstr "POSITIVE"
+
+msgid "Dashboard"
+msgstr "לוח בקרה"
+
+msgid "Library"
+msgstr "ספרייה"
+
+msgid "Vision Boards"
+msgstr "לוחות חזון"
+
+msgid "Timers"
+msgstr "טיימרים"
+
+msgid "Settings"
+msgstr "הגדרות"
+
+msgid "Approvals"
+msgstr "אישורים"
+
+msgid "logout"
+msgstr "התנתק"
+
+msgid "The Sanctuary"
+msgstr "המקדש"
+
+msgid "Session Type"
+msgstr "סוג מפגש"
+
+msgid "Meditation — 15 min"
+msgstr "מדיטציה — 15 דקות"
+
+msgid "Morning Prayer — 10 min"
+msgstr "תפילת בוקר — 10 דקות"
+
+msgid "Deep Focus — 20 min"
+msgstr "ריכוז עמוק — 20 דקות"
+
+msgid "Gratitude Practice — 5 min"
+msgstr "תרגול הכרת תודה — 5 דקות"
+
+msgid "Reading Session — 30 min"
+msgstr "מפגש קריאה — 30 דקות"
+
+msgid "Custom…"
+msgstr "מותאם אישית…"
+
+msgid "Custom Duration (minutes)"
+msgstr "משך מותאם אישית (דקות)"
+
+msgid "Begin Session"
+msgstr "התחל מפגש"
+
+msgid "Reset"
+msgstr "אפס"
+
+msgid "Quick Play"
+msgstr "השמעה מהירה"
+
+msgid "No audio yet."
+msgstr "אין שמע עדיין."
+
+msgid "Upload in library"
+msgstr "העלה לספרייה"
+
+msgid "Repository of Light"
+msgstr "מאגר האור"
+
+msgid "Enter a good thought, prayer, or gratitude…"
+msgstr "הכנס מחשבה טובה, תפילה או הכרת תודה…"
+
+msgid "Good Thought"
+msgstr "מחשבה טובה"
+
+msgid "Prayer"
+msgstr "תפילה"
+
+msgid "Gratitude"
+msgstr "הכרת תודה"
+
+msgid "Share with group (posts to Discord / Rocket.Chat)"
+msgstr "שתף עם הקבוצה (מפרסם ב-Discord / Rocket.Chat)"
+
+msgid "Log Intent"
+msgstr "רשום כוונה"
+
+msgid "Recent Entries"
+msgstr "רשומות אחרונות"
+
+msgid "shared"
+msgstr "משותף"
+
+msgid "Mark Answered"
+msgstr "סמן כנענה"
+
+msgid "Answered"
+msgstr "נענה"
+
+msgid "No entries yet. Log your first intent above."
+msgstr "אין רשומות עדיין. רשום את כוונתך הראשונה למעלה."
+
+msgid "Manifestation"
+msgstr "התגלמות"
+
+msgid "Thoughts"
+msgstr "מחשבות"
+
+msgid "Prayers"
+msgstr "תפילות"
+
+msgid "No boards yet."
+msgstr "אין לוחות עדיין."
+
+msgid "Create one"
+msgstr "צור אחד"
+
+msgid "Manage Boards"
+msgstr "נהל לוחות"
+
+msgid "Reading Hub"
+msgstr "מרכז קריאה"
+
+msgid "No active reading."
+msgstr "אין קריאה פעילה."
+
+msgid "Visit library"
+msgstr "בקר בספרייה"
+
+msgid "Prayer Tracker"
+msgstr "מעקב תפילות"
+
+msgid "Active"
+msgstr "פעיל"
+
+msgid "No timers."
+msgstr "אין טיימרים."
+
+msgid "ENTER THE SANCTUARY"
+msgstr "כנס למקדש"
+
+msgid "Don't have an account?"
+msgstr "אין לך חשבון?"
+
+msgid "Request Access"
+msgstr "בקש גישה"
+
+msgid "REQUEST ACCESS"
+msgstr "בקש גישה"
+
+msgid "Username"
+msgstr "שם משתמש"
+
+msgid "Email (optional — for notifications)"
+msgstr "אימייל (אופציונלי — להתראות)"
+
+msgid "Password"
+msgstr "סיסמה"
+
+msgid "Confirm Password"
+msgstr "אשר סיסמה"
+
+msgid "Note to admin (optional)"
+msgstr "הערה למנהל (אופציונלי)"
+
+msgid "Tell the admin why you'd like access…"
+msgstr "ספר למנהל מדוע תרצה גישה…"
+
+msgid "SUBMIT REQUEST"
+msgstr "שלח בקשה"
+
+msgid "Back to login"
+msgstr "חזור להתחברות"
+
+msgid "REQUEST SUBMITTED"
+msgstr "הבקשה נשלחה"
+
+msgid "Pending Requests"
+msgstr "בקשות ממתינות"
+
+msgid "Approve"
+msgstr "אשר"
+
+msgid "Deny"
+msgstr "דחה"
+
+msgid "Recently Approved"
+msgstr "אושרו לאחרונה"
+
+msgid "Recently Denied"
+msgstr "נדחו לאחרונה"
+
+msgid "Audio — Chants & Guides"
+msgstr "שמע — פזמונים והדרכות"
+
+msgid "Video — Meditations & Prayers"
+msgstr "וידאו — מדיטציות ותפילות"
+
+msgid "Texts — Books & Scripture"
+msgstr "טקסטים — ספרים וכתבי קודש"
+
+msgid "Upload to Library"
+msgstr "העלה לספרייה"
+
+msgid "Title"
+msgstr "כותרת"
+
+msgid "Type"
+msgstr "סוג"
+
+msgid "Access"
+msgstr "גישה"
+
+msgid "Description (optional)"
+msgstr "תיאור (אופציונלי)"
+
+msgid "Total Pages"
+msgstr "סך עמודים"
+
+msgid "File"
+msgstr "קובץ"
+
+msgid "Upload"
+msgstr "העלה"
+
+msgid "Your Vision Boards"
+msgstr "לוחות החזון שלך"
+
+msgid "Create New Board"
+msgstr "צור לוח חדש"
+
+msgid "Board Name"
+msgstr "שם הלוח"
+
+msgid "Images (select multiple)"
+msgstr "תמונות (בחר מספר)"
+
+msgid "Make public (visible to all users + relay to Discord/RC)"
+msgstr "הפוך לציבורי (גלוי לכולם + שלח ל-Discord/RC)"
+
+msgid "Build Vision Board"
+msgstr "בנה לוח חזון"
+
+msgid "Your Intent Timers"
+msgstr "טיימרי הכוונה שלך"
+
+msgid "Create Timer"
+msgstr "צור טיימר"
+
+msgid "Session Name"
+msgstr "שם המפגש"
+
+msgid "Duration (minutes)"
+msgstr "משך (דקות)"
+
+msgid "Linked Audio (optional)"
+msgstr "שמע מקושר (אופציונלי)"
+
+msgid "Relay on Complete"
+msgstr "הודע בסיום"
+
+msgid "Send email notification"
+msgstr "שלח הודעת אימייל"
+
+msgid "Post to Discord"
+msgstr "פרסם ב-Discord"
+
+msgid "Post to Rocket.Chat"
+msgstr "פרסם ב-Rocket.Chat"
+
+msgid "Create .ics calendar event"
+msgstr "צור אירוע לוח שנה .ics"
+
+msgid "Save Timer"
+msgstr "שמור טיימר"
+
+msgid "Your Relay Profile"
+msgstr "פרופיל ההתראות שלך"
+
+msgid "Personal Email (for timer notifications)"
+msgstr "אימייל אישי (להתראות טיימר)"
+
+msgid "Save Profile"
+msgstr "שמור פרופיל"
+
+msgid "Server Config"
+msgstr "הגדרות שרת"
+
+msgid "Account"
+msgstr "חשבון"
+
+msgid "edit"
+msgstr "ערוך"
+
+msgid "Save"
+msgstr "שמור"
+
+msgid "Cancel"
+msgstr "בטל"
+
+msgid "Delete this entry?"
+msgstr "למחוק רשומה זו?"
+
+msgid "Please write something first."
+msgstr "אנא כתוב משהו תחילה."
+
+msgid "Logged."
+msgstr "נרשם."
+
+msgid "SOVEREIGN INTENT ENGINE"
+msgstr "מנוע הכוונה הריבונית"
+
+msgid "Active Timers"
+msgstr "טיימרים פעילים"
+
+msgid "View"
+msgstr "צפה"
+
+msgid "Download"
+msgstr "הורד"
+
+msgid "Read"
+msgstr "קרא"
+
+msgid "Track"
+msgstr "עקוב"
+
+msgid "Start"
+msgstr "התחל"
+
+msgid "Complete + Relay"
+msgstr "השלם + הודע"
+
+msgid "Stop Session"
+msgstr "עצור מפגש"
+
+msgid "Active Session"
+msgstr "מפגש פעיל"
+
+msgid "min"
+msgstr "דק׳"
+
+msgid "Page"
+msgstr "עמוד"
+
+msgid "of"
+msgstr "מתוך"
+
+msgid "by"
+msgstr "מאת"
+
+msgid "images"
+msgstr "תמונות"
+
+msgid "Public"
+msgstr "ציבורי"
+
+msgid "Private"
+msgstr "פרטי"
+
+msgid "Community Boards"
+msgstr "לוחות קהילתיים"
+
+msgid "None yet."
+msgstr "אין עדיין."
+
+msgid "READY"
+msgstr "מוכן"
+
+msgid "PAUSED"
+msgstr "מושהה"
+
+msgid "IN PROGRESS"
+msgstr "בתהליך"
+
+msgid "COMPLETE"
+msgstr "הושלם"
+
+msgid "Resume Session"
+msgstr "המשך מפגש"
+
+msgid "Pause"
+msgstr "השהה"
+
+msgid "Relayed"
+msgstr "הועבר"
+
+msgid "Delete this timer?"
+msgstr "למחוק טיימר זה?"
+
+msgid "Delete this item from the library?"
+msgstr "למחוק פריט זה מהספרייה?"
+
+msgid "Delete this vision board? This cannot be undone."
+msgstr "למחוק לוח חזון זה? לא ניתן לבטל פעולה זו."
+
+msgid "Approve this user?"
+msgstr "לאשר משתמש זה?"
+
+msgid "Deny this request?"
+msgstr "לדחות בקשה זו?"
+
+msgid "approved — they can now log in."
+msgstr "אושר — כעת יכול להתחבר."
+
+msgid "denied."
+msgstr "נדחה."
+
+msgid "pages"
+msgstr "עמודים"
+
+msgid "Admin Panel"
+msgstr "לוח ניהול"
+
+msgid "Manage Users"
+msgstr "נהל משתמשים"
+
+msgid "Role"
+msgstr "תפקיד"
+
+msgid "Joined"
+msgstr "הצטרף"
+
+msgid "Notify Me Via"
+msgstr "הודע לי דרך"
+
+msgid "No audio uploaded yet."
+msgstr "לא הועלה שמע עדיין."
+
+msgid "No video uploaded yet."
+msgstr "לא הועלה וידאו עדיין."
+
+msgid "No texts uploaded yet."
+msgstr "לא הועלו טקסטים עדיין."
+
+msgid "Edit Vision Board"
+msgstr "ערוך לוח חזון"
+
+msgid "Edit Library Item"
+msgstr "ערוך פריט ספרייה"
+
+msgid "Edit Timer"
+msgstr "ערוך טיימר"
+
+msgid "Leave empty to keep existing images."
+msgstr "השאר ריק לשמירת התמונות הקיימות."
+
+msgid "Make public"
+msgstr "הפוך לציבורי"
+
+msgid "Replace Images (optional)"
+msgstr "החלף תמונות (אופציונלי)"
+
+msgid "Current page number?"
+msgstr "מספר עמוד נוכחי?"
+
+msgid "No pending requests."
+msgstr "אין בקשות ממתינות."

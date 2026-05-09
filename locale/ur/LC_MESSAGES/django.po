@@ -1,0 +1,466 @@
+# POSITIVE — Sovereign Intent Engine
+# Urdu Translation (RTL)
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ur\n"
+
+msgid "POSITIVE"
+msgstr "POSITIVE"
+
+msgid "Dashboard"
+msgstr "ڈیش بورڈ"
+
+msgid "Library"
+msgstr "کتب خانہ"
+
+msgid "Vision Boards"
+msgstr "وژن بورڈز"
+
+msgid "Timers"
+msgstr "ٹائمرز"
+
+msgid "Settings"
+msgstr "ترتیبات"
+
+msgid "Approvals"
+msgstr "منظوریاں"
+
+msgid "logout"
+msgstr "لاگ آؤٹ"
+
+msgid "The Sanctuary"
+msgstr "پناہ گاہ"
+
+msgid "Session Type"
+msgstr "سیشن کی قسم"
+
+msgid "Meditation — 15 min"
+msgstr "مراقبہ — ۱۵ منٹ"
+
+msgid "Morning Prayer — 10 min"
+msgstr "صبح کی نماز — ۱۰ منٹ"
+
+msgid "Deep Focus — 20 min"
+msgstr "گہری توجہ — ۲۰ منٹ"
+
+msgid "Gratitude Practice — 5 min"
+msgstr "شکرگزاری کی مشق — ۵ منٹ"
+
+msgid "Reading Session — 30 min"
+msgstr "مطالعہ سیشن — ۳۰ منٹ"
+
+msgid "Custom…"
+msgstr "خود ساختہ…"
+
+msgid "Custom Duration (minutes)"
+msgstr "خود ساختہ مدت (منٹ)"
+
+msgid "Begin Session"
+msgstr "سیشن شروع کریں"
+
+msgid "Reset"
+msgstr "دوبارہ ترتیب دیں"
+
+msgid "Quick Play"
+msgstr "فوری چلائیں"
+
+msgid "No audio yet."
+msgstr "ابھی تک کوئی آڈیو نہیں۔"
+
+msgid "Upload in library"
+msgstr "کتب خانے میں اپ لوڈ کریں"
+
+msgid "Repository of Light"
+msgstr "روشنی کا خزانہ"
+
+msgid "Enter a good thought, prayer, or gratitude…"
+msgstr "ایک اچھا خیال، دعا، یا شکرگزاری درج کریں…"
+
+msgid "Good Thought"
+msgstr "اچھا خیال"
+
+msgid "Prayer"
+msgstr "دعا"
+
+msgid "Gratitude"
+msgstr "شکرگزاری"
+
+msgid "Share with group (posts to Discord / Rocket.Chat)"
+msgstr "گروپ کے ساتھ شیئر کریں (Discord / Rocket.Chat پر پوسٹ کرتا ہے)"
+
+msgid "Log Intent"
+msgstr "نیت ریکارڈ کریں"
+
+msgid "Recent Entries"
+msgstr "حالیہ اندراجات"
+
+msgid "shared"
+msgstr "مشترکہ"
+
+msgid "Mark Answered"
+msgstr "قبول شدہ نشان کریں"
+
+msgid "Answered"
+msgstr "قبول ہوئی"
+
+msgid "No entries yet. Log your first intent above."
+msgstr "ابھی تک کوئی اندراج نہیں۔ اوپر اپنی پہلی نیت درج کریں۔"
+
+msgid "Manifestation"
+msgstr "ظہور"
+
+msgid "Thoughts"
+msgstr "خیالات"
+
+msgid "Prayers"
+msgstr "دعائیں"
+
+msgid "No boards yet."
+msgstr "ابھی تک کوئی بورڈ نہیں۔"
+
+msgid "Create one"
+msgstr "ایک بنائیں"
+
+msgid "Manage Boards"
+msgstr "بورڈز منظم کریں"
+
+msgid "Reading Hub"
+msgstr "مطالعہ مرکز"
+
+msgid "No active reading."
+msgstr "کوئی فعال مطالعہ نہیں۔"
+
+msgid "Visit library"
+msgstr "کتب خانہ دیکھیں"
+
+msgid "Prayer Tracker"
+msgstr "دعا ٹریکر"
+
+msgid "Active"
+msgstr "فعال"
+
+msgid "No timers."
+msgstr "کوئی ٹائمر نہیں۔"
+
+msgid "ENTER THE SANCTUARY"
+msgstr "پناہ گاہ میں داخل ہوں"
+
+msgid "Don't have an account?"
+msgstr "اکاؤنٹ نہیں ہے؟"
+
+msgid "Request Access"
+msgstr "رسائی کی درخواست کریں"
+
+msgid "REQUEST ACCESS"
+msgstr "رسائی کی درخواست"
+
+msgid "Username"
+msgstr "صارف نام"
+
+msgid "Email (optional — for notifications)"
+msgstr "ای میل (اختیاری — اطلاعات کے لیے)"
+
+msgid "Password"
+msgstr "پاس ورڈ"
+
+msgid "Confirm Password"
+msgstr "پاس ورڈ کی تصدیق کریں"
+
+msgid "Note to admin (optional)"
+msgstr "منتظم کو نوٹ (اختیاری)"
+
+msgid "Tell the admin why you'd like access…"
+msgstr "منتظم کو بتائیں کہ آپ رسائی کیوں چاہتے ہیں…"
+
+msgid "SUBMIT REQUEST"
+msgstr "درخواست جمع کریں"
+
+msgid "Back to login"
+msgstr "لاگ ان پر واپس جائیں"
+
+msgid "REQUEST SUBMITTED"
+msgstr "درخواست جمع ہو گئی"
+
+msgid "Pending Requests"
+msgstr "زیر التواء درخواستیں"
+
+msgid "Approve"
+msgstr "منظور کریں"
+
+msgid "Deny"
+msgstr "مسترد کریں"
+
+msgid "Recently Approved"
+msgstr "حال ہی میں منظور شدہ"
+
+msgid "Recently Denied"
+msgstr "حال ہی میں مسترد شدہ"
+
+msgid "Audio — Chants & Guides"
+msgstr "آڈیو — بھجن اور رہنمائی"
+
+msgid "Video — Meditations & Prayers"
+msgstr "ویڈیو — مراقبہ اور دعائیں"
+
+msgid "Texts — Books & Scripture"
+msgstr "متون — کتابیں اور کلام"
+
+msgid "Upload to Library"
+msgstr "کتب خانے میں اپ لوڈ کریں"
+
+msgid "Title"
+msgstr "عنوان"
+
+msgid "Type"
+msgstr "قسم"
+
+msgid "Access"
+msgstr "رسائی"
+
+msgid "Description (optional)"
+msgstr "تفصیل (اختیاری)"
+
+msgid "Total Pages"
+msgstr "کل صفحات"
+
+msgid "File"
+msgstr "فائل"
+
+msgid "Upload"
+msgstr "اپ لوڈ"
+
+msgid "Your Vision Boards"
+msgstr "آپ کے وژن بورڈز"
+
+msgid "Create New Board"
+msgstr "نیا بورڈ بنائیں"
+
+msgid "Board Name"
+msgstr "بورڈ کا نام"
+
+msgid "Images (select multiple)"
+msgstr "تصاویر (متعدد منتخب کریں)"
+
+msgid "Make public (visible to all users + relay to Discord/RC)"
+msgstr "عوامی بنائیں (سب کو نظر آئے + Discord/RC کو بھیجیں)"
+
+msgid "Build Vision Board"
+msgstr "وژن بورڈ بنائیں"
+
+msgid "Your Intent Timers"
+msgstr "آپ کے نیت ٹائمرز"
+
+msgid "Create Timer"
+msgstr "ٹائمر بنائیں"
+
+msgid "Session Name"
+msgstr "سیشن کا نام"
+
+msgid "Duration (minutes)"
+msgstr "مدت (منٹ)"
+
+msgid "Linked Audio (optional)"
+msgstr "منسلک آڈیو (اختیاری)"
+
+msgid "Relay on Complete"
+msgstr "مکمل ہونے پر اطلاع دیں"
+
+msgid "Send email notification"
+msgstr "ای میل اطلاع بھیجیں"
+
+msgid "Post to Discord"
+msgstr "Discord پر پوسٹ کریں"
+
+msgid "Post to Rocket.Chat"
+msgstr "Rocket.Chat پر پوسٹ کریں"
+
+msgid "Create .ics calendar event"
+msgstr ".ics کیلنڈر ایونٹ بنائیں"
+
+msgid "Save Timer"
+msgstr "ٹائمر محفوظ کریں"
+
+msgid "Your Relay Profile"
+msgstr "آپ کا اطلاع پروفائل"
+
+msgid "Personal Email (for timer notifications)"
+msgstr "ذاتی ای میل (ٹائمر اطلاعات کے لیے)"
+
+msgid "Save Profile"
+msgstr "پروفائل محفوظ کریں"
+
+msgid "Server Config"
+msgstr "سرور ترتیب"
+
+msgid "Account"
+msgstr "اکاؤنٹ"
+
+msgid "edit"
+msgstr "ترمیم"
+
+msgid "Save"
+msgstr "محفوظ کریں"
+
+msgid "Cancel"
+msgstr "منسوخ"
+
+msgid "Delete this entry?"
+msgstr "یہ اندراج حذف کریں؟"
+
+msgid "Please write something first."
+msgstr "پہلے کچھ لکھیں۔"
+
+msgid "Logged."
+msgstr "ریکارڈ ہو گیا۔"
+
+msgid "SOVEREIGN INTENT ENGINE"
+msgstr "خودمختار نیت انجن"
+
+msgid "Active Timers"
+msgstr "فعال ٹائمرز"
+
+msgid "View"
+msgstr "دیکھیں"
+
+msgid "Download"
+msgstr "ڈاؤن لوڈ"
+
+msgid "Read"
+msgstr "پڑھیں"
+
+msgid "Track"
+msgstr "ٹریک کریں"
+
+msgid "Start"
+msgstr "شروع کریں"
+
+msgid "Complete + Relay"
+msgstr "مکمل + اطلاع"
+
+msgid "Stop Session"
+msgstr "سیشن روکیں"
+
+msgid "Active Session"
+msgstr "فعال سیشن"
+
+msgid "min"
+msgstr "منٹ"
+
+msgid "Page"
+msgstr "صفحہ"
+
+msgid "of"
+msgstr "کا"
+
+msgid "by"
+msgstr "از"
+
+msgid "images"
+msgstr "تصاویر"
+
+msgid "Public"
+msgstr "عوامی"
+
+msgid "Private"
+msgstr "نجی"
+
+msgid "Community Boards"
+msgstr "کمیونٹی بورڈز"
+
+msgid "None yet."
+msgstr "ابھی کچھ نہیں۔"
+
+msgid "READY"
+msgstr "تیار"
+
+msgid "PAUSED"
+msgstr "رکا ہوا"
+
+msgid "IN PROGRESS"
+msgstr "جاری ہے"
+
+msgid "COMPLETE"
+msgstr "مکمل"
+
+msgid "Resume Session"
+msgstr "سیشن دوبارہ شروع کریں"
+
+msgid "Pause"
+msgstr "رکیں"
+
+msgid "Relayed"
+msgstr "اطلاع دی گئی"
+
+msgid "Delete this timer?"
+msgstr "یہ ٹائمر حذف کریں؟"
+
+msgid "Delete this item from the library?"
+msgstr "یہ آئٹم کتب خانے سے حذف کریں؟"
+
+msgid "Delete this vision board? This cannot be undone."
+msgstr "یہ وژن بورڈ حذف کریں؟ یہ واپس نہیں ہو سکتا۔"
+
+msgid "Approve this user?"
+msgstr "اس صارف کو منظور کریں؟"
+
+msgid "Deny this request?"
+msgstr "یہ درخواست مسترد کریں؟"
+
+msgid "approved — they can now log in."
+msgstr "منظور — اب لاگ ان کر سکتے ہیں۔"
+
+msgid "denied."
+msgstr "مسترد۔"
+
+msgid "pages"
+msgstr "صفحات"
+
+msgid "Admin Panel"
+msgstr "منتظم پینل"
+
+msgid "Manage Users"
+msgstr "صارفین منظم کریں"
+
+msgid "Role"
+msgstr "کردار"
+
+msgid "Joined"
+msgstr "شامل ہوئے"
+
+msgid "Notify Me Via"
+msgstr "مجھے اطلاع دیں"
+
+msgid "No audio uploaded yet."
+msgstr "ابھی تک کوئی آڈیو اپ لوڈ نہیں ہوئی۔"
+
+msgid "No video uploaded yet."
+msgstr "ابھی تک کوئی ویڈیو اپ لوڈ نہیں ہوئی۔"
+
+msgid "No texts uploaded yet."
+msgstr "ابھی تک کوئی متن اپ لوڈ نہیں ہوا۔"
+
+msgid "Edit Vision Board"
+msgstr "وژن بورڈ ترمیم کریں"
+
+msgid "Edit Library Item"
+msgstr "کتب خانے کا آئٹم ترمیم کریں"
+
+msgid "Edit Timer"
+msgstr "ٹائمر ترمیم کریں"
+
+msgid "Leave empty to keep existing images."
+msgstr "موجودہ تصاویر رکھنے کے لیے خالی چھوڑیں۔"
+
+msgid "Make public"
+msgstr "عوامی بنائیں"
+
+msgid "Replace Images (optional)"
+msgstr "تصاویر تبدیل کریں (اختیاری)"
+
+msgid "Current page number?"
+msgstr "موجودہ صفحہ نمبر؟"
+
+msgid "No pending requests."
+msgstr "کوئی زیر التواء درخواست نہیں۔"

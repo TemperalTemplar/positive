@@ -1,0 +1,466 @@
+# POSITIVE — Sovereign Intent Engine
+# Persian/Farsi Translation (RTL)
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
+
+msgid "POSITIVE"
+msgstr "POSITIVE"
+
+msgid "Dashboard"
+msgstr "داشبورد"
+
+msgid "Library"
+msgstr "کتابخانه"
+
+msgid "Vision Boards"
+msgstr "تابلوهای بینش"
+
+msgid "Timers"
+msgstr "تایمرها"
+
+msgid "Settings"
+msgstr "تنظیمات"
+
+msgid "Approvals"
+msgstr "تأییدیه‌ها"
+
+msgid "logout"
+msgstr "خروج"
+
+msgid "The Sanctuary"
+msgstr "پناهگاه"
+
+msgid "Session Type"
+msgstr "نوع جلسه"
+
+msgid "Meditation — 15 min"
+msgstr "مدیتیشن — ۱۵ دقیقه"
+
+msgid "Morning Prayer — 10 min"
+msgstr "نماز صبح — ۱۰ دقیقه"
+
+msgid "Deep Focus — 20 min"
+msgstr "تمرکز عمیق — ۲۰ دقیقه"
+
+msgid "Gratitude Practice — 5 min"
+msgstr "تمرین سپاسگزاری — ۵ دقیقه"
+
+msgid "Reading Session — 30 min"
+msgstr "جلسه مطالعه — ۳۰ دقیقه"
+
+msgid "Custom…"
+msgstr "سفارشی…"
+
+msgid "Custom Duration (minutes)"
+msgstr "مدت سفارشی (دقیقه)"
+
+msgid "Begin Session"
+msgstr "شروع جلسه"
+
+msgid "Reset"
+msgstr "بازنشانی"
+
+msgid "Quick Play"
+msgstr "پخش سریع"
+
+msgid "No audio yet."
+msgstr "هنوز صوتی وجود ندارد."
+
+msgid "Upload in library"
+msgstr "بارگذاری در کتابخانه"
+
+msgid "Repository of Light"
+msgstr "مخزن نور"
+
+msgid "Enter a good thought, prayer, or gratitude…"
+msgstr "یک فکر خوب، دعا یا سپاسگزاری وارد کنید…"
+
+msgid "Good Thought"
+msgstr "فکر خوب"
+
+msgid "Prayer"
+msgstr "دعا"
+
+msgid "Gratitude"
+msgstr "سپاسگزاری"
+
+msgid "Share with group (posts to Discord / Rocket.Chat)"
+msgstr "با گروه به اشتراک بگذارید (در Discord / Rocket.Chat منتشر می‌شود)"
+
+msgid "Log Intent"
+msgstr "ثبت نیت"
+
+msgid "Recent Entries"
+msgstr "ورودی‌های اخیر"
+
+msgid "shared"
+msgstr "اشتراکی"
+
+msgid "Mark Answered"
+msgstr "علامت‌گذاری به عنوان مستجاب"
+
+msgid "Answered"
+msgstr "مستجاب شد"
+
+msgid "No entries yet. Log your first intent above."
+msgstr "هنوز ورودی وجود ندارد. اولین نیت خود را بالا ثبت کنید."
+
+msgid "Manifestation"
+msgstr "تجلی"
+
+msgid "Thoughts"
+msgstr "افکار"
+
+msgid "Prayers"
+msgstr "دعاها"
+
+msgid "No boards yet."
+msgstr "هنوز تابلویی وجود ندارد."
+
+msgid "Create one"
+msgstr "یکی بسازید"
+
+msgid "Manage Boards"
+msgstr "مدیریت تابلوها"
+
+msgid "Reading Hub"
+msgstr "مرکز مطالعه"
+
+msgid "No active reading."
+msgstr "مطالعه فعالی وجود ندارد."
+
+msgid "Visit library"
+msgstr "بازدید از کتابخانه"
+
+msgid "Prayer Tracker"
+msgstr "پیگیری دعاها"
+
+msgid "Active"
+msgstr "فعال"
+
+msgid "No timers."
+msgstr "تایمری وجود ندارد."
+
+msgid "ENTER THE SANCTUARY"
+msgstr "وارد پناهگاه شوید"
+
+msgid "Don't have an account?"
+msgstr "حساب کاربری ندارید؟"
+
+msgid "Request Access"
+msgstr "درخواست دسترسی"
+
+msgid "REQUEST ACCESS"
+msgstr "درخواست دسترسی"
+
+msgid "Username"
+msgstr "نام کاربری"
+
+msgid "Email (optional — for notifications)"
+msgstr "ایمیل (اختیاری — برای اعلان‌ها)"
+
+msgid "Password"
+msgstr "رمز عبور"
+
+msgid "Confirm Password"
+msgstr "تأیید رمز عبور"
+
+msgid "Note to admin (optional)"
+msgstr "یادداشت به مدیر (اختیاری)"
+
+msgid "Tell the admin why you'd like access…"
+msgstr "به مدیر بگویید چرا می‌خواهید دسترسی داشته باشید…"
+
+msgid "SUBMIT REQUEST"
+msgstr "ارسال درخواست"
+
+msgid "Back to login"
+msgstr "بازگشت به ورود"
+
+msgid "REQUEST SUBMITTED"
+msgstr "درخواست ارسال شد"
+
+msgid "Pending Requests"
+msgstr "درخواست‌های در انتظار"
+
+msgid "Approve"
+msgstr "تأیید"
+
+msgid "Deny"
+msgstr "رد"
+
+msgid "Recently Approved"
+msgstr "اخیراً تأیید شده"
+
+msgid "Recently Denied"
+msgstr "اخیراً رد شده"
+
+msgid "Audio — Chants & Guides"
+msgstr "صوتی — سرودها و راهنماها"
+
+msgid "Video — Meditations & Prayers"
+msgstr "ویدئو — مدیتیشن و دعاها"
+
+msgid "Texts — Books & Scripture"
+msgstr "متون — کتاب‌ها و نوشته‌های مقدس"
+
+msgid "Upload to Library"
+msgstr "بارگذاری در کتابخانه"
+
+msgid "Title"
+msgstr "عنوان"
+
+msgid "Type"
+msgstr "نوع"
+
+msgid "Access"
+msgstr "دسترسی"
+
+msgid "Description (optional)"
+msgstr "توضیحات (اختیاری)"
+
+msgid "Total Pages"
+msgstr "تعداد کل صفحات"
+
+msgid "File"
+msgstr "فایل"
+
+msgid "Upload"
+msgstr "بارگذاری"
+
+msgid "Your Vision Boards"
+msgstr "تابلوهای بینش شما"
+
+msgid "Create New Board"
+msgstr "ایجاد تابلوی جدید"
+
+msgid "Board Name"
+msgstr "نام تابلو"
+
+msgid "Images (select multiple)"
+msgstr "تصاویر (چند مورد انتخاب کنید)"
+
+msgid "Make public (visible to all users + relay to Discord/RC)"
+msgstr "عمومی کنید (برای همه قابل مشاهده + ارسال به Discord/RC)"
+
+msgid "Build Vision Board"
+msgstr "ساخت تابلوی بینش"
+
+msgid "Your Intent Timers"
+msgstr "تایمرهای نیت شما"
+
+msgid "Create Timer"
+msgstr "ایجاد تایمر"
+
+msgid "Session Name"
+msgstr "نام جلسه"
+
+msgid "Duration (minutes)"
+msgstr "مدت (دقیقه)"
+
+msgid "Linked Audio (optional)"
+msgstr "صوت مرتبط (اختیاری)"
+
+msgid "Relay on Complete"
+msgstr "اعلان در تکمیل"
+
+msgid "Send email notification"
+msgstr "ارسال اعلان ایمیل"
+
+msgid "Post to Discord"
+msgstr "انتشار در Discord"
+
+msgid "Post to Rocket.Chat"
+msgstr "انتشار در Rocket.Chat"
+
+msgid "Create .ics calendar event"
+msgstr "ایجاد رویداد تقویم .ics"
+
+msgid "Save Timer"
+msgstr "ذخیره تایمر"
+
+msgid "Your Relay Profile"
+msgstr "پروفایل اعلان شما"
+
+msgid "Personal Email (for timer notifications)"
+msgstr "ایمیل شخصی (برای اعلان‌های تایمر)"
+
+msgid "Save Profile"
+msgstr "ذخیره پروفایل"
+
+msgid "Server Config"
+msgstr "تنظیمات سرور"
+
+msgid "Account"
+msgstr "حساب"
+
+msgid "edit"
+msgstr "ویرایش"
+
+msgid "Save"
+msgstr "ذخیره"
+
+msgid "Cancel"
+msgstr "لغو"
+
+msgid "Delete this entry?"
+msgstr "این ورودی حذف شود؟"
+
+msgid "Please write something first."
+msgstr "لطفاً ابتدا چیزی بنویسید."
+
+msgid "Logged."
+msgstr "ثبت شد."
+
+msgid "SOVEREIGN INTENT ENGINE"
+msgstr "موتور نیت مستقل"
+
+msgid "Active Timers"
+msgstr "تایمرهای فعال"
+
+msgid "View"
+msgstr "مشاهده"
+
+msgid "Download"
+msgstr "دانلود"
+
+msgid "Read"
+msgstr "مطالعه"
+
+msgid "Track"
+msgstr "پیگیری"
+
+msgid "Start"
+msgstr "شروع"
+
+msgid "Complete + Relay"
+msgstr "تکمیل + اعلان"
+
+msgid "Stop Session"
+msgstr "توقف جلسه"
+
+msgid "Active Session"
+msgstr "جلسه فعال"
+
+msgid "min"
+msgstr "دقیقه"
+
+msgid "Page"
+msgstr "صفحه"
+
+msgid "of"
+msgstr "از"
+
+msgid "by"
+msgstr "توسط"
+
+msgid "images"
+msgstr "تصاویر"
+
+msgid "Public"
+msgstr "عمومی"
+
+msgid "Private"
+msgstr "خصوصی"
+
+msgid "Community Boards"
+msgstr "تابلوهای جامعه"
+
+msgid "None yet."
+msgstr "هنوز هیچ‌چیز نیست."
+
+msgid "READY"
+msgstr "آماده"
+
+msgid "PAUSED"
+msgstr "متوقف"
+
+msgid "IN PROGRESS"
+msgstr "در حال انجام"
+
+msgid "COMPLETE"
+msgstr "تکمیل شد"
+
+msgid "Resume Session"
+msgstr "از سر گرفتن جلسه"
+
+msgid "Pause"
+msgstr "مکث"
+
+msgid "Relayed"
+msgstr "ارسال شد"
+
+msgid "Delete this timer?"
+msgstr "این تایمر حذف شود؟"
+
+msgid "Delete this item from the library?"
+msgstr "این مورد از کتابخانه حذف شود؟"
+
+msgid "Delete this vision board? This cannot be undone."
+msgstr "این تابلوی بینش حذف شود؟ این عمل قابل بازگشت نیست."
+
+msgid "Approve this user?"
+msgstr "این کاربر تأیید شود؟"
+
+msgid "Deny this request?"
+msgstr "این درخواست رد شود؟"
+
+msgid "approved — they can now log in."
+msgstr "تأیید شد — اکنون می‌توانند وارد شوند."
+
+msgid "denied."
+msgstr "رد شد."
+
+msgid "pages"
+msgstr "صفحات"
+
+msgid "Admin Panel"
+msgstr "پنل مدیریت"
+
+msgid "Manage Users"
+msgstr "مدیریت کاربران"
+
+msgid "Role"
+msgstr "نقش"
+
+msgid "Joined"
+msgstr "تاریخ عضویت"
+
+msgid "Notify Me Via"
+msgstr "اعلان از طریق"
+
+msgid "No audio uploaded yet."
+msgstr "هنوز صوتی بارگذاری نشده است."
+
+msgid "No video uploaded yet."
+msgstr "هنوز ویدئویی بارگذاری نشده است."
+
+msgid "No texts uploaded yet."
+msgstr "هنوز متنی بارگذاری نشده است."
+
+msgid "Edit Vision Board"
+msgstr "ویرایش تابلوی بینش"
+
+msgid "Edit Library Item"
+msgstr "ویرایش مورد کتابخانه"
+
+msgid "Edit Timer"
+msgstr "ویرایش تایمر"
+
+msgid "Leave empty to keep existing images."
+msgstr "برای نگه داشتن تصاویر موجود خالی بگذارید."
+
+msgid "Make public"
+msgstr "عمومی کنید"
+
+msgid "Replace Images (optional)"
+msgstr "جایگزینی تصاویر (اختیاری)"
+
+msgid "Current page number?"
+msgstr "شماره صفحه فعلی؟"
+
+msgid "No pending requests."
+msgstr "هیچ درخواست در انتظاری وجود ندارد."
