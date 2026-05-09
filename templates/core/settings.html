@@ -87,6 +87,58 @@
     <div style="margin-top:8px;font-size:10px;color:var(--muted)">{% trans "Theme is saved in your browser and persists across visits." %}</div>
   </div>
 
+  <!-- SECURITY -->
+  <div class="panel" style="margin-bottom:12px">
+    <div class="panel-title">&#128274; {% trans "Security" %}</div>
+    <div style="padding:10px;background:var(--input);border-radius:6px;margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:12px;margin-bottom:2px">{% trans "Email Verification" %}</div>
+          <div style="font-size:10px;color:var(--muted)">
+            {% if security.email_verified %}
+            <span style="color:var(--accent)">&#10003; {% trans "Verified" %}</span>
+            {% elif request.user.email %}
+            <span style="color:var(--warn)">{% trans "Not verified" %}</span>
+            {% else %}
+            <span style="color:var(--muted)">{% trans "Add an email address above first" %}</span>
+            {% endif %}
+          </div>
+        </div>
+        {% if not security.email_verified and request.user.email %}
+        <a href="{% url 'verify_email_request' %}" class="btn btn-sm">{% trans "Send Verification" %}</a>
+        {% endif %}
+      </div>
+    </div>
+    <div style="padding:10px;background:var(--input);border-radius:6px;margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:12px;margin-bottom:2px">{% trans "Two-Factor Authentication" %}</div>
+          <div style="font-size:10px;color:var(--muted)">
+            {% if security.two_factor_enabled %}
+            <span style="color:var(--accent)">&#10003; {% trans "Enabled" %}</span>
+            {% else %}
+            <span style="color:var(--muted)">{% trans "Disabled" %}</span>
+            {% endif %}
+          </div>
+        </div>
+        {% if request.user.email %}
+        <button onclick="toggle2FA(this)" class="btn btn-sm {% if not security.two_factor_enabled %}btn-muted{% endif %}">
+          {% if security.two_factor_enabled %}{% trans "Disable" %}{% else %}{% trans "Enable" %}{% endif %}
+        </button>
+        {% endif %}
+      </div>
+    </div>
+    <div style="padding:10px;background:var(--input);border-radius:6px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:12px;margin-bottom:2px">{% trans "Export Your Data" %}</div>
+          <div style="font-size:10px;color:var(--muted)">{% trans "Download all your entries, timers, vision boards and reading progress as a ZIP file." %}</div>
+        </div>
+        <a href="{% url 'export_data' %}" class="btn btn-sm btn-muted">{% trans "Download" %}</a>
+      </div>
+    </div>
+  </div>
+
   <!-- SERVER CONFIG & ACCOUNT -->
   <div class="panel" style="margin-bottom:12px">
     <div class="panel-title">{% trans "Server Config" %}</div>
@@ -218,6 +270,17 @@ function toggle2FA(btn){
       btn.textContent='{% trans "Enable" %}';
       btn.classList.add('btn-muted');
     }
+  });
+}
+
+function toggle2FA(btn){
+  fetch('{% url "toggle_2fa" %}',{
+    method:'POST',
+    headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'}
+  }).then(function(r){return r.json();}).then(function(d){
+    if(d.error){alert(d.error);return;}
+    if(d.enabled){btn.textContent='{% trans "Disable" %}';btn.classList.remove('btn-muted');}
+    else{btn.textContent='{% trans "Enable" %}';btn.classList.add('btn-muted');}
   });
 }
 </script>
