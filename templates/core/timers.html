@@ -5,9 +5,9 @@
 {% block content %}
 
 <!-- Edit Modal -->
-<div id="edit-modal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:200;align-items:center;justify-content:center">
+<div id="edit-modal" role="dialog" aria-modal="true" aria-labelledby="edit-modal-title" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:200;align-items:center;justify-content:center">
   <div style="background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:24px;width:380px;max-width:95vw">
-    <div class="panel-title" style="margin-bottom:16px">{% trans "Edit Timer" %}</div>
+    <div class="panel-title" id="edit-modal-title" style="margin-bottom:16px">{% trans "Edit Timer" %}</div>
     <form method="post" id="edit-timer-form">
       {% csrf_token %}
       <div class="form-group"><label class="form-label">{% trans "Session Name" %}</label><input type="text" name="title" id="edit-title" required></div>
@@ -27,7 +27,7 @@
       </div>
       <div style="display:flex;gap:8px">
         <button type="submit" class="btn btn-primary" style="flex:1">{% trans "Save" %}</button>
-        <button type="button" class="btn btn-muted" style="flex:1" onclick="closeEditModal()">{% trans "Cancel" %}</button>
+        <button type="button" class="btn btn-muted" style="flex:1" onclick="closeEditModal()" data-modal-close>{% trans "Cancel" %}</button>
       </div>
     </form>
   </div>
@@ -52,7 +52,7 @@
           {% if timer.library_item %}<div style="font-size:10px;color:var(--accent);margin-top:2px">&#9654; {{ timer.library_item.title }}</div>{% endif %}
         </div>
         <div style="display:flex;gap:5px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end">
-          <button onclick="startCountdown('{{ timer.title }}',{{ timer.duration_minutes }})" class="btn btn-sm">{% trans "Start" %}</button>
+          <button onclick="startCountdown('{{ timer.title }}',{{ timer.duration_minutes }})" class="btn btn-sm" aria-label="{% trans 'Start' %} {{ timer.title }}">{% trans "Start" %}</button>
           <button onclick="completeTimer({{ timer.pk }},this)" class="btn btn-sm btn-muted">{% trans "Complete + Relay" %}</button>
           <button onclick="openEditModal({{ timer.pk }},'{{ timer.title|escapejs }}',{{ timer.duration_minutes }},{{ timer.send_to_email|yesno:'true,false' }},{{ timer.send_to_discord|yesno:'true,false' }},{{ timer.send_to_rocketchat|yesno:'true,false' }},{{ timer.create_calendar_event|yesno:'true,false' }},'{{ timer.library_item.pk|default:'' }}')" class="btn btn-sm btn-muted">{% trans "edit" %}</button>
           <button onclick="deleteTimer({{ timer.pk }},this)" class="btn btn-sm btn-danger">&#x2715;</button>

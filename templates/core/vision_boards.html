@@ -5,9 +5,9 @@
 {% block content %}
 
 <!-- Edit Modal -->
-<div id="edit-modal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:200;align-items:center;justify-content:center">
+<div id="edit-modal" role="dialog" aria-modal="true" aria-labelledby="edit-vb-title" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:200;align-items:center;justify-content:center">
   <div style="background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:24px;width:420px;max-width:95vw">
-    <div class="panel-title" style="margin-bottom:16px">{% trans "Edit Vision Board" %}</div>
+    <div class="panel-title" id="edit-vb-title" style="margin-bottom:16px">{% trans "Edit Vision Board" %}</div>
     <form method="post" id="edit-board-form" enctype="multipart/form-data">
       {% csrf_token %}
       <div class="form-group"><label class="form-label">{% trans "Board Name" %}</label><input type="text" name="name" id="edit-name" required></div>
@@ -24,7 +24,7 @@
       </div>
       <div style="display:flex;gap:8px">
         <button type="submit" class="btn btn-primary" style="flex:1">{% trans "Save" %}</button>
-        <button type="button" class="btn btn-muted" style="flex:1" onclick="closeModal()">{% trans "Cancel" %}</button>
+        <button type="button" class="btn btn-muted" style="flex:1" onclick="closeModal()" data-modal-close>{% trans "Cancel" %}</button>
       </div>
     </form>
   </div>
