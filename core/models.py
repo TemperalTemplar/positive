@@ -131,3 +131,100 @@ class RegistrationRequest(models.Model):
 
     def __str__(self):
         return f"{self.user.username} — {self.status}"
+
+
+# ============ GROUP FEATURES ============
+
+class BroadcastMessage(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='broadcasts')
+    message = models.TextField()
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    expires_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"Broadcast by {self.author.username}: {self.message[:50]}"
+
+
+class BroadcastDismissal(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    broadcast = models.ForeignKey(BroadcastMessage, on_delete=models.CASCADE)
+    dismissed_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'broadcast')
+
+
+class GroupTimer(models.Model):
+    started_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='group_timers')
+    title = models.CharField(max_length=100)
+    duration_minutes = models.IntegerField()
+    start_time = models.DateTimeField()
+    is_active = models.BooleanField(default=True)
+    library_item = models.ForeignKey(LibraryItem, null=True, blank=True, on_delete=models.SET_NULL)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    @property
+    def seconds_remaining(self):
+        from django.utils import timezone
+        import math
+        elapsed = (timezone.now() - self.start_time).total_seconds()
+        remaining = (self.duration_minutes * 60) - elapsed
+        return max(0, math.floor(remaining))
+
+    @property
+    def is_expired(self):
+        return self.seconds_remaining <= 0
+
+    def __str__(self):
+        return f"Group Timer: {self.title} by {self.started_by.username}"
+
+
+class GroupReadingSession(models.Model):
+    started_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='group_readings')
+    library_item = models.ForeignKey(LibraryItem, on_delete=models.CASCADE)
+    current_page = models.IntegerField(default=1)
+    is_active = models.BooleanField(default=True)
+    note = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"Group Reading: {self.library_item.title} p.{self.current_page}"
+
+
+class CommunityPrayer(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='community_prayers')
+    content = models.TextField()
+    is_answered = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    answered_at = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"Community Prayer by {self.author.username}"
+
+    @property
+    def prayer_count(self):
+        return self.supporters.count()
+
+
+class PrayerSupport(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    prayer = models.ForeignKey(CommunityPrayer, on_delete=models.CASCADE, related_name='supporters')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'prayer')

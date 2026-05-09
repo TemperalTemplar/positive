@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import UserProfile, Entry, LibraryItem, ReadingProgress, IntentTimer, VisionBoard, VisionBoardImage, RegistrationRequest
+from .models import UserProfile, Entry, LibraryItem, ReadingProgress, IntentTimer, VisionBoard, VisionBoardImage, RegistrationRequest, BroadcastMessage, GroupTimer, GroupReadingSession, CommunityPrayer
 
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
@@ -51,3 +51,8 @@ class RegistrationRequestAdmin(admin.ModelAdmin):
             reg.user.save()
             reg.save()
     deny_users.short_description = 'Deny selected requests'
+
+admin.site.register(BroadcastMessage)
+admin.site.register(GroupTimer)
+admin.site.register(GroupReadingSession)
+admin.site.register(CommunityPrayer)

@@ -445,3 +445,246 @@ def edit_vision_board(request, slug):
     board.save()
     messages.success(request, f'Vision board "{name}" updated.')
     return redirect('vision_boards')
+
+
+# ============ GROUP FEATURES ============
+
+from .models import BroadcastMessage, BroadcastDismissal, GroupTimer, GroupReadingSession, CommunityPrayer, PrayerSupport
+from django.utils import timezone
+
+
+def group_hub(request):
+    """Main group features page."""
+    # Active broadcast
+    now = timezone.now()
+    dismissed_ids = BroadcastDismissal.objects.filter(user=request.user).values_list('broadcast_id', flat=True)
+    broadcasts = BroadcastMessage.objects.filter(
+        is_active=True
+    ).exclude(id__in=dismissed_ids).filter(
+        django_models.Q(expires_at__isnull=True) | django_models.Q(expires_at__gt=now)
+    )
+
+    # Active group timer
+    group_timer = GroupTimer.objects.filter(is_active=True).first()
+    if group_timer and group_timer.is_expired:
+        group_timer.is_active = False
+        group_timer.save()
+        group_timer = None
+
+    # Active group reading
+    group_reading = GroupReadingSession.objects.filter(is_active=True).first()
+
+    # Community prayers
+    prayers = CommunityPrayer.objects.filter(is_active=True)
+    my_supports = PrayerSupport.objects.filter(user=request.user).values_list('prayer_id', flat=True)
+
+    # Text library for reading session
+    text_items = LibraryItem.objects.filter(media_type='TEXT').filter(
+        django_models.Q(owner=request.user) | django_models.Q(access_level='GLOBAL')
+    )
+    audio_items = LibraryItem.objects.filter(media_type='AUDIO').filter(
+        django_models.Q(owner=request.user) | django_models.Q(access_level='GLOBAL')
+    )
+
+    is_architect = request.user.is_superuser or getattr(getattr(request.user, 'profile', None), 'role', '') == 'ARCHITECT'
+
+    return render(request, 'core/group_hub.html', {
+        'broadcasts': broadcasts,
+        'group_timer': group_timer,
+        'group_reading': group_reading,
+        'prayers': prayers,
+        'my_supports': list(my_supports),
+        'text_items': text_items,
+        'audio_items': audio_items,
+        'is_architect': is_architect,
+    })
+
+
+@login_required
+def group_hub_view(request):
+    return group_hub(request)
+
+
+@login_required
+def group_timer_status(request):
+    """Polling endpoint — returns current group timer state."""
+    timer = GroupTimer.objects.filter(is_active=True).first()
+    if timer and timer.is_expired:
+        timer.is_active = False
+        timer.save()
+        timer = None
+    if timer:
+        return JsonResponse({
+            'active': True,
+            'title': timer.title,
+            'seconds_remaining': timer.seconds_remaining,
+            'duration_minutes': timer.duration_minutes,
+            'started_by': timer.started_by.username,
+        })
+    return JsonResponse({'active': False})
+
+
+@login_required
+@require_POST
+def start_group_timer(request):
+    is_architect = request.user.is_superuser or getattr(getattr(request.user, 'profile', None), 'role', '') == 'ARCHITECT'
+    if not is_architect:
+        return JsonResponse({'error': 'Permission denied'}, status=403)
+    # Stop any existing timer
+    GroupTimer.objects.filter(is_active=True).update(is_active=False)
+    title = request.POST.get('title', 'Group Session')
+    duration = int(request.POST.get('duration', 15))
+    library_id = request.POST.get('library_item', '')
+    library_item = LibraryItem.objects.filter(pk=library_id).first() if library_id.isdigit() else None
+    timer = GroupTimer.objects.create(
+        started_by=request.user,
+        title=title,
+        duration_minutes=duration,
+        start_time=timezone.now(),
+        is_active=True,
+        library_item=library_item,
+    )
+    return JsonResponse({
+        'status': 'ok',
+        'title': timer.title,
+        'seconds_remaining': timer.seconds_remaining,
+        'duration_minutes': timer.duration_minutes,
+    })
+
+
+@login_required
+@require_POST
+def stop_group_timer(request):
+    is_architect = request.user.is_superuser or getattr(getattr(request.user, 'profile', None), 'role', '') == 'ARCHITECT'
+    if not is_architect:
+        return JsonResponse({'error': 'Permission denied'}, status=403)
+    GroupTimer.objects.filter(is_active=True).update(is_active=False)
+    return JsonResponse({'status': 'ok'})
+
+
+@login_required
+@require_POST
+def send_broadcast(request):
+    is_architect = request.user.is_superuser or getattr(getattr(request.user, 'profile', None), 'role', '') == 'ARCHITECT'
+    if not is_architect:
+        return JsonResponse({'error': 'Permission denied'}, status=403)
+    message = request.POST.get('message', '').strip()
+    if not message:
+        return JsonResponse({'error': 'Message required'}, status=400)
+    # Deactivate previous broadcasts
+    BroadcastMessage.objects.filter(is_active=True).update(is_active=False)
+    broadcast = BroadcastMessage.objects.create(author=request.user, message=message)
+    return JsonResponse({'status': 'ok', 'id': broadcast.id, 'message': broadcast.message})
+
+
+@login_required
+@require_POST
+def dismiss_broadcast(request, pk):
+    broadcast = get_object_or_404(BroadcastMessage, pk=pk)
+    BroadcastDismissal.objects.get_or_create(user=request.user, broadcast=broadcast)
+    return JsonResponse({'status': 'ok'})
+
+
+@login_required
+@require_POST
+def start_group_reading(request):
+    is_architect = request.user.is_superuser or getattr(getattr(request.user, 'profile', None), 'role', '') == 'ARCHITECT'
+    if not is_architect:
+        return JsonResponse({'error': 'Permission denied'}, status=403)
+    GroupReadingSession.objects.filter(is_active=True).update(is_active=False)
+    item_id = request.POST.get('library_item', '')
+    note = request.POST.get('note', '')
+    page = request.POST.get('page', '1')
+    item = get_object_or_404(LibraryItem, pk=item_id)
+    session = GroupReadingSession.objects.create(
+        started_by=request.user,
+        library_item=item,
+        current_page=int(page) if page.isdigit() else 1,
+        note=note,
+    )
+    return JsonResponse({'status': 'ok', 'title': item.title, 'page': session.current_page})
+
+
+@login_required
+@require_POST
+def update_group_reading(request):
+    is_architect = request.user.is_superuser or getattr(getattr(request.user, 'profile', None), 'role', '') == 'ARCHITECT'
+    if not is_architect:
+        return JsonResponse({'error': 'Permission denied'}, status=403)
+    session = GroupReadingSession.objects.filter(is_active=True).first()
+    if not session:
+        return JsonResponse({'error': 'No active session'}, status=404)
+    page = request.POST.get('page', '')
+    note = request.POST.get('note', '')
+    if page.isdigit():
+        session.current_page = int(page)
+    if note:
+        session.note = note
+    session.save()
+    return JsonResponse({'status': 'ok', 'page': session.current_page})
+
+
+@login_required
+@require_POST
+def stop_group_reading(request):
+    is_architect = request.user.is_superuser or getattr(getattr(request.user, 'profile', None), 'role', '') == 'ARCHITECT'
+    if not is_architect:
+        return JsonResponse({'error': 'Permission denied'}, status=403)
+    GroupReadingSession.objects.filter(is_active=True).update(is_active=False)
+    return JsonResponse({'status': 'ok'})
+
+
+@login_required
+@require_POST
+def add_community_prayer(request):
+    content = request.POST.get('content', '').strip()
+    if not content:
+        return JsonResponse({'error': 'Content required'}, status=400)
+    prayer = CommunityPrayer.objects.create(author=request.user, content=content)
+    return JsonResponse({
+        'status': 'ok',
+        'id': prayer.id,
+        'content': prayer.content,
+        'author': prayer.author.username,
+        'created_at': prayer.created_at.strftime('%b %d, %H:%M'),
+        'prayer_count': 0,
+    })
+
+
+@login_required
+@require_POST
+def support_prayer(request, pk):
+    prayer = get_object_or_404(CommunityPrayer, pk=pk)
+    support, created = PrayerSupport.objects.get_or_create(user=request.user, prayer=prayer)
+    if not created:
+        support.delete()
+        supporting = False
+    else:
+        supporting = True
+    return JsonResponse({'status': 'ok', 'supporting': supporting, 'count': prayer.prayer_count})
+
+
+@login_required
+@require_POST
+def answer_community_prayer(request, pk):
+    prayer = get_object_or_404(CommunityPrayer, pk=pk)
+    if prayer.author != request.user and not request.user.is_superuser:
+        return JsonResponse({'error': 'Permission denied'}, status=403)
+    prayer.is_answered = True
+    prayer.answered_at = timezone.now()
+    prayer.save()
+    return JsonResponse({'status': 'ok'})
+
+
+@login_required
+@require_POST
+def delete_community_prayer(request, pk):
+    prayer = get_object_or_404(CommunityPrayer, pk=pk)
+    if prayer.author != request.user and not request.user.is_superuser:
+        return JsonResponse({'error': 'Permission denied'}, status=403)
+    prayer.delete()
+    return JsonResponse({'status': 'ok'})
+
+
+# Fix the import at top
+import django.db.models as django_models

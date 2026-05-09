@@ -1,0 +1,358 @@
+{% extends "core/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Group Hub" %}{% endblock %}
+{% block nav_group %}active{% endblock %}
+{% block content %}
+
+{% csrf_token %}
+
+<!-- Broadcast Banner -->
+{% for broadcast in broadcasts %}
+<div style="background:rgba(0,212,160,0.1);border:1px solid var(--accent);border-radius:8px;padding:12px 16px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:12px" id="broadcast-{{ broadcast.id }}" role="alert" aria-live="polite">
+  <div style="display:flex;align-items:center;gap:10px">
+    <span style="color:var(--accent);font-size:16px">&#128226;</span>
+    <div>
+      <div style="font-size:10px;color:var(--muted);letter-spacing:1px;margin-bottom:2px">{% trans "MESSAGE FROM" %} {{ broadcast.author.username|upper }}</div>
+      <div style="font-size:13px;color:var(--text)">{{ broadcast.message }}</div>
+    </div>
+  </div>
+  <button onclick="dismissBroadcast({{ broadcast.id }},this)" class="btn btn-sm btn-muted" aria-label="{% trans "Dismiss message" %}">&#x2715;</button>
+</div>
+{% endfor %}
+
+<div class="grid-2">
+
+<!-- LEFT COLUMN -->
+<div>
+
+  <!-- SHARED TIMER -->
+  <div class="panel" id="group-timer-panel">
+    <div class="panel-title">&#9203; {% trans "Shared Timer" %}</div>
+    <div id="timer-inactive" {% if group_timer %}style="display:none"{% endif %}>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:12px">{% trans "No active group session. Start one to meditate together." %}</div>
+      {% if is_architect %}
+      <div class="form-group"><label class="form-label">{% trans "Session Name" %}</label><input type="text" id="gt-title" value="{% trans "Group Meditation" %}"></div>
+      <div class="form-group"><label class="form-label">{% trans "Duration (minutes)" %}</label><input type="number" id="gt-duration" value="15" min="1" max="120"></div>
+      <div class="form-group"><label class="form-label">{% trans "Linked Audio (optional)" %}</label>
+        <select id="gt-audio">
+          <option value="">— {% trans "None" %} —</option>
+          {% for item in audio_items %}<option value="{{ item.pk }}">{{ item.title }}</option>{% endfor %}
+        </select>
+      </div>
+      <button class="btn btn-primary" style="width:100%" onclick="startGroupTimer()">{% trans "Start Group Session" %}</button>
+      {% else %}
+      <div style="font-size:11px;color:var(--muted)">{% trans "Waiting for the group admin to start a session…" %}</div>
+      {% endif %}
+    </div>
+    <div id="timer-active" {% if not group_timer %}style="display:none"{% endif %}>
+      <div style="font-size:11px;color:var(--muted);text-align:center;margin-bottom:4px;letter-spacing:1px" id="gt-label">{{ group_timer.title|default:"" }}</div>
+      <div class="timer-display" id="gt-display" role="timer" aria-live="polite">00:00</div>
+      <div style="font-size:10px;color:var(--muted);text-align:center;margin-bottom:12px">{% trans "Everyone is meditating together" %} &#127775;</div>
+      <progress id="gt-progress" value="0" max="100" style="height:6px;margin-bottom:12px"></progress>
+      {% if is_architect %}
+      <button class="btn btn-danger" style="width:100%" onclick="stopGroupTimer()">{% trans "End Session" %}</button>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- GROUP READING -->
+  <div class="panel">
+    <div class="panel-title">&#128214; {% trans "Group Reading" %}</div>
+    <div id="reading-inactive" {% if group_reading %}style="display:none"{% endif %}>
+      {% if is_architect %}
+      <div class="form-group"><label class="form-label">{% trans "Text" %}</label>
+        <select id="gr-item">
+          <option value="">— {% trans "Select a text" %} —</option>
+          {% for item in text_items %}<option value="{{ item.pk }}">{{ item.title }}{% if item.total_pages %} ({{ item.total_pages }} {% trans "pages" %}){% endif %}</option>{% endfor %}
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">{% trans "Starting Page" %}</label><input type="number" id="gr-page" value="1" min="1"></div>
+      <div class="form-group"><label class="form-label">{% trans "Note to group (optional)" %}</label><textarea id="gr-note" style="height:60px"></textarea></div>
+      <button class="btn btn-primary" style="width:100%" onclick="startGroupReading()">{% trans "Start Group Reading" %}</button>
+      {% else %}
+      <div style="font-size:11px;color:var(--muted)">{% trans "No active group reading session." %}</div>
+      {% endif %}
+    </div>
+    <div id="reading-active" {% if not group_reading %}style="display:none"{% endif %}>
+      <div style="font-size:13px;color:var(--accent);margin-bottom:6px" id="gr-title">{{ group_reading.library_item.title|default:"" }}</div>
+      <div style="font-size:11px;color:var(--muted);margin-bottom:8px">{% trans "Page" %} <span id="gr-current-page" style="color:var(--text);font-size:14px">{{ group_reading.current_page|default:"" }}</span></div>
+      {% if group_reading.note %}
+      <div style="font-size:11px;color:var(--muted);border-left:2px solid var(--accent);padding-left:8px;margin-bottom:10px;font-style:italic" id="gr-note-display">{{ group_reading.note }}</div>
+      {% endif %}
+      {% if group_reading.library_item %}
+      <a href="{{ group_reading.library_item.file.url }}" target="_blank" class="btn btn-sm" style="margin-bottom:8px;display:inline-block">{% trans "Open Text" %}</a>
+      {% endif %}
+      {% if is_architect %}
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <input type="number" id="gr-update-page" placeholder="{% trans "New page" %}" style="flex:1">
+        <button class="btn btn-sm" onclick="updateGroupReading()">{% trans "Update Page" %}</button>
+      </div>
+      <button class="btn btn-danger btn-sm" style="width:100%;margin-top:8px" onclick="stopGroupReading()">{% trans "End Reading Session" %}</button>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+
+<!-- RIGHT COLUMN -->
+<div>
+
+  <!-- BROADCAST -->
+  {% if is_architect %}
+  <div class="panel">
+    <div class="panel-title">&#128226; {% trans "Broadcast to Group" %}</div>
+    <div class="form-group">
+      <textarea id="broadcast-msg" placeholder="{% trans "Type a message to send to all members…" %}" style="height:80px"></textarea>
+    </div>
+    <button class="btn btn-primary" style="width:100%" onclick="sendBroadcast()">{% trans "Send Broadcast" %}</button>
+    <div style="font-size:10px;color:var(--muted);margin-top:8px">{% trans "Message appears as a banner on every member's dashboard until dismissed." %}</div>
+  </div>
+  {% endif %}
+
+  <!-- COMMUNITY PRAYER WALL -->
+  <div class="panel">
+    <div class="panel-title">&#129331; {% trans "Community Prayer Wall" %}</div>
+    <div class="form-group">
+      <textarea id="prayer-content" placeholder="{% trans "Share a prayer with the community…" %}" style="height:70px"></textarea>
+    </div>
+    <button class="btn btn-primary" style="width:100%;margin-bottom:14px" onclick="addCommunityPrayer()">{% trans "Add to Prayer Wall" %}</button>
+
+    <div id="prayer-wall">
+      {% for prayer in prayers %}
+      <div class="entry-item PRAYER" id="cp-{{ prayer.id }}" style="margin-bottom:10px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">
+          <div>
+            <span style="font-size:10px;color:var(--accent)">{{ prayer.author.username }}</span>
+            <span style="font-size:9px;color:var(--muted)"> · {{ prayer.created_at|date:"M d, H:i" }}</span>
+          </div>
+          <div style="display:flex;gap:4px;flex-shrink:0">
+            <button onclick="supportPrayer({{ prayer.id }},this)" class="btn btn-sm {% if prayer.id in my_supports %}btn-primary{% else %}btn-muted{% endif %}" style="font-size:9px;padding:2px 8px" title="{% trans "Pray for this" %}">
+              &#129331; <span id="count-{{ prayer.id }}">{{ prayer.prayer_count }}</span>
+            </button>
+            {% if not prayer.is_answered %}
+            {% if prayer.author == request.user or request.user.is_superuser %}
+            <button onclick="answerPrayer({{ prayer.id }},this)" class="btn btn-sm btn-muted" style="font-size:9px;padding:2px 8px" title="{% trans "Mark answered" %}">&#10003;</button>
+            <button onclick="deletePrayer({{ prayer.id }})" class="btn btn-sm btn-danger" style="font-size:9px;padding:2px 8px" title="{% trans "Delete" %}">&#x2715;</button>
+            {% endif %}
+            {% endif %}
+          </div>
+        </div>
+        <div style="font-size:12px;line-height:1.5">{{ prayer.content }}</div>
+        {% if prayer.is_answered %}
+        <div style="font-size:10px;color:var(--accent);margin-top:4px">&#10003; {% trans "Answered" %} — {{ prayer.answered_at|date:"M d, Y" }}</div>
+        {% endif %}
+      </div>
+      {% empty %}
+      <div style="font-size:11px;color:var(--muted)" id="empty-prayers">{% trans "No community prayers yet. Be the first to share one." %}</div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+var csrfToken = '{{ csrf_token }}';
+var isArchitect = {{ is_architect|yesno:"true,false" }};
+
+// ── Group Timer ──
+var timerInterval = null;
+var totalSeconds = 0;
+var startedSeconds = 0;
+
+function startGroupTimer(){
+  var title = document.getElementById('gt-title').value.trim();
+  var duration = document.getElementById('gt-duration').value;
+  var audio = document.getElementById('gt-audio').value;
+  if(!title || !duration) return;
+  fetch('{% url "start_group_timer" %}',{
+    method:'POST',
+    headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'},
+    body:'title='+encodeURIComponent(title)+'&duration='+duration+'&library_item='+audio
+  }).then(function(r){return r.json();}).then(function(d){
+    if(d.status==='ok') activateTimer(d.title, d.seconds_remaining, d.duration_minutes);
+  });
+}
+
+function stopGroupTimer(){
+  fetch('{% url "stop_group_timer" %}',{method:'POST',headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'}})
+  .then(function(){deactivateTimer();});
+}
+
+function activateTimer(title, remaining, duration){
+  totalSeconds = duration * 60;
+  startedSeconds = remaining;
+  document.getElementById('gt-label').textContent = title;
+  document.getElementById('timer-inactive').style.display = 'none';
+  document.getElementById('timer-active').style.display = 'block';
+  runTimer(remaining, totalSeconds);
+}
+
+function deactivateTimer(){
+  clearInterval(timerInterval);
+  document.getElementById('timer-inactive').style.display = 'block';
+  document.getElementById('timer-active').style.display = 'none';
+}
+
+function runTimer(remaining, total){
+  clearInterval(timerInterval);
+  updateTimerDisplay(remaining, total);
+  timerInterval = setInterval(function(){
+    remaining--;
+    if(remaining <= 0){
+      clearInterval(timerInterval);
+      remaining = 0;
+      document.getElementById('gt-display').textContent = '00:00';
+      document.getElementById('gt-progress').value = 100;
+      setTimeout(deactivateTimer, 3000);
+    }
+    updateTimerDisplay(remaining, total);
+  }, 1000);
+}
+
+function updateTimerDisplay(remaining, total){
+  var m = Math.floor(remaining/60), s = remaining%60;
+  document.getElementById('gt-display').textContent = String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+  document.getElementById('gt-progress').value = Math.round(((total-remaining)/total)*100);
+}
+
+// Poll for timer status every 5 seconds
+function pollTimer(){
+  fetch('{% url "group_timer_status" %}')
+  .then(function(r){return r.json();}).then(function(d){
+    if(d.active){
+      var activePanel = document.getElementById('timer-active');
+      if(activePanel.style.display === 'none'){
+        activateTimer(d.title, d.seconds_remaining, d.duration_minutes);
+      }
+    } else {
+      if(timerInterval) deactivateTimer();
+    }
+  });
+}
+setInterval(pollTimer, 5000);
+
+// Init timer if active on load
+{% if group_timer %}
+activateTimer('{{ group_timer.title|escapejs }}', {{ group_timer.seconds_remaining }}, {{ group_timer.duration_minutes }});
+{% endif %}
+
+// ── Broadcast ──
+function sendBroadcast(){
+  var msg = document.getElementById('broadcast-msg').value.trim();
+  if(!msg) return;
+  fetch('{% url "send_broadcast" %}',{
+    method:'POST',
+    headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'},
+    body:'message='+encodeURIComponent(msg)
+  }).then(function(r){return r.json();}).then(function(d){
+    if(d.status==='ok'){
+      document.getElementById('broadcast-msg').value='';
+      alert('{% trans "Broadcast sent to all members." %}');
+    }
+  });
+}
+
+function dismissBroadcast(id, btn){
+  fetch('/group/broadcast/'+id+'/dismiss/',{method:'POST',headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'}})
+  .then(function(){
+    var el = document.getElementById('broadcast-'+id);
+    el.style.opacity='0';el.style.transition='opacity 0.3s';
+    setTimeout(function(){el.remove();},300);
+  });
+}
+
+// ── Group Reading ──
+function startGroupReading(){
+  var item = document.getElementById('gr-item').value;
+  var page = document.getElementById('gr-page').value;
+  var note = document.getElementById('gr-note').value;
+  if(!item){alert('{% trans "Please select a text." %}');return;}
+  fetch('{% url "start_group_reading" %}',{
+    method:'POST',
+    headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'},
+    body:'library_item='+item+'&page='+page+'&note='+encodeURIComponent(note)
+  }).then(function(r){return r.json();}).then(function(d){
+    if(d.status==='ok'){
+      document.getElementById('reading-inactive').style.display='none';
+      document.getElementById('reading-active').style.display='block';
+      document.getElementById('gr-title').textContent=d.title;
+      document.getElementById('gr-current-page').textContent=d.page;
+    }
+  });
+}
+
+function updateGroupReading(){
+  var page = document.getElementById('gr-update-page').value;
+  fetch('{% url "update_group_reading" %}',{
+    method:'POST',
+    headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'},
+    body:'page='+page
+  }).then(function(r){return r.json();}).then(function(d){
+    if(d.status==='ok') document.getElementById('gr-current-page').textContent=d.page;
+  });
+}
+
+function stopGroupReading(){
+  fetch('{% url "stop_group_reading" %}',{method:'POST',headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'}})
+  .then(function(){
+    document.getElementById('reading-inactive').style.display='block';
+    document.getElementById('reading-active').style.display='none';
+  });
+}
+
+// ── Community Prayers ──
+function addCommunityPrayer(){
+  var content = document.getElementById('prayer-content').value.trim();
+  if(!content) return;
+  fetch('{% url "add_community_prayer" %}',{
+    method:'POST',
+    headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'},
+    body:'content='+encodeURIComponent(content)
+  }).then(function(r){return r.json();}).then(function(d){
+    if(d.error) return;
+    document.getElementById('prayer-content').value='';
+    var wall = document.getElementById('prayer-wall');
+    var empty = document.getElementById('empty-prayers');
+    if(empty) empty.remove();
+    var div = document.createElement('div');
+    div.className='entry-item PRAYER';
+    div.id='cp-'+d.id;
+    div.style.marginBottom='10px';
+    div.innerHTML='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px"><div><span style="font-size:10px;color:var(--accent)">'+d.author+'</span><span style="font-size:9px;color:var(--muted)"> · '+d.created_at+'</span></div><div style="display:flex;gap:4px;flex-shrink:0"><button onclick="supportPrayer('+d.id+',this)" class="btn btn-sm btn-muted" style="font-size:9px;padding:2px 8px">&#129331; <span id="count-'+d.id+'">0</span></button><button onclick="answerPrayer('+d.id+',this)" class="btn btn-sm btn-muted" style="font-size:9px;padding:2px 8px">&#10003;</button><button onclick="deletePrayer('+d.id+')" class="btn btn-sm btn-danger" style="font-size:9px;padding:2px 8px">&#x2715;</button></div></div><div style="font-size:12px;line-height:1.5">'+d.content+'</div>';
+    wall.insertBefore(div, wall.firstChild);
+  });
+}
+
+function supportPrayer(id, btn){
+  fetch('/group/prayers/'+id+'/support/',{method:'POST',headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'}})
+  .then(function(r){return r.json();}).then(function(d){
+    document.getElementById('count-'+id).textContent=d.count;
+    if(d.supporting){btn.className='btn btn-sm btn-primary';btn.style.fontSize='9px';btn.style.padding='2px 8px';}
+    else{btn.className='btn btn-sm btn-muted';btn.style.fontSize='9px';btn.style.padding='2px 8px';}
+  });
+}
+
+function answerPrayer(id, btn){
+  fetch('/group/prayers/'+id+'/answered/',{method:'POST',headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'}})
+  .then(function(){
+    var el=document.getElementById('cp-'+id);
+    var answered=document.createElement('div');
+    answered.style.cssText='font-size:10px;color:var(--accent);margin-top:4px';
+    answered.textContent='✓ {% trans "Answered" %}';
+    el.appendChild(answered);
+    btn.remove();
+  });
+}
+
+function deletePrayer(id){
+  if(!confirm('{% trans "Delete this prayer?" %}')) return;
+  fetch('/group/prayers/'+id+'/delete/',{method:'POST',headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'}})
+  .then(function(){
+    var el=document.getElementById('cp-'+id);
+    el.style.opacity='0';el.style.transition='opacity 0.3s';
+    setTimeout(function(){el.remove();},300);
+  });
+}
+</script>
+{% endblock %}
