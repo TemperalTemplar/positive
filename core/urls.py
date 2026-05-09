@@ -6,34 +6,24 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('approvals/', views.pending_approvals, name='approvals'),
     path('approvals/<int:pk>/review/', views.review_registration, name='review_registration'),
-
-    # Entries
     path('entries/add/', views.add_entry, name='add_entry'),
     path('entries/<int:pk>/answered/', views.mark_prayer_answered, name='mark_prayer_answered'),
     path('entries/<int:pk>/delete/', views.delete_entry, name='delete_entry'),
     path('entries/<int:pk>/edit/', views.edit_entry, name='edit_entry'),
-
-    # Library
     path('library/', views.library, name='library'),
     path('library/upload/', views.upload_library_item, name='upload_library_item'),
     path('library/<int:pk>/edit/', views.edit_library_item, name='edit_library_item'),
     path('library/<int:pk>/delete/', views.delete_library_item, name='delete_library_item'),
     path('library/reading/<int:pk>/update/', views.reading_update, name='reading_update'),
-
-    # Vision Boards
     path('vision-boards/', views.vision_boards, name='vision_boards'),
     path('vision-boards/create/', views.create_vision_board, name='create_vision_board'),
     path('vision-boards/<slug:slug>/', views.view_vision_board, name='view_vision_board'),
     path('vision-boards/<slug:slug>/edit/', views.edit_vision_board, name='edit_vision_board'),
     path('vision-boards/<slug:slug>/delete/', views.delete_vision_board, name='delete_vision_board'),
-
-    # Timers
     path('timers/', views.timers_view, name='timers'),
     path('timers/create/', views.create_timer, name='create_timer'),
     path('timers/<int:pk>/edit/', views.edit_timer, name='edit_timer'),
     path('timers/<int:pk>/delete/', views.delete_timer, name='delete_timer'),
     path('timers/<int:pk>/complete/', views.complete_timer, name='complete_timer'),
-
-    # Settings
     path('settings/', views.profile_settings, name='settings'),
 ]
