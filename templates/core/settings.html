@@ -204,5 +204,21 @@ function updateThemeBtns(theme){
     );
   });
 }
+
+function toggle2FA(btn){
+  fetch('{% url "toggle_2fa" %}',{
+    method:'POST',
+    headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'}
+  }).then(function(r){return r.json();}).then(function(d){
+    if(d.error){alert(d.error);return;}
+    if(d.enabled){
+      btn.textContent='{% trans "Disable" %}';
+      btn.classList.remove('btn-muted');
+    } else {
+      btn.textContent='{% trans "Enable" %}';
+      btn.classList.add('btn-muted');
+    }
+  });
+}
 </script>
 {% endblock %}

@@ -4,6 +4,11 @@ from . import views
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
     path('register/', views.register, name='register'),
+    path('verify-email/<uuid:token>/', views.verify_email_confirm, name='verify_email_confirm'),
+    path('verify-email/request/', views.verify_email_request, name='verify_email_request'),
+    path('2fa/verify/', views.verify_2fa, name='verify_2fa'),
+    path('2fa/toggle/', views.toggle_2fa, name='toggle_2fa'),
+    path('export/', views.export_data, name='export_data'),
     path('approvals/', views.pending_approvals, name='approvals'),
     path('approvals/<int:pk>/review/', views.review_registration, name='review_registration'),
 

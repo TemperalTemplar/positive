@@ -1,0 +1,37 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>{% trans "Verify Login" %} | POSITIVE</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d0d0d;color:#e0e0e0;font-family:'Courier New',monospace;display:flex;align-items:center;justify-content:center;min-height:100vh}
+.box{background:#161616;border:1px solid #252525;border-radius:10px;padding:40px;width:360px;text-align:center}
+h1{color:#00d4a0;font-size:18px;letter-spacing:4px;margin-bottom:8px}
+.sub{color:#444;font-size:9px;letter-spacing:2px;margin-bottom:24px}
+.info{font-size:12px;color:#888;margin-bottom:20px;line-height:1.6}
+input{background:#0a0a0a;color:#e0e0e0;border:1px solid #252525;padding:14px;border-radius:6px;font-family:'Courier New',monospace;font-size:24px;width:100%;margin-bottom:14px;text-align:center;letter-spacing:8px}
+input:focus{outline:none;border-color:#00d4a0}
+button{background:#00d4a0;color:#000;border:none;padding:11px;border-radius:6px;font-family:inherit;font-size:12px;letter-spacing:2px;width:100%;cursor:pointer;font-weight:bold}
+.err{color:#e24b4a;font-size:11px;margin-bottom:12px;padding:8px;background:rgba(226,75,74,0.08);border-radius:6px;border:1px solid rgba(226,75,74,0.2)}
+.back{margin-top:16px;font-size:11px;color:#555}
+.back a{color:#00d4a0;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>POSITIVE</h1>
+  <div class="sub">{% trans "TWO-FACTOR VERIFICATION" %}</div>
+  <div class="info">{% trans "A 6-digit code has been sent to your email address. Enter it below to continue." %}</div>
+  {% if error %}<div class="err">{{ error }}</div>{% endif %}
+  <form method="post">
+    {% csrf_token %}
+    <input type="text" name="code" maxlength="6" placeholder="000000" autofocus autocomplete="one-time-code" inputmode="numeric">
+    <button type="submit">{% trans "VERIFY" %}</button>
+  </form>
+  <div class="back"><a href="/login/">{% trans "Back to login" %}</a></div>
+</div>
+</body>
+</html>

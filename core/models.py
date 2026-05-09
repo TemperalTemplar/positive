@@ -228,3 +228,44 @@ class PrayerSupport(models.Model):
 
     class Meta:
         unique_together = ('user', 'prayer')
+
+
+# ============ SECURITY FEATURES ============
+
+import uuid
+
+class EmailVerificationToken(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='email_verification')
+    token = models.UUIDField(default=uuid.uuid4, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    verified = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.user.username} — {'verified' if self.verified else 'pending'}"
+
+
+class TwoFactorCode(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='two_factor_codes')
+    code = models.CharField(max_length=6)
+    created_at = models.DateTimeField(auto_now_add=True)
+    used = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-created_at']
+
+    def is_valid(self):
+        from django.utils import timezone
+        from datetime import timedelta
+        return not self.used and (timezone.now() - self.created_at) < timedelta(minutes=10)
+
+    def __str__(self):
+        return f"2FA code for {self.user.username}"
+
+
+class UserSecuritySettings(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='security_settings')
+    two_factor_enabled = models.BooleanField(default=False)
+    email_verified = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.user.username} security settings"

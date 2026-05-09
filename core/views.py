@@ -240,6 +240,7 @@ def complete_timer(request, pk):
 @login_required
 def profile_settings(request):
     profile, _ = UserProfile.objects.get_or_create(user=request.user)
+    security, _ = UserSecuritySettings.objects.get_or_create(user=request.user)
     if request.method == 'POST':
         profile.personal_email = request.POST.get('personal_email', '')
         profile.discord_id = request.POST.get('discord_id', '')
@@ -248,9 +249,17 @@ def profile_settings(request):
         profile.notify_discord = 'notify_discord' in request.POST
         profile.notify_rocketchat = 'notify_rocketchat' in request.POST
         profile.save()
+        # Update email on user object too
+        new_email = request.POST.get('personal_email', '')
+        if new_email and new_email != request.user.email:
+            request.user.email = new_email
+            request.user.save()
+            # Reset email verification
+            security.email_verified = False
+            security.save()
         messages.success(request, 'Settings saved.')
         return redirect('settings')
-    return render(request, 'core/settings.html', {'profile': profile})
+    return render(request, 'core/settings.html', {'profile': profile, 'security': security})
 
 
 @login_required
@@ -293,29 +302,41 @@ def register(request):
         return redirect('dashboard')
     error = None
     if request.method == 'POST':
-        username = request.POST.get('username', '').strip()
-        email = request.POST.get('email', '').strip()
-        password = request.POST.get('password', '')
-        password2 = request.POST.get('password2', '')
-        note = request.POST.get('note', '').strip()
-        if not username or not password:
-            error = 'Username and password are required.'
-        elif password != password2:
-            error = 'Passwords do not match.'
-        elif len(password) < 8:
-            error = 'Password must be at least 8 characters.'
-        elif User.objects.filter(username=username).exists():
-            error = 'That username is already taken.'
+        # Rate limiting — max 5 registrations per hour per IP
+        attempts = get_registration_attempts(request)
+        if len(attempts) >= 5:
+            error = 'Too many registration attempts. Please try again in an hour.'
         else:
-            user = User.objects.create_user(
-                username=username,
-                email=email,
-                password=password,
-                is_active=False  # inactive until approved
-            )
-            UserProfile.objects.create(user=user, role='PRACTITIONER')
-            RegistrationRequest.objects.create(user=user, note=note)
-            return render(request, 'core/register_pending.html', {'username': username})
+            username = request.POST.get('username', '').strip()
+            email = request.POST.get('email', '').strip()
+            password = request.POST.get('password', '')
+            password2 = request.POST.get('password2', '')
+            note = request.POST.get('note', '').strip()
+            if not username or not password:
+                error = 'Username and password are required.'
+            elif password != password2:
+                error = 'Passwords do not match.'
+            elif len(password) < 8:
+                error = 'Password must be at least 8 characters.'
+            elif User.objects.filter(username=username).exists():
+                error = 'That username is already taken.'
+            elif email and User.objects.filter(email=email).exists():
+                error = 'That email is already registered.'
+            else:
+                record_registration_attempt(request)
+                user = User.objects.create_user(
+                    username=username,
+                    email=email,
+                    password=password,
+                    is_active=False
+                )
+                UserProfile.objects.create(user=user, role='PRACTITIONER')
+                RegistrationRequest.objects.create(user=user, note=note)
+                UserSecuritySettings.objects.create(user=user)
+                # Send verification email if email provided
+                if email:
+                    send_verification_email(user, request)
+                return render(request, 'core/register_pending.html', {'username': username})
     return render(request, 'core/register.html', {'error': error})
 
 
@@ -751,3 +772,211 @@ def update_avatar(request):
     # Store color in session
     request.session['avatar_color'] = color
     return JsonResponse({'status': 'ok', 'initial': profile.avatar_initial, 'color': color})
+
+
+# ============ SECURITY FEATURES ============
+
+from .models import EmailVerificationToken, TwoFactorCode, UserSecuritySettings
+import random
+import string
+import zipfile
+import json
+import io
+from django.utils import timezone as tz
+
+
+# ── Email Verification ──
+
+def send_verification_email(user, request):
+    token, _ = EmailVerificationToken.objects.get_or_create(user=user)
+    token.token = __import__('uuid').uuid4()
+    token.verified = False
+    token.save()
+    verify_url = request.build_absolute_uri(f'/verify-email/{token.token}/')
+    send_email_notification(
+        user.email,
+        'Verify your Positive account email',
+        f'Hello {user.username},\n\nPlease verify your email address by clicking the link below:\n\n{verify_url}\n\nThis link is valid for 24 hours.\n\n— Positive'
+    )
+
+
+@login_required
+def verify_email_request(request):
+    if not request.user.email:
+        messages.error(request, 'Please add an email address in Settings first.')
+        return redirect('settings')
+    send_verification_email(request.user, request)
+    messages.success(request, 'Verification email sent. Check your inbox.')
+    return redirect('settings')
+
+
+def verify_email_confirm(request, token):
+    try:
+        vtoken = EmailVerificationToken.objects.get(token=token)
+        vtoken.verified = True
+        vtoken.save()
+        sec, _ = UserSecuritySettings.objects.get_or_create(user=vtoken.user)
+        sec.email_verified = True
+        sec.save()
+        messages.success(request, 'Email verified successfully!')
+    except EmailVerificationToken.DoesNotExist:
+        messages.error(request, 'Invalid or expired verification link.')
+    return redirect('settings')
+
+
+# ── Rate Limiting ──
+
+def get_registration_attempts(request):
+    """Simple session-based rate limiting for registration."""
+    attempts = request.session.get('reg_attempts', [])
+    now = tz.now().timestamp()
+    # Keep only attempts in last hour
+    attempts = [t for t in attempts if now - t < 3600]
+    request.session['reg_attempts'] = attempts
+    return attempts
+
+
+def record_registration_attempt(request):
+    attempts = get_registration_attempts(request)
+    attempts.append(tz.now().timestamp())
+    request.session['reg_attempts'] = attempts
+
+
+# ── Two Factor Authentication ──
+
+def generate_2fa_code():
+    return ''.join(random.choices(string.digits, k=6))
+
+
+def send_2fa_code(user):
+    code = generate_2fa_code()
+    TwoFactorCode.objects.create(user=user, code=code)
+    if user.email:
+        send_email_notification(
+            user.email,
+            'Your Positive login code',
+            f'Your login verification code is: {code}\n\nThis code expires in 10 minutes.\n\nIf you did not request this, someone may be trying to access your account.\n\n— Positive'
+        )
+    return code
+
+
+@login_required
+@require_POST
+def toggle_2fa(request):
+    sec, _ = UserSecuritySettings.objects.get_or_create(user=request.user)
+    if not request.user.email:
+        return JsonResponse({'error': 'You need an email address to enable 2FA.'}, status=400)
+    sec.two_factor_enabled = not sec.two_factor_enabled
+    sec.save()
+    status = 'enabled' if sec.two_factor_enabled else 'disabled'
+    messages.success(request, f'Two-factor authentication {status}.')
+    return JsonResponse({'status': 'ok', 'enabled': sec.two_factor_enabled})
+
+
+def verify_2fa(request):
+    """2FA verification page shown after login."""
+    if request.method == 'POST':
+        code = request.POST.get('code', '').strip()
+        user_id = request.session.get('2fa_user_id')
+        if not user_id:
+            return redirect('login')
+        try:
+            user = User.objects.get(pk=user_id)
+            valid_code = TwoFactorCode.objects.filter(
+                user=user, code=code, used=False
+            ).order_by('-created_at').first()
+            if valid_code and valid_code.is_valid():
+                valid_code.used = True
+                valid_code.save()
+                from django.contrib.auth import login as auth_login
+                auth_login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+                del request.session['2fa_user_id']
+                return redirect('dashboard')
+            else:
+                return render(request, 'core/verify_2fa.html', {'error': 'Invalid or expired code. Please try again.'})
+        except User.DoesNotExist:
+            return redirect('login')
+    return render(request, 'core/verify_2fa.html', {})
+
+
+# ── Data Export ──
+
+@login_required
+def export_data(request):
+    """Export all user data as a ZIP file."""
+    user = request.user
+    buffer = io.BytesIO()
+
+    with zipfile.ZipFile(buffer, 'w', zipfile.ZIP_DEFLATED) as zf:
+
+        # Entries (thoughts, prayers, gratitude)
+        entries = Entry.objects.filter(user=user).values(
+            'category', 'content', 'is_private', 'is_answered', 'created_at'
+        )
+        entries_data = []
+        for e in entries:
+            e['created_at'] = e['created_at'].isoformat()
+            entries_data.append(e)
+        zf.writestr('entries.json', json.dumps(entries_data, indent=2))
+
+        # Timers
+        timers = IntentTimer.objects.filter(user=user).values(
+            'title', 'duration_minutes', 'completed', 'created_at'
+        )
+        timers_data = []
+        for t in timers:
+            t['created_at'] = t['created_at'].isoformat()
+            timers_data.append(t)
+        zf.writestr('timers.json', json.dumps(timers_data, indent=2))
+
+        # Vision boards
+        boards = VisionBoard.objects.filter(owner=user).values(
+            'name', 'slug', 'is_public', 'created_at'
+        )
+        boards_data = []
+        for b in boards:
+            b['created_at'] = b['created_at'].isoformat()
+            boards_data.append(b)
+        zf.writestr('vision_boards.json', json.dumps(boards_data, indent=2))
+
+        # Reading progress
+        reading = ReadingProgress.objects.filter(user=user).select_related('item')
+        reading_data = []
+        for r in reading:
+            reading_data.append({
+                'title': r.item.title,
+                'current_page': r.current_page,
+                'total_pages': r.item.total_pages,
+                'progress_pct': r.progress_pct,
+                'last_read': r.last_read.isoformat(),
+            })
+        zf.writestr('reading_progress.json', json.dumps(reading_data, indent=2))
+
+        # Profile info
+        profile = getattr(user, 'profile', None)
+        profile_data = {
+            'username': user.username,
+            'email': user.email,
+            'date_joined': user.date_joined.isoformat(),
+            'role': profile.role if profile else 'PRACTITIONER',
+        }
+        zf.writestr('profile.json', json.dumps(profile_data, indent=2))
+
+        # README
+        zf.writestr('README.txt',
+            f'Positive Data Export\n'
+            f'User: {user.username}\n'
+            f'Exported: {tz.now().strftime("%Y-%m-%d %H:%M UTC")}\n\n'
+            f'Files:\n'
+            f'  entries.json — All thoughts, prayers, and gratitude entries\n'
+            f'  timers.json — Your intent timers\n'
+            f'  vision_boards.json — Your vision boards\n'
+            f'  reading_progress.json — Your reading progress\n'
+            f'  profile.json — Your profile information\n'
+        )
+
+    buffer.seek(0)
+    filename = f'positive_export_{user.username}_{tz.now().strftime("%Y%m%d")}.zip'
+    response = HttpResponse(buffer.read(), content_type='application/zip')
+    response['Content-Disposition'] = f'attachment; filename="{filename}"'
+    return response
