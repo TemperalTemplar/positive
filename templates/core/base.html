@@ -226,16 +226,16 @@ progress::-moz-progress-bar{background:var(--accent);border-radius:2px}
       <button class="a11y-btn" id="btn-fs" onclick="cycleFontSize()" aria-label="{% trans "Change font size" %}" title="{% trans "Change font size" %}">A+</button>
     </div>
 
-    <!-- Language switcher -->
+    <!-- Language switcher with flags -->
     <form action="{% url 'set_language' %}" method="post" id="lang-form">
       {% csrf_token %}
       <input name="next" type="hidden" value="{{ request.path }}">
       <label for="lang-select" class="sr-only">{% trans "Select language" %}</label>
-      <select name="language" id="lang-select" onchange="document.getElementById('lang-form').submit()" aria-label="{% trans "Select language" %}" style="background:var(--input);color:var(--muted);border:1px solid var(--border);padding:3px 6px;border-radius:4px;font-family:inherit;font-size:10px;width:auto;cursor:pointer">
+      <select name="language" id="lang-select" onchange="document.getElementById('lang-form').submit()" aria-label="{% trans "Select language" %}" style="background:var(--input);color:var(--text);border:1px solid var(--border);padding:3px 6px;border-radius:4px;font-family:inherit;font-size:12px;width:auto;cursor:pointer">
         {% get_current_language as CURRENT_LANGUAGE %}
         {% get_available_languages as LANGUAGES %}
         {% for lang_code, lang_name in LANGUAGES %}
-        <option value="{{ lang_code }}" {% if lang_code == CURRENT_LANGUAGE %}selected{% endif %}>{{ lang_name }}</option>
+        <option value="{{ lang_code }}" {% if lang_code == 'en' %}selected{% endif %}>{% if lang_code == 'en' %}🇬🇧{% elif lang_code == 'es' %}🇪🇸{% elif lang_code == 'fr' %}🇫🇷{% elif lang_code == 'de' %}🇩🇪{% elif lang_code == 'pt' %}🇧🇷{% elif lang_code == 'ar' %}🇸🇦{% elif lang_code == 'zh-hans' %}🇨🇳{% elif lang_code == 'ja' %}🇯🇵{% elif lang_code == 'ko' %}🇰🇷{% elif lang_code == 'ru' %}🇷🇺{% elif lang_code == 'tr' %}🇹🇷{% elif lang_code == 'it' %}🇮🇹{% elif lang_code == 'he' %}🇮🇱{% elif lang_code == 'ur' %}🇵🇰{% elif lang_code == 'fa' %}🇮🇷{% elif lang_code == 'hi' %}🇮🇳{% endif %} {{ lang_name }}</option>
         {% endfor %}
       </select>
     </form>
