@@ -1,0 +1,66 @@
+{% extends "core/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Search" %}{% endblock %}
+{% block content %}
+<div style="max-width:800px;margin:0 auto">
+  <div class="panel">
+    <div class="panel-title">&#128269; {% trans "Search Entries" %}</div>
+    <form method="get" action="{% url 'search' %}">
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <input type="text" name="q" value="{{ query }}" placeholder="{% trans "Search thoughts, prayers, gratitude…" %}" autofocus style="flex:1">
+        <button type="submit" class="btn btn-primary" style="flex-shrink:0">{% trans "Search" %}</button>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <a href="?q={{ query }}" class="btn btn-sm {% if not category %}btn-primary{% else %}btn-muted{% endif %}">{% trans "All" %}</a>
+        <a href="?q={{ query }}&cat=THOUGHT" class="btn btn-sm {% if category == 'THOUGHT' %}btn-primary{% else %}btn-muted{% endif %}" style="{% if category == 'THOUGHT' %}{% else %}color:#a09ae0;border-color:#7f77dd{% endif %}">{% trans "Good Thoughts" %}</a>
+        <a href="?q={{ query }}&cat=PRAYER" class="btn btn-sm {% if category == 'PRAYER' %}btn-primary{% else %}btn-muted{% endif %}" style="{% if category == 'PRAYER' %}{% else %}color:var(--warn);border-color:var(--warn){% endif %}">{% trans "Prayers" %}</a>
+        <a href="?q={{ query }}&cat=GRATITUDE" class="btn btn-sm {% if category == 'GRATITUDE' %}btn-primary{% else %}btn-muted{% endif %}">{% trans "Gratitude" %}</a>
+      </div>
+    </form>
+  </div>
+
+  {% if query %}
+  <div style="font-size:11px;color:var(--muted);margin-bottom:12px">
+    {% if result_count %}
+    {{ result_count }} {% trans "result" %}{% if result_count != 1 %}s{% endif %} {% trans "for" %} "<span style="color:var(--accent)">{{ query }}</span>"
+    {% else %}
+    {% trans "No results found for" %} "<span style="color:var(--warn)">{{ query }}</span>"
+    {% endif %}
+  </div>
+
+  {% for entry in results %}
+  <div class="entry-item {{ entry.category }}" style="margin-bottom:10px">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+      <span class="tag tag-{{ entry.category }}">{{ entry.get_category_display }}</span>
+      <div style="display:flex;align-items:center;gap:8px">
+        {% if not entry.is_private %}<span style="font-size:9px;color:var(--muted)">{% trans "shared" %}</span>{% endif %}
+        <span style="font-size:9px;color:var(--muted)">{{ entry.created_at|date:"M d, Y" }}</span>
+        <span style="font-size:9px;color:var(--muted)">{{ entry.user.username }}</span>
+      </div>
+    </div>
+    <div style="font-size:13px;line-height:1.6">{{ entry.content }}</div>
+    {% if entry.category == 'PRAYER' %}
+    <div style="margin-top:4px;font-size:10px;color:{% if entry.is_answered %}var(--accent){% else %}var(--warn){% endif %}">
+      {% if entry.is_answered %}&#10003; {% trans "Answered" %}{% else %}&#9711; {% trans "Active" %}{% endif %}
+    </div>
+    {% endif %}
+  </div>
+  {% empty %}
+  {% if query %}
+  <div class="panel" style="text-align:center;padding:30px;color:var(--muted)">
+    <div style="font-size:30px;margin-bottom:12px">&#128269;</div>
+    <div>{% trans "No entries match your search." %}</div>
+    <div style="font-size:11px;margin-top:8px">{% trans "Try different keywords or remove the category filter." %}</div>
+  </div>
+  {% endif %}
+  {% endfor %}
+
+  {% else %}
+  <div class="panel" style="text-align:center;padding:40px;color:var(--muted)">
+    <div style="font-size:40px;margin-bottom:16px">&#128269;</div>
+    <div style="font-size:14px;margin-bottom:8px">{% trans "Search your Repository of Light" %}</div>
+    <div style="font-size:11px">{% trans "Search across all your good thoughts, prayers, and gratitude entries." %}</div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "core/base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Reading Reminders" %}{% endblock %}
+{% block content %}
+<div class="grid-2">
+<div>
+  <div class="panel">
+    <div class="panel-title">&#9200; {% trans "Your Reading Reminders" %}</div>
+    {% for reminder in reminders %}
+    <div style="padding:12px;background:var(--input);border-radius:6px;border:1px solid var(--border);margin-bottom:8px" id="reminder-{{ reminder.pk }}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div style="font-size:13px;margin-bottom:3px">{{ reminder.library_item.title }}</div>
+          <div style="font-size:10px;color:var(--muted)">
+            {{ reminder.get_frequency_display }} · {{ reminder.reminder_time|time:"H:i" }} UTC · {{ reminder.duration_minutes }} {% trans "min" %}
+          </div>
+          {% if reminder.last_sent %}
+          <div style="font-size:9px;color:var(--muted);margin-top:2px">{% trans "Last sent" %}: {{ reminder.last_sent|date:"M d, H:i" }}</div>
+          {% endif %}
+        </div>
+        <form method="post" action="{% url 'delete_reading_reminder' reminder.pk %}" style="flex-shrink:0">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('{% trans "Delete this reminder?" %}')">&#x2715;</button>
+        </form>
+      </div>
+    </div>
+    {% empty %}
+    <div style="font-size:11px;color:var(--muted)">{% trans "No reading reminders set yet. Create one to get notified when it's time to read." %}</div>
+    {% endfor %}
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">&#128276; {% trans "How Reminders Work" %}</div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.8">
+      {% trans "Reminders are sent via your configured notification channels (email, Discord, Rocket.Chat)." %}<br><br>
+      {% trans "The server checks for due reminders every hour. Make sure your notification settings are configured in" %} <a href="{% url 'settings' %}">{% trans "Settings" %}</a>.<br><br>
+      {% trans "To enable automated hourly checks, add this to your server's crontab:" %}<br>
+      <code style="color:var(--accent);display:block;margin-top:8px;font-size:10px">0 * * * * docker exec positive_engine python manage.py send_reading_reminders</code>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="panel">
+    <div class="panel-title">{% trans "Create Reminder" %}</div>
+    <form method="post" action="{% url 'create_reading_reminder' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label class="form-label">{% trans "Text or Book" %}</label>
+        <select name="library_item" required>
+          <option value="">— {% trans "Select a text" %} —</option>
+          {% for item in text_items %}
+          <option value="{{ item.pk }}">{{ item.title }}{% if item.total_pages %} ({{ item.total_pages }} {% trans "pages" %}){% endif %}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">{% trans "Frequency" %}</label>
+        <select name="frequency">
+          <option value="DAILY">{% trans "Daily" %}</option>
+          <option value="WEEKDAYS">{% trans "Weekdays only" %}</option>
+          <option value="WEEKLY">{% trans "Weekly (Mondays)" %}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">{% trans "Reminder Time (UTC)" %}</label>
+        <input type="time" name="reminder_time" value="09:00" required>
+        <div style="font-size:10px;color:var(--muted);margin-top:4px">{% trans "Times are in UTC. Adjust for your timezone." %}</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">{% trans "Session Duration (minutes)" %}</label>
+        <input type="number" name="duration_minutes" value="20" min="5" max="120">
+      </div>
+      {% if not text_items %}
+      <div style="font-size:11px;color:var(--warn);margin-bottom:12px">{% trans "Upload a text to the library first before creating a reminder." %}</div>
+      {% endif %}
+      <button type="submit" class="btn btn-primary" style="width:100%" {% if not text_items %}disabled{% endif %}>{% trans "Set Reminder" %}</button>
+    </form>
+  </div>
+</div>
+</div>
+{% endblock %}

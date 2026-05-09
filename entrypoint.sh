@@ -28,7 +28,7 @@ else:
     print("  Admin user already exists.")
 PYEOF
 
-echo "[5/5] Starting server..."
+echo "[6/6] Starting server..."
 exec gunicorn \
     --bind 0.0.0.0:8000 \
     --workers 2 \

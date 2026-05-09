@@ -41,6 +41,10 @@ urlpatterns = [
 
     # Settings
     path('settings/', views.profile_settings, name='settings'),
+    path('search/', views.search_entries, name='search'),
+    path('reminders/', views.reading_reminders, name='reading_reminders'),
+    path('reminders/create/', views.create_reading_reminder, name='create_reading_reminder'),
+    path('reminders/<int:pk>/delete/', views.delete_reading_reminder, name='delete_reading_reminder'),
     path('settings/password/', views.change_password, name='change_password'),
     path('settings/avatar/', views.update_avatar, name='update_avatar'),
 

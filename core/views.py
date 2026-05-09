@@ -980,3 +980,71 @@ def export_data(request):
     response = HttpResponse(buffer.read(), content_type='application/zip')
     response['Content-Disposition'] = f'attachment; filename="{filename}"'
     return response
+
+
+# ============ SEARCH ============
+
+@login_required
+def search_entries(request):
+    query = request.GET.get('q', '').strip()
+    category = request.GET.get('cat', '')
+    results = []
+    if query:
+        from django.db.models import Q
+        filters = Q(content__icontains=query) & (Q(user=request.user) | Q(is_private=False))
+        if category in ['THOUGHT', 'PRAYER', 'GRATITUDE']:
+            filters &= Q(category=category)
+        results = Entry.objects.filter(filters).order_by('-created_at')
+    return render(request, 'core/search.html', {
+        'query': query,
+        'category': category,
+        'results': results,
+        'result_count': len(results),
+    })
+
+
+# ============ READING REMINDERS ============
+
+from .models import ReadingReminder
+
+
+@login_required
+def reading_reminders(request):
+    reminders = ReadingReminder.objects.filter(user=request.user)
+    text_items = LibraryItem.objects.filter(
+        media_type='TEXT'
+    ).filter(
+        django_models.Q(owner=request.user) | django_models.Q(access_level='GLOBAL')
+    )
+    return render(request, 'core/reading_reminders.html', {
+        'reminders': reminders,
+        'text_items': text_items,
+    })
+
+
+@login_required
+@require_POST
+def create_reading_reminder(request):
+    item_id = request.POST.get('library_item', '')
+    frequency = request.POST.get('frequency', 'DAILY')
+    reminder_time = request.POST.get('reminder_time', '09:00')
+    duration = request.POST.get('duration_minutes', '20')
+    item = get_object_or_404(LibraryItem, pk=item_id)
+    ReadingReminder.objects.create(
+        user=request.user,
+        library_item=item,
+        frequency=frequency,
+        reminder_time=reminder_time,
+        duration_minutes=int(duration) if duration.isdigit() else 20,
+    )
+    messages.success(request, f'Reading reminder set for {item.title}.')
+    return redirect('reading_reminders')
+
+
+@login_required
+@require_POST
+def delete_reading_reminder(request, pk):
+    reminder = get_object_or_404(ReadingReminder, pk=pk, user=request.user)
+    reminder.delete()
+    messages.success(request, 'Reading reminder removed.')
+    return redirect('reading_reminders')

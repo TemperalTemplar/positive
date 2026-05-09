@@ -1,0 +1,114 @@
+[
+  {
+    "model": "core.libraryitem",
+    "pk": 1,
+    "fields": {
+      "owner": 1,
+      "title": "Box Breathing — 4-4-4-4 Guide",
+      "media_type": "TEXT",
+      "file": "",
+      "description": "A simple breathing technique used by Navy SEALs and meditators worldwide. Inhale 4 counts, hold 4, exhale 4, hold 4.",
+      "access_level": "GLOBAL",
+      "total_pages": 1,
+      "created_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "core.libraryitem",
+    "pk": 2,
+    "fields": {
+      "owner": 1,
+      "title": "Morning Intention Setting",
+      "media_type": "TEXT",
+      "file": "",
+      "description": "A short daily practice for setting positive intentions before your day begins. Read slowly, once each morning.",
+      "access_level": "GLOBAL",
+      "total_pages": 1,
+      "created_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "core.libraryitem",
+    "pk": 3,
+    "fields": {
+      "owner": 1,
+      "title": "Psalm 23 — The Lord is My Shepherd",
+      "media_type": "TEXT",
+      "file": "",
+      "description": "One of the most beloved passages in scripture. A prayer of trust, comfort and refuge.",
+      "access_level": "GLOBAL",
+      "total_pages": 1,
+      "created_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "core.libraryitem",
+    "pk": 4,
+    "fields": {
+      "owner": 1,
+      "title": "Surah Al-Fatiha — The Opening",
+      "media_type": "TEXT",
+      "file": "",
+      "description": "The opening chapter of the Quran, recited in every unit of Islamic prayer. A prayer for guidance on the straight path.",
+      "access_level": "GLOBAL",
+      "total_pages": 1,
+      "created_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "core.libraryitem",
+    "pk": 5,
+    "fields": {
+      "owner": 1,
+      "title": "Loving-Kindness Meditation — Metta",
+      "media_type": "TEXT",
+      "file": "",
+      "description": "A Buddhist practice of cultivating unconditional goodwill toward all beings. Begin with yourself, extend outward.",
+      "access_level": "GLOBAL",
+      "total_pages": 1,
+      "created_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "core.libraryitem",
+    "pk": 6,
+    "fields": {
+      "owner": 1,
+      "title": "The Serenity Prayer",
+      "media_type": "TEXT",
+      "file": "",
+      "description": "God grant me the serenity to accept the things I cannot change, courage to change the things I can, and wisdom to know the difference.",
+      "access_level": "GLOBAL",
+      "total_pages": 1,
+      "created_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "core.libraryitem",
+    "pk": 7,
+    "fields": {
+      "owner": 1,
+      "title": "Gratitude Journaling — 5-Minute Practice",
+      "media_type": "TEXT",
+      "file": "",
+      "description": "A structured daily gratitude practice. Write three things you are grateful for, one person who helped you, and one way you grew today.",
+      "access_level": "GLOBAL",
+      "total_pages": 1,
+      "created_at": "2026-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "core.libraryitem",
+    "pk": 8,
+    "fields": {
+      "owner": 1,
+      "title": "Ho'oponopono — Hawaiian Forgiveness Prayer",
+      "media_type": "TEXT",
+      "file": "",
+      "description": "I'm sorry. Please forgive me. Thank you. I love you. A Hawaiian practice of reconciliation and forgiveness.",
+      "access_level": "GLOBAL",
+      "total_pages": 1,
+      "created_at": "2026-01-01T00:00:00Z"
+    }
+  }
+]

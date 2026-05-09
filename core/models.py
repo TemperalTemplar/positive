@@ -269,3 +269,22 @@ class UserSecuritySettings(models.Model):
 
     def __str__(self):
         return f"{self.user.username} security settings"
+
+
+class ReadingReminder(models.Model):
+    FREQUENCY_CHOICES = [
+        ('DAILY', 'Daily'),
+        ('WEEKDAYS', 'Weekdays only'),
+        ('WEEKLY', 'Weekly'),
+    ]
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reading_reminders')
+    library_item = models.ForeignKey(LibraryItem, on_delete=models.CASCADE)
+    frequency = models.CharField(max_length=10, choices=FREQUENCY_CHOICES, default='DAILY')
+    reminder_time = models.TimeField(help_text="Time to send reminder (UTC)")
+    duration_minutes = models.IntegerField(default=20)
+    is_active = models.BooleanField(default=True)
+    last_sent = models.DateTimeField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username}: {self.library_item.title} @ {self.reminder_time}"
