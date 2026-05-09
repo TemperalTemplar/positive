@@ -1,0 +1,319 @@
+# POSITIVE — Sovereign Intent Engine
+# French Translation
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+
+msgid "POSITIVE"
+msgstr "POSITIVE"
+
+msgid "Dashboard"
+msgstr "Tableau de Bord"
+
+msgid "Library"
+msgstr "Bibliothèque"
+
+msgid "Vision Boards"
+msgstr "Tableaux de Vision"
+
+msgid "Timers"
+msgstr "Minuteries"
+
+msgid "Settings"
+msgstr "Paramètres"
+
+msgid "Approvals"
+msgstr "Approbations"
+
+msgid "logout"
+msgstr "déconnexion"
+
+msgid "The Sanctuary"
+msgstr "Le Sanctuaire"
+
+msgid "Session Type"
+msgstr "Type de Session"
+
+msgid "Meditation — 15 min"
+msgstr "Méditation — 15 min"
+
+msgid "Morning Prayer — 10 min"
+msgstr "Prière du Matin — 10 min"
+
+msgid "Deep Focus — 20 min"
+msgstr "Concentration Profonde — 20 min"
+
+msgid "Gratitude Practice — 5 min"
+msgstr "Pratique de Gratitude — 5 min"
+
+msgid "Reading Session — 30 min"
+msgstr "Session de Lecture — 30 min"
+
+msgid "Custom…"
+msgstr "Personnalisé…"
+
+msgid "Custom Duration (minutes)"
+msgstr "Durée Personnalisée (minutes)"
+
+msgid "Begin Session"
+msgstr "Commencer la Session"
+
+msgid "Reset"
+msgstr "Réinitialiser"
+
+msgid "Quick Play"
+msgstr "Lecture Rapide"
+
+msgid "No audio yet."
+msgstr "Pas encore d'audio."
+
+msgid "Upload in library"
+msgstr "Téléverser dans la bibliothèque"
+
+msgid "Repository of Light"
+msgstr "Dépôt de Lumière"
+
+msgid "Enter a good thought, prayer, or gratitude…"
+msgstr "Entrez une bonne pensée, prière ou gratitude…"
+
+msgid "Good Thought"
+msgstr "Bonne Pensée"
+
+msgid "Prayer"
+msgstr "Prière"
+
+msgid "Gratitude"
+msgstr "Gratitude"
+
+msgid "Share with group (posts to Discord / Rocket.Chat)"
+msgstr "Partager avec le groupe (publie sur Discord / Rocket.Chat)"
+
+msgid "Log Intent"
+msgstr "Enregistrer l'Intention"
+
+msgid "Recent Entries"
+msgstr "Entrées Récentes"
+
+msgid "shared"
+msgstr "partagé"
+
+msgid "Mark Answered"
+msgstr "Marquer comme Répondue"
+
+msgid "Answered"
+msgstr "Répondue"
+
+msgid "No entries yet. Log your first intent above."
+msgstr "Pas encore d'entrées. Enregistrez votre première intention ci-dessus."
+
+msgid "Manifestation"
+msgstr "Manifestation"
+
+msgid "Thoughts"
+msgstr "Pensées"
+
+msgid "Prayers"
+msgstr "Prières"
+
+msgid "No boards yet."
+msgstr "Pas encore de tableaux."
+
+msgid "Create one"
+msgstr "En créer un"
+
+msgid "Manage Boards"
+msgstr "Gérer les Tableaux"
+
+msgid "Reading Hub"
+msgstr "Centre de Lecture"
+
+msgid "No active reading."
+msgstr "Pas de lecture active."
+
+msgid "Visit library"
+msgstr "Visiter la bibliothèque"
+
+msgid "Prayer Tracker"
+msgstr "Suivi des Prières"
+
+msgid "Active"
+msgstr "Actives"
+
+msgid "No timers."
+msgstr "Pas de minuteries."
+
+msgid "ENTER THE SANCTUARY"
+msgstr "ENTRER DANS LE SANCTUAIRE"
+
+msgid "Don't have an account?"
+msgstr "Pas encore de compte ?"
+
+msgid "Request Access"
+msgstr "Demander l'Accès"
+
+msgid "REQUEST ACCESS"
+msgstr "DEMANDER L'ACCÈS"
+
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+msgid "Email (optional — for notifications)"
+msgstr "Email (optionnel — pour les notifications)"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Confirm Password"
+msgstr "Confirmer le mot de passe"
+
+msgid "Note to admin (optional)"
+msgstr "Note pour l'administrateur (optionnel)"
+
+msgid "Tell the admin why you'd like access…"
+msgstr "Dites à l'administrateur pourquoi vous souhaitez accéder…"
+
+msgid "SUBMIT REQUEST"
+msgstr "SOUMETTRE LA DEMANDE"
+
+msgid "Back to login"
+msgstr "Retour à la connexion"
+
+msgid "REQUEST SUBMITTED"
+msgstr "DEMANDE SOUMISE"
+
+msgid "Pending Requests"
+msgstr "Demandes en Attente"
+
+msgid "Approve"
+msgstr "Approuver"
+
+msgid "Deny"
+msgstr "Refuser"
+
+msgid "Recently Approved"
+msgstr "Récemment Approuvés"
+
+msgid "Recently Denied"
+msgstr "Récemment Refusés"
+
+msgid "Audio — Chants & Guides"
+msgstr "Audio — Chants et Guides"
+
+msgid "Video — Meditations & Prayers"
+msgstr "Vidéo — Méditations et Prières"
+
+msgid "Texts — Books & Scripture"
+msgstr "Textes — Livres et Écritures"
+
+msgid "Upload to Library"
+msgstr "Téléverser dans la Bibliothèque"
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Access"
+msgstr "Accès"
+
+msgid "Description (optional)"
+msgstr "Description (optionnel)"
+
+msgid "Total Pages"
+msgstr "Nombre Total de Pages"
+
+msgid "File"
+msgstr "Fichier"
+
+msgid "Upload"
+msgstr "Téléverser"
+
+msgid "Your Vision Boards"
+msgstr "Vos Tableaux de Vision"
+
+msgid "Create New Board"
+msgstr "Créer un Nouveau Tableau"
+
+msgid "Board Name"
+msgstr "Nom du Tableau"
+
+msgid "Images (select multiple)"
+msgstr "Images (sélectionner plusieurs)"
+
+msgid "Make public (visible to all users + relay to Discord/RC)"
+msgstr "Rendre public (visible par tous + relayer sur Discord/RC)"
+
+msgid "Build Vision Board"
+msgstr "Construire le Tableau de Vision"
+
+msgid "Your Intent Timers"
+msgstr "Vos Minuteries d'Intention"
+
+msgid "Create Timer"
+msgstr "Créer une Minuterie"
+
+msgid "Session Name"
+msgstr "Nom de la Session"
+
+msgid "Duration (minutes)"
+msgstr "Durée (minutes)"
+
+msgid "Linked Audio (optional)"
+msgstr "Audio Lié (optionnel)"
+
+msgid "Relay on Complete"
+msgstr "Notifier à la Fin"
+
+msgid "Send email notification"
+msgstr "Envoyer une notification par email"
+
+msgid "Post to Discord"
+msgstr "Publier sur Discord"
+
+msgid "Post to Rocket.Chat"
+msgstr "Publier sur Rocket.Chat"
+
+msgid "Create .ics calendar event"
+msgstr "Créer un événement calendrier .ics"
+
+msgid "Save Timer"
+msgstr "Enregistrer la Minuterie"
+
+msgid "Your Relay Profile"
+msgstr "Votre Profil de Notifications"
+
+msgid "Personal Email (for timer notifications)"
+msgstr "Email Personnel (pour les notifications de minuterie)"
+
+msgid "Save Profile"
+msgstr "Enregistrer le Profil"
+
+msgid "Server Config"
+msgstr "Configuration du Serveur"
+
+msgid "Account"
+msgstr "Compte"
+
+msgid "edit"
+msgstr "modifier"
+
+msgid "Save"
+msgstr "Enregistrer"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Delete this entry?"
+msgstr "Supprimer cette entrée ?"
+
+msgid "Please write something first."
+msgstr "Veuillez d'abord écrire quelque chose."
+
+msgid "Logged."
+msgstr "Enregistré."
+
+msgid "SOVEREIGN INTENT ENGINE"
+msgstr "MOTEUR D'INTENTION SOUVERAINE"

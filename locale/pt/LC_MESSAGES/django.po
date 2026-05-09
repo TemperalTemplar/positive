@@ -1,0 +1,145 @@
+# POSITIVE — Sovereign Intent Engine
+# Portuguese Translation
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
+
+msgid "Dashboard"
+msgstr "Painel Principal"
+
+msgid "Library"
+msgstr "Biblioteca"
+
+msgid "Vision Boards"
+msgstr "Quadros de Visão"
+
+msgid "Timers"
+msgstr "Temporizadores"
+
+msgid "Settings"
+msgstr "Configurações"
+
+msgid "Approvals"
+msgstr "Aprovações"
+
+msgid "logout"
+msgstr "sair"
+
+msgid "The Sanctuary"
+msgstr "O Santuário"
+
+msgid "Session Type"
+msgstr "Tipo de Sessão"
+
+msgid "Meditation — 15 min"
+msgstr "Meditação — 15 min"
+
+msgid "Morning Prayer — 10 min"
+msgstr "Oração Matinal — 10 min"
+
+msgid "Deep Focus — 20 min"
+msgstr "Foco Profundo — 20 min"
+
+msgid "Gratitude Practice — 5 min"
+msgstr "Prática de Gratidão — 5 min"
+
+msgid "Reading Session — 30 min"
+msgstr "Sessão de Leitura — 30 min"
+
+msgid "Custom…"
+msgstr "Personalizado…"
+
+msgid "Begin Session"
+msgstr "Iniciar Sessão"
+
+msgid "Reset"
+msgstr "Reiniciar"
+
+msgid "Repository of Light"
+msgstr "Repositório de Luz"
+
+msgid "Enter a good thought, prayer, or gratitude…"
+msgstr "Digite um bom pensamento, oração ou gratidão…"
+
+msgid "Good Thought"
+msgstr "Bom Pensamento"
+
+msgid "Prayer"
+msgstr "Oração"
+
+msgid "Gratitude"
+msgstr "Gratidão"
+
+msgid "Log Intent"
+msgstr "Registrar Intenção"
+
+msgid "Recent Entries"
+msgstr "Entradas Recentes"
+
+msgid "Mark Answered"
+msgstr "Marcar como Respondida"
+
+msgid "Answered"
+msgstr "Respondida"
+
+msgid "Manifestation"
+msgstr "Manifestação"
+
+msgid "Thoughts"
+msgstr "Pensamentos"
+
+msgid "Prayers"
+msgstr "Orações"
+
+msgid "Reading Hub"
+msgstr "Central de Leitura"
+
+msgid "Prayer Tracker"
+msgstr "Rastreador de Orações"
+
+msgid "Active"
+msgstr "Ativas"
+
+msgid "ENTER THE SANCTUARY"
+msgstr "ENTRAR NO SANTUÁRIO"
+
+msgid "Don't have an account?"
+msgstr "Não tem uma conta?"
+
+msgid "Request Access"
+msgstr "Solicitar Acesso"
+
+msgid "Username"
+msgstr "Usuário"
+
+msgid "Password"
+msgstr "Senha"
+
+msgid "Confirm Password"
+msgstr "Confirmar Senha"
+
+msgid "SUBMIT REQUEST"
+msgstr "ENVIAR SOLICITAÇÃO"
+
+msgid "Back to login"
+msgstr "Voltar ao login"
+
+msgid "Approve"
+msgstr "Aprovar"
+
+msgid "Deny"
+msgstr "Recusar"
+
+msgid "Save"
+msgstr "Salvar"
+
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgid "Delete this entry?"
+msgstr "Excluir esta entrada?"
+
+msgid "SOVEREIGN INTENT ENGINE"
+msgstr "MOTOR DE INTENÇÃO SOBERANA"

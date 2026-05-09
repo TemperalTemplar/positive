@@ -1,11 +1,13 @@
 {% extends "core/base.html" %}
-{% block title %}Approvals{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Approvals" %}{% endblock %}
+{% block nav_approvals %}active{% endblock %}
 {% block content %}
 <div class="grid-2">
 <div>
   <div class="panel">
     <div class="panel-title">
-      Pending Requests
+      {% trans "Pending Requests" %}
       {% if pending %}<span style="background:var(--warn);color:#000;font-size:9px;padding:2px 8px;border-radius:10px;margin-left:8px;font-weight:bold">{{ pending|length }}</span>{% endif %}
     </div>
     {% for req in pending %}
@@ -13,11 +15,11 @@
       <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px">
         <div>
           <div style="font-size:13px;color:var(--accent)">{{ req.user.username }}</div>
-          <div style="font-size:10px;color:var(--muted)">{{ req.user.email|default:"No email" }} · Requested {{ req.requested_at|date:"M d, Y H:i" }}</div>
+          <div style="font-size:10px;color:var(--muted)">{{ req.user.email|default:"No email" }} · {% trans "Requested" %} {{ req.requested_at|date:"M d, Y H:i" }}</div>
         </div>
         <div style="display:flex;gap:6px;flex-shrink:0">
-          <button onclick="reviewRequest({{ req.pk }},'approve',this)" class="btn btn-sm btn-primary">Approve</button>
-          <button onclick="reviewRequest({{ req.pk }},'deny',this)" class="btn btn-sm btn-danger">Deny</button>
+          <button onclick="reviewRequest({{ req.pk }},'approve',this)" class="btn btn-sm btn-primary">{% trans "Approve" %}</button>
+          <button onclick="reviewRequest({{ req.pk }},'deny',this)" class="btn btn-sm btn-danger">{% trans "Deny" %}</button>
         </div>
       </div>
       {% if req.note %}
@@ -25,51 +27,46 @@
       {% endif %}
     </div>
     {% empty %}
-    <div style="font-size:11px;color:var(--muted)">No pending requests.</div>
+    <div style="font-size:11px;color:var(--muted)">{% trans "No pending requests." %}</div>
     {% endfor %}
   </div>
 </div>
 <div>
   <div class="panel" style="margin-bottom:12px">
-    <div class="panel-title">Recently Approved</div>
+    <div class="panel-title">{% trans "Recently Approved" %}</div>
     {% for req in approved %}
     <div style="padding:7px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">
       <span style="font-size:11px;color:var(--accent)">{{ req.user.username }}</span>
       <span style="font-size:9px;color:var(--muted)">{{ req.reviewed_at|date:"M d, Y" }}</span>
     </div>
     {% empty %}
-    <div style="font-size:11px;color:var(--muted)">None yet.</div>
+    <div style="font-size:11px;color:var(--muted)">{% trans "None yet." %}</div>
     {% endfor %}
   </div>
   <div class="panel">
-    <div class="panel-title">Recently Denied</div>
+    <div class="panel-title">{% trans "Recently Denied" %}</div>
     {% for req in denied %}
     <div style="padding:7px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between">
       <span style="font-size:11px;color:var(--danger)">{{ req.user.username }}</span>
       <span style="font-size:9px;color:var(--muted)">{{ req.reviewed_at|date:"M d, Y" }}</span>
     </div>
     {% empty %}
-    <div style="font-size:11px;color:var(--muted)">None yet.</div>
+    <div style="font-size:11px;color:var(--muted)">{% trans "None yet." %}</div>
     {% endfor %}
   </div>
 </div>
 </div>
 <script>
-function reviewRequest(pk, action, btn) {
-  if(!confirm(action==='approve' ? 'Approve this user?' : 'Deny this request?')) return;
-  fetch('/approvals/'+pk+'/review/', {
-    method: 'POST',
-    headers: {'X-CSRFToken': '{{ csrf_token }}', 'Content-Type': 'application/x-www-form-urlencoded'},
-    body: 'action='+action
-  }).then(function(r){return r.json();}).then(function(d){
-    var row = document.getElementById('req-'+pk);
-    if(action==='approve'){
-      row.style.borderColor='var(--accent)';
-      row.innerHTML='<div style="font-size:11px;color:var(--accent)">&#10003; '+d.username+' approved — they can now log in.</div>';
-    } else {
-      row.style.opacity='0.4';
-      row.innerHTML='<div style="font-size:11px;color:var(--danger)">&#x2715; '+d.username+' denied.</div>';
-    }
+var msgApprove='{% trans "Approve this user?" %}';
+var msgDeny='{% trans "Deny this request?" %}';
+var msgApproved='{% trans "approved — they can now log in." %}';
+var msgDenied='{% trans "denied." %}';
+function reviewRequest(pk,action,btn){
+  if(!confirm(action==='approve'?msgApprove:msgDeny))return;
+  fetch('/approvals/'+pk+'/review/',{method:'POST',headers:{'X-CSRFToken':'{{ csrf_token }}','Content-Type':'application/x-www-form-urlencoded'},body:'action='+action}).then(function(r){return r.json();}).then(function(d){
+    var row=document.getElementById('req-'+pk);
+    if(action==='approve'){row.style.borderColor='var(--accent)';row.innerHTML='<div style="font-size:11px;color:var(--accent)">\u2713 '+d.username+' '+msgApproved+'</div>';}
+    else{row.style.opacity='0.4';row.innerHTML='<div style="font-size:11px;color:var(--danger)">\u2715 '+d.username+' '+msgDenied+'</div>';}
   });
 }
 </script>

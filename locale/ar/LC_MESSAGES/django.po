@@ -1,0 +1,151 @@
+# POSITIVE — Sovereign Intent Engine
+# Arabic Translation (RTL)
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+
+msgid "POSITIVE"
+msgstr "POSITIVE"
+
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+msgid "Library"
+msgstr "المكتبة"
+
+msgid "Vision Boards"
+msgstr "لوحات الرؤية"
+
+msgid "Timers"
+msgstr "المؤقتات"
+
+msgid "Settings"
+msgstr "الإعدادات"
+
+msgid "Approvals"
+msgstr "الموافقات"
+
+msgid "logout"
+msgstr "تسجيل الخروج"
+
+msgid "The Sanctuary"
+msgstr "الملاذ"
+
+msgid "Session Type"
+msgstr "نوع الجلسة"
+
+msgid "Meditation — 15 min"
+msgstr "تأمل — ١٥ دقيقة"
+
+msgid "Morning Prayer — 10 min"
+msgstr "صلاة الصباح — ١٠ دقائق"
+
+msgid "Deep Focus — 20 min"
+msgstr "تركيز عميق — ٢٠ دقيقة"
+
+msgid "Gratitude Practice — 5 min"
+msgstr "ممارسة الامتنان — ٥ دقائق"
+
+msgid "Reading Session — 30 min"
+msgstr "جلسة قراءة — ٣٠ دقيقة"
+
+msgid "Custom…"
+msgstr "مخصص…"
+
+msgid "Begin Session"
+msgstr "بدء الجلسة"
+
+msgid "Reset"
+msgstr "إعادة تعيين"
+
+msgid "Quick Play"
+msgstr "تشغيل سريع"
+
+msgid "Repository of Light"
+msgstr "مستودع النور"
+
+msgid "Enter a good thought, prayer, or gratitude…"
+msgstr "أدخل فكرة جيدة أو صلاة أو امتنان…"
+
+msgid "Good Thought"
+msgstr "فكرة جيدة"
+
+msgid "Prayer"
+msgstr "صلاة"
+
+msgid "Gratitude"
+msgstr "امتنان"
+
+msgid "Log Intent"
+msgstr "تسجيل النية"
+
+msgid "Recent Entries"
+msgstr "الإدخالات الأخيرة"
+
+msgid "Mark Answered"
+msgstr "تحديد كمُجابة"
+
+msgid "Answered"
+msgstr "مُجابة"
+
+msgid "Manifestation"
+msgstr "التجلي"
+
+msgid "Thoughts"
+msgstr "أفكار"
+
+msgid "Prayers"
+msgstr "صلوات"
+
+msgid "Reading Hub"
+msgstr "مركز القراءة"
+
+msgid "Prayer Tracker"
+msgstr "متتبع الصلوات"
+
+msgid "Active"
+msgstr "نشطة"
+
+msgid "ENTER THE SANCTUARY"
+msgstr "ادخل إلى الملاذ"
+
+msgid "Don't have an account?"
+msgstr "ليس لديك حساب؟"
+
+msgid "Request Access"
+msgstr "طلب الوصول"
+
+msgid "Username"
+msgstr "اسم المستخدم"
+
+msgid "Password"
+msgstr "كلمة المرور"
+
+msgid "Confirm Password"
+msgstr "تأكيد كلمة المرور"
+
+msgid "SUBMIT REQUEST"
+msgstr "إرسال الطلب"
+
+msgid "Back to login"
+msgstr "العودة إلى تسجيل الدخول"
+
+msgid "Approve"
+msgstr "موافقة"
+
+msgid "Deny"
+msgstr "رفض"
+
+msgid "Save"
+msgstr "حفظ"
+
+msgid "Cancel"
+msgstr "إلغاء"
+
+msgid "Delete this entry?"
+msgstr "هل تريد حذف هذا الإدخال؟"
+
+msgid "SOVEREIGN INTENT ENGINE"
+msgstr "محرك النية السيادية"

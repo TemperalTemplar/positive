@@ -1,9 +1,10 @@
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Enter the Sanctuary | POSITIVE</title>
+<title>{% trans "Enter the Sanctuary" %} | POSITIVE</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#0d0d0d;color:#e0e0e0;font-family:'Courier New',monospace;display:flex;align-items:center;justify-content:center;min-height:100vh}
@@ -20,24 +21,39 @@ button:hover{background:#00b88a}
 .register-link{text-align:center;font-size:11px;color:#555}
 .register-link a{color:#00d4a0;text-decoration:none}
 .register-link a:hover{text-decoration:underline}
+.lang-bar{display:flex;justify-content:center;margin-bottom:20px}
+.lang-bar select{background:#0a0a0a;color:#666;border:1px solid #252525;padding:4px 8px;border-radius:4px;font-family:inherit;font-size:10px;cursor:pointer}
 </style>
 </head>
 <body>
 <div class="box">
   <h1>POSITIVE</h1>
-  <div class="sub">SOVEREIGN INTENT ENGINE</div>
-  {% if form.errors %}<div class="err">Invalid credentials. Please try again.</div>{% endif %}
+  <div class="sub">{% trans "SOVEREIGN INTENT ENGINE" %}</div>
+  <div class="lang-bar">
+    <form action="{% url 'set_language' %}" method="post" id="lang-form">
+      {% csrf_token %}
+      <input name="next" type="hidden" value="{{ request.path }}">
+      {% get_current_language as CURRENT_LANGUAGE %}
+      {% get_available_languages as LANGUAGES %}
+      <select name="language" onchange="document.getElementById('lang-form').submit()">
+        {% for lang_code, lang_name in LANGUAGES %}
+        <option value="{{ lang_code }}" {% if lang_code == CURRENT_LANGUAGE %}selected{% endif %}>{{ lang_name }}</option>
+        {% endfor %}
+      </select>
+    </form>
+  </div>
+  {% if form.errors %}<div class="err">{% trans "Invalid credentials. Please try again." %}</div>{% endif %}
   <form method="post">
     {% csrf_token %}
-    <label class="lbl">Username</label>
+    <label class="lbl">{% trans "Username" %}</label>
     <input type="text" name="username" autofocus autocomplete="username">
-    <label class="lbl">Password</label>
+    <label class="lbl">{% trans "Password" %}</label>
     <input type="password" name="password" autocomplete="current-password">
-    <button type="submit">ENTER THE SANCTUARY</button>
+    <button type="submit">{% trans "ENTER THE SANCTUARY" %}</button>
   </form>
   <hr class="divider">
   <div class="register-link">
-    Don't have an account? <a href="/register/">Request Access</a>
+    {% trans "Don't have an account?" %} <a href="/register/">{% trans "Request Access" %}</a>
   </div>
 </div>
 </body>

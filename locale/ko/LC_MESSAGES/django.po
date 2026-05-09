@@ -1,0 +1,151 @@
+# POSITIVE — Sovereign Intent Engine
+# Korean Translation
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko\n"
+
+msgid "Dashboard"
+msgstr "대시보드"
+
+msgid "Library"
+msgstr "라이브러리"
+
+msgid "Vision Boards"
+msgstr "비전 보드"
+
+msgid "Timers"
+msgstr "타이머"
+
+msgid "Settings"
+msgstr "설정"
+
+msgid "Approvals"
+msgstr "승인"
+
+msgid "logout"
+msgstr "로그아웃"
+
+msgid "The Sanctuary"
+msgstr "성소"
+
+msgid "Session Type"
+msgstr "세션 유형"
+
+msgid "Meditation — 15 min"
+msgstr "명상 — 15분"
+
+msgid "Morning Prayer — 10 min"
+msgstr "아침 기도 — 10분"
+
+msgid "Deep Focus — 20 min"
+msgstr "깊은 집중 — 20분"
+
+msgid "Gratitude Practice — 5 min"
+msgstr "감사 실천 — 5분"
+
+msgid "Reading Session — 30 min"
+msgstr "독서 세션 — 30분"
+
+msgid "Custom…"
+msgstr "사용자 정의…"
+
+msgid "Begin Session"
+msgstr "세션 시작"
+
+msgid "Reset"
+msgstr "초기화"
+
+msgid "Quick Play"
+msgstr "빠른 재생"
+
+msgid "Repository of Light"
+msgstr "빛의 저장소"
+
+msgid "Enter a good thought, prayer, or gratitude…"
+msgstr "좋은 생각, 기도 또는 감사를 입력하세요…"
+
+msgid "Good Thought"
+msgstr "좋은 생각"
+
+msgid "Prayer"
+msgstr "기도"
+
+msgid "Gratitude"
+msgstr "감사"
+
+msgid "Log Intent"
+msgstr "의도 기록"
+
+msgid "Recent Entries"
+msgstr "최근 항목"
+
+msgid "Mark Answered"
+msgstr "응답됨으로 표시"
+
+msgid "Answered"
+msgstr "응답됨"
+
+msgid "Manifestation"
+msgstr "현현"
+
+msgid "Thoughts"
+msgstr "생각"
+
+msgid "Prayers"
+msgstr "기도"
+
+msgid "Reading Hub"
+msgstr "독서 센터"
+
+msgid "Prayer Tracker"
+msgstr "기도 추적기"
+
+msgid "Active"
+msgstr "진행 중"
+
+msgid "ENTER THE SANCTUARY"
+msgstr "성소에 들어가기"
+
+msgid "Don't have an account?"
+msgstr "계정이 없으신가요?"
+
+msgid "Request Access"
+msgstr "접근 요청"
+
+msgid "Username"
+msgstr "사용자명"
+
+msgid "Password"
+msgstr "비밀번호"
+
+msgid "Confirm Password"
+msgstr "비밀번호 확인"
+
+msgid "SUBMIT REQUEST"
+msgstr "요청 제출"
+
+msgid "Back to login"
+msgstr "로그인으로 돌아가기"
+
+msgid "Approve"
+msgstr "승인"
+
+msgid "Deny"
+msgstr "거부"
+
+msgid "Save"
+msgstr "저장"
+
+msgid "Cancel"
+msgstr "취소"
+
+msgid "Delete this entry?"
+msgstr "이 항목을 삭제하시겠습니까?"
+
+msgid "edit"
+msgstr "편집"
+
+msgid "SOVEREIGN INTENT ENGINE"
+msgstr "주권적 의도 엔진"

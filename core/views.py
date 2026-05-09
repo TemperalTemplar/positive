@@ -340,3 +340,108 @@ def review_registration(request, pk):
     reg.reviewed_by = request.user
     reg.save()
     return JsonResponse({'status': reg.status, 'username': reg.user.username})
+
+
+# ============ TIMER EDIT / DELETE ============
+
+@login_required
+@require_POST
+def delete_timer(request, pk):
+    timer = get_object_or_404(IntentTimer, pk=pk, user=request.user)
+    timer.delete()
+    return JsonResponse({'status': 'ok'})
+
+
+@login_required
+@require_POST
+def edit_timer(request, pk):
+    timer = get_object_or_404(IntentTimer, pk=pk, user=request.user)
+    title = request.POST.get('title', '').strip()
+    duration = request.POST.get('duration', '').strip()
+    if not title:
+        return JsonResponse({'error': 'Title required'}, status=400)
+    timer.title = title
+    timer.duration_minutes = int(duration) if duration.isdigit() else timer.duration_minutes
+    timer.send_to_email = request.POST.get('send_email') == 'on'
+    timer.send_to_discord = request.POST.get('send_discord') == 'on'
+    timer.send_to_rocketchat = request.POST.get('send_rocketchat') == 'on'
+    timer.create_calendar_event = request.POST.get('create_calendar') == 'on'
+    library_id = request.POST.get('library_item', '')
+    timer.library_item = LibraryItem.objects.filter(pk=library_id).first() if library_id.isdigit() else None
+    timer.save()
+    messages.success(request, f'Timer "{timer.title}" updated.')
+    return redirect('timers')
+
+
+# ============ LIBRARY EDIT / DELETE ============
+
+@login_required
+@require_POST
+def delete_library_item(request, pk):
+    item = get_object_or_404(LibraryItem, pk=pk, owner=request.user)
+    item.delete()
+    messages.success(request, f'"{item.title}" removed from library.')
+    return redirect('library')
+
+
+@login_required
+@require_POST
+def edit_library_item(request, pk):
+    item = get_object_or_404(LibraryItem, pk=pk, owner=request.user)
+    title = request.POST.get('title', '').strip()
+    if not title:
+        messages.error(request, 'Title is required.')
+        return redirect('library')
+    item.title = title
+    item.description = request.POST.get('description', '')
+    item.access_level = request.POST.get('access_level', item.access_level)
+    total_pages = request.POST.get('total_pages', '').strip()
+    item.total_pages = int(total_pages) if total_pages.isdigit() else None
+    item.save()
+    messages.success(request, f'"{item.title}" updated.')
+    return redirect('library')
+
+
+# ============ VISION BOARD EDIT / DELETE ============
+
+@login_required
+@require_POST
+def delete_vision_board(request, slug):
+    board = get_object_or_404(VisionBoard, slug=slug, owner=request.user)
+    name = board.name
+    # Remove generated HTML file if it exists
+    if board.html_file:
+        import os
+        from django.conf import settings as djsettings
+        html_path = os.path.join(djsettings.MEDIA_ROOT, board.html_file)
+        if os.path.exists(html_path):
+            os.remove(html_path)
+    board.delete()
+    messages.success(request, f'Vision board "{name}" deleted.')
+    return redirect('vision_boards')
+
+
+@login_required
+@require_POST
+def edit_vision_board(request, slug):
+    board = get_object_or_404(VisionBoard, slug=slug, owner=request.user)
+    name = request.POST.get('name', '').strip()
+    if not name:
+        messages.error(request, 'Board name is required.')
+        return redirect('vision_boards')
+    board.name = name
+    board.is_public = 'is_public' in request.POST
+    # Handle new images if uploaded
+    new_files = request.FILES.getlist('images')
+    if new_files:
+        # Remove old images
+        board.images.all().delete()
+        for i, img_file in enumerate(new_files):
+            caption = request.POST.get(f'caption_{i}', '')
+            VisionBoardImage.objects.create(board=board, image=img_file, caption=caption, order=i)
+    # Regenerate HTML
+    html_path = generate_vision_board_html(board)
+    board.html_file = html_path
+    board.save()
+    messages.success(request, f'Vision board "{name}" updated.')
+    return redirect('vision_boards')

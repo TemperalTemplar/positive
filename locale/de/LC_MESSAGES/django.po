@@ -1,0 +1,319 @@
+# POSITIVE — Sovereign Intent Engine
+# German Translation
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+
+msgid "POSITIVE"
+msgstr "POSITIVE"
+
+msgid "Dashboard"
+msgstr "Übersicht"
+
+msgid "Library"
+msgstr "Bibliothek"
+
+msgid "Vision Boards"
+msgstr "Visionstafeln"
+
+msgid "Timers"
+msgstr "Timer"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Approvals"
+msgstr "Genehmigungen"
+
+msgid "logout"
+msgstr "Abmelden"
+
+msgid "The Sanctuary"
+msgstr "Das Heiligtum"
+
+msgid "Session Type"
+msgstr "Sitzungstyp"
+
+msgid "Meditation — 15 min"
+msgstr "Meditation — 15 Min"
+
+msgid "Morning Prayer — 10 min"
+msgstr "Morgengebet — 10 Min"
+
+msgid "Deep Focus — 20 min"
+msgstr "Tiefe Konzentration — 20 Min"
+
+msgid "Gratitude Practice — 5 min"
+msgstr "Dankbarkeitsübung — 5 Min"
+
+msgid "Reading Session — 30 min"
+msgstr "Lesesitzung — 30 Min"
+
+msgid "Custom…"
+msgstr "Benutzerdefiniert…"
+
+msgid "Custom Duration (minutes)"
+msgstr "Benutzerdefinierte Dauer (Minuten)"
+
+msgid "Begin Session"
+msgstr "Sitzung Beginnen"
+
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+msgid "Quick Play"
+msgstr "Schnellwiedergabe"
+
+msgid "No audio yet."
+msgstr "Noch kein Audio."
+
+msgid "Upload in library"
+msgstr "In Bibliothek hochladen"
+
+msgid "Repository of Light"
+msgstr "Lichtarchiv"
+
+msgid "Enter a good thought, prayer, or gratitude…"
+msgstr "Guten Gedanken, Gebet oder Dankbarkeit eingeben…"
+
+msgid "Good Thought"
+msgstr "Guter Gedanke"
+
+msgid "Prayer"
+msgstr "Gebet"
+
+msgid "Gratitude"
+msgstr "Dankbarkeit"
+
+msgid "Share with group (posts to Discord / Rocket.Chat)"
+msgstr "Mit Gruppe teilen (postet auf Discord / Rocket.Chat)"
+
+msgid "Log Intent"
+msgstr "Absicht Protokollieren"
+
+msgid "Recent Entries"
+msgstr "Letzte Einträge"
+
+msgid "shared"
+msgstr "geteilt"
+
+msgid "Mark Answered"
+msgstr "Als beantwortet markieren"
+
+msgid "Answered"
+msgstr "Beantwortet"
+
+msgid "No entries yet. Log your first intent above."
+msgstr "Noch keine Einträge. Protokolliere deine erste Absicht oben."
+
+msgid "Manifestation"
+msgstr "Manifestation"
+
+msgid "Thoughts"
+msgstr "Gedanken"
+
+msgid "Prayers"
+msgstr "Gebete"
+
+msgid "No boards yet."
+msgstr "Noch keine Tafeln."
+
+msgid "Create one"
+msgstr "Eine erstellen"
+
+msgid "Manage Boards"
+msgstr "Tafeln verwalten"
+
+msgid "Reading Hub"
+msgstr "Lesezentrum"
+
+msgid "No active reading."
+msgstr "Keine aktive Lektüre."
+
+msgid "Visit library"
+msgstr "Bibliothek besuchen"
+
+msgid "Prayer Tracker"
+msgstr "Gebetsverfolgung"
+
+msgid "Active"
+msgstr "Aktiv"
+
+msgid "No timers."
+msgstr "Keine Timer."
+
+msgid "ENTER THE SANCTUARY"
+msgstr "DAS HEILIGTUM BETRETEN"
+
+msgid "Don't have an account?"
+msgstr "Noch kein Konto?"
+
+msgid "Request Access"
+msgstr "Zugang Anfordern"
+
+msgid "REQUEST ACCESS"
+msgstr "ZUGANG ANFORDERN"
+
+msgid "Username"
+msgstr "Benutzername"
+
+msgid "Email (optional — for notifications)"
+msgstr "E-Mail (optional — für Benachrichtigungen)"
+
+msgid "Password"
+msgstr "Passwort"
+
+msgid "Confirm Password"
+msgstr "Passwort bestätigen"
+
+msgid "Note to admin (optional)"
+msgstr "Hinweis an Administrator (optional)"
+
+msgid "Tell the admin why you'd like access…"
+msgstr "Erkläre dem Administrator warum du Zugang möchtest…"
+
+msgid "SUBMIT REQUEST"
+msgstr "ANFRAGE SENDEN"
+
+msgid "Back to login"
+msgstr "Zurück zur Anmeldung"
+
+msgid "REQUEST SUBMITTED"
+msgstr "ANFRAGE EINGEREICHT"
+
+msgid "Pending Requests"
+msgstr "Ausstehende Anfragen"
+
+msgid "Approve"
+msgstr "Genehmigen"
+
+msgid "Deny"
+msgstr "Ablehnen"
+
+msgid "Recently Approved"
+msgstr "Kürzlich Genehmigt"
+
+msgid "Recently Denied"
+msgstr "Kürzlich Abgelehnt"
+
+msgid "Audio — Chants & Guides"
+msgstr "Audio — Gesänge und Anleitungen"
+
+msgid "Video — Meditations & Prayers"
+msgstr "Video — Meditationen und Gebete"
+
+msgid "Texts — Books & Scripture"
+msgstr "Texte — Bücher und Schriften"
+
+msgid "Upload to Library"
+msgstr "In Bibliothek Hochladen"
+
+msgid "Title"
+msgstr "Titel"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "Access"
+msgstr "Zugang"
+
+msgid "Description (optional)"
+msgstr "Beschreibung (optional)"
+
+msgid "Total Pages"
+msgstr "Gesamtseiten"
+
+msgid "File"
+msgstr "Datei"
+
+msgid "Upload"
+msgstr "Hochladen"
+
+msgid "Your Vision Boards"
+msgstr "Deine Visionstafeln"
+
+msgid "Create New Board"
+msgstr "Neue Tafel Erstellen"
+
+msgid "Board Name"
+msgstr "Tafelname"
+
+msgid "Images (select multiple)"
+msgstr "Bilder (mehrere auswählen)"
+
+msgid "Make public (visible to all users + relay to Discord/RC)"
+msgstr "Öffentlich machen (für alle sichtbar + an Discord/RC senden)"
+
+msgid "Build Vision Board"
+msgstr "Visionstafel Erstellen"
+
+msgid "Your Intent Timers"
+msgstr "Deine Absichtstimer"
+
+msgid "Create Timer"
+msgstr "Timer Erstellen"
+
+msgid "Session Name"
+msgstr "Sitzungsname"
+
+msgid "Duration (minutes)"
+msgstr "Dauer (Minuten)"
+
+msgid "Linked Audio (optional)"
+msgstr "Verknüpftes Audio (optional)"
+
+msgid "Relay on Complete"
+msgstr "Benachrichtigung bei Abschluss"
+
+msgid "Send email notification"
+msgstr "E-Mail-Benachrichtigung senden"
+
+msgid "Post to Discord"
+msgstr "Auf Discord posten"
+
+msgid "Post to Rocket.Chat"
+msgstr "Auf Rocket.Chat posten"
+
+msgid "Create .ics calendar event"
+msgstr ".ics Kalenderereignis erstellen"
+
+msgid "Save Timer"
+msgstr "Timer Speichern"
+
+msgid "Your Relay Profile"
+msgstr "Dein Benachrichtigungsprofil"
+
+msgid "Personal Email (for timer notifications)"
+msgstr "Persönliche E-Mail (für Timer-Benachrichtigungen)"
+
+msgid "Save Profile"
+msgstr "Profil Speichern"
+
+msgid "Server Config"
+msgstr "Serverkonfiguration"
+
+msgid "Account"
+msgstr "Konto"
+
+msgid "edit"
+msgstr "bearbeiten"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Delete this entry?"
+msgstr "Diesen Eintrag löschen?"
+
+msgid "Please write something first."
+msgstr "Bitte zuerst etwas schreiben."
+
+msgid "Logged."
+msgstr "Protokolliert."
+
+msgid "SOVEREIGN INTENT ENGINE"
+msgstr "SOUVERÄNE ABSICHTSMASCHINE"

@@ -1,0 +1,319 @@
+# POSITIVE — Sovereign Intent Engine
+# Turkish Translation
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: tr\n"
+
+msgid "POSITIVE"
+msgstr "POSITIVE"
+
+msgid "Dashboard"
+msgstr "Kontrol Paneli"
+
+msgid "Library"
+msgstr "Kütüphane"
+
+msgid "Vision Boards"
+msgstr "Vizyon Panoları"
+
+msgid "Timers"
+msgstr "Zamanlayıcılar"
+
+msgid "Settings"
+msgstr "Ayarlar"
+
+msgid "Approvals"
+msgstr "Onaylar"
+
+msgid "logout"
+msgstr "Çıkış"
+
+msgid "The Sanctuary"
+msgstr "Sığınak"
+
+msgid "Session Type"
+msgstr "Oturum Türü"
+
+msgid "Meditation — 15 min"
+msgstr "Meditasyon — 15 dak"
+
+msgid "Morning Prayer — 10 min"
+msgstr "Sabah Duası — 10 dak"
+
+msgid "Deep Focus — 20 min"
+msgstr "Derin Odaklanma — 20 dak"
+
+msgid "Gratitude Practice — 5 min"
+msgstr "Şükran Pratiği — 5 dak"
+
+msgid "Reading Session — 30 min"
+msgstr "Okuma Oturumu — 30 dak"
+
+msgid "Custom…"
+msgstr "Özel…"
+
+msgid "Custom Duration (minutes)"
+msgstr "Özel Süre (dakika)"
+
+msgid "Begin Session"
+msgstr "Oturumu Başlat"
+
+msgid "Reset"
+msgstr "Sıfırla"
+
+msgid "Quick Play"
+msgstr "Hızlı Oynat"
+
+msgid "No audio yet."
+msgstr "Henüz ses dosyası yok."
+
+msgid "Upload in library"
+msgstr "Kütüphaneye yükle"
+
+msgid "Repository of Light"
+msgstr "Işık Deposu"
+
+msgid "Enter a good thought, prayer, or gratitude…"
+msgstr "Güzel bir düşünce, dua veya şükran girin…"
+
+msgid "Good Thought"
+msgstr "Güzel Düşünce"
+
+msgid "Prayer"
+msgstr "Dua"
+
+msgid "Gratitude"
+msgstr "Şükran"
+
+msgid "Share with group (posts to Discord / Rocket.Chat)"
+msgstr "Grupla paylaş (Discord / Rocket.Chat'e gönderir)"
+
+msgid "Log Intent"
+msgstr "Niyeti Kaydet"
+
+msgid "Recent Entries"
+msgstr "Son Girişler"
+
+msgid "shared"
+msgstr "paylaşıldı"
+
+msgid "Mark Answered"
+msgstr "Yanıtlandı Olarak İşaretle"
+
+msgid "Answered"
+msgstr "Yanıtlandı"
+
+msgid "No entries yet. Log your first intent above."
+msgstr "Henüz giriş yok. Yukarıda ilk niyetinizi kaydedin."
+
+msgid "Manifestation"
+msgstr "Tezahür"
+
+msgid "Thoughts"
+msgstr "Düşünceler"
+
+msgid "Prayers"
+msgstr "Dualar"
+
+msgid "No boards yet."
+msgstr "Henüz pano yok."
+
+msgid "Create one"
+msgstr "Bir tane oluştur"
+
+msgid "Manage Boards"
+msgstr "Panoları Yönet"
+
+msgid "Reading Hub"
+msgstr "Okuma Merkezi"
+
+msgid "No active reading."
+msgstr "Aktif okuma yok."
+
+msgid "Visit library"
+msgstr "Kütüphaneyi ziyaret et"
+
+msgid "Prayer Tracker"
+msgstr "Dua Takibi"
+
+msgid "Active"
+msgstr "Aktif"
+
+msgid "No timers."
+msgstr "Zamanlayıcı yok."
+
+msgid "ENTER THE SANCTUARY"
+msgstr "SIĞINAĞA GİR"
+
+msgid "Don't have an account?"
+msgstr "Hesabınız yok mu?"
+
+msgid "Request Access"
+msgstr "Erişim İste"
+
+msgid "REQUEST ACCESS"
+msgstr "ERİŞİM İSTE"
+
+msgid "Username"
+msgstr "Kullanıcı Adı"
+
+msgid "Email (optional — for notifications)"
+msgstr "E-posta (isteğe bağlı — bildirimler için)"
+
+msgid "Password"
+msgstr "Şifre"
+
+msgid "Confirm Password"
+msgstr "Şifreyi Onayla"
+
+msgid "Note to admin (optional)"
+msgstr "Yöneticiye not (isteğe bağlı)"
+
+msgid "Tell the admin why you'd like access…"
+msgstr "Yöneticiye neden erişmek istediğinizi söyleyin…"
+
+msgid "SUBMIT REQUEST"
+msgstr "TALEBİ GÖNDER"
+
+msgid "Back to login"
+msgstr "Girişe geri dön"
+
+msgid "REQUEST SUBMITTED"
+msgstr "TALEP GÖNDERİLDİ"
+
+msgid "Pending Requests"
+msgstr "Bekleyen Talepler"
+
+msgid "Approve"
+msgstr "Onayla"
+
+msgid "Deny"
+msgstr "Reddet"
+
+msgid "Recently Approved"
+msgstr "Son Onaylananlar"
+
+msgid "Recently Denied"
+msgstr "Son Reddedilenler"
+
+msgid "Audio — Chants & Guides"
+msgstr "Ses — İlahiler ve Rehberler"
+
+msgid "Video — Meditations & Prayers"
+msgstr "Video — Meditasyonlar ve Dualar"
+
+msgid "Texts — Books & Scripture"
+msgstr "Metinler — Kitaplar ve Kutsal Yazılar"
+
+msgid "Upload to Library"
+msgstr "Kütüphaneye Yükle"
+
+msgid "Title"
+msgstr "Başlık"
+
+msgid "Type"
+msgstr "Tür"
+
+msgid "Access"
+msgstr "Erişim"
+
+msgid "Description (optional)"
+msgstr "Açıklama (isteğe bağlı)"
+
+msgid "Total Pages"
+msgstr "Toplam Sayfa"
+
+msgid "File"
+msgstr "Dosya"
+
+msgid "Upload"
+msgstr "Yükle"
+
+msgid "Your Vision Boards"
+msgstr "Vizyon Panolarınız"
+
+msgid "Create New Board"
+msgstr "Yeni Pano Oluştur"
+
+msgid "Board Name"
+msgstr "Pano Adı"
+
+msgid "Images (select multiple)"
+msgstr "Görseller (birden fazla seçin)"
+
+msgid "Make public (visible to all users + relay to Discord/RC)"
+msgstr "Herkese açık yap (tüm kullanıcılar görebilir + Discord/RC'ye gönder)"
+
+msgid "Build Vision Board"
+msgstr "Vizyon Panosu Oluştur"
+
+msgid "Your Intent Timers"
+msgstr "Niyet Zamanlayıcılarınız"
+
+msgid "Create Timer"
+msgstr "Zamanlayıcı Oluştur"
+
+msgid "Session Name"
+msgstr "Oturum Adı"
+
+msgid "Duration (minutes)"
+msgstr "Süre (dakika)"
+
+msgid "Linked Audio (optional)"
+msgstr "Bağlı Ses (isteğe bağlı)"
+
+msgid "Relay on Complete"
+msgstr "Tamamlandığında Bildir"
+
+msgid "Send email notification"
+msgstr "E-posta bildirimi gönder"
+
+msgid "Post to Discord"
+msgstr "Discord'a gönder"
+
+msgid "Post to Rocket.Chat"
+msgstr "Rocket.Chat'e gönder"
+
+msgid "Create .ics calendar event"
+msgstr ".ics takvim etkinliği oluştur"
+
+msgid "Save Timer"
+msgstr "Zamanlayıcıyı Kaydet"
+
+msgid "Your Relay Profile"
+msgstr "Bildirim Profiliniz"
+
+msgid "Personal Email (for timer notifications)"
+msgstr "Kişisel E-posta (zamanlayıcı bildirimleri için)"
+
+msgid "Save Profile"
+msgstr "Profili Kaydet"
+
+msgid "Server Config"
+msgstr "Sunucu Yapılandırması"
+
+msgid "Account"
+msgstr "Hesap"
+
+msgid "edit"
+msgstr "düzenle"
+
+msgid "Save"
+msgstr "Kaydet"
+
+msgid "Cancel"
+msgstr "İptal"
+
+msgid "Delete this entry?"
+msgstr "Bu girişi sil?"
+
+msgid "Please write something first."
+msgstr "Lütfen önce bir şeyler yazın."
+
+msgid "Logged."
+msgstr "Kaydedildi."
+
+msgid "SOVEREIGN INTENT ENGINE"
+msgstr "EGEMENLİK NİYET MOTORU"

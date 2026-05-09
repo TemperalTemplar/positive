@@ -1,9 +1,10 @@
+{% load i18n %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Request Access | POSITIVE</title>
+<title>{% trans "Request Access" %} | POSITIVE</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#0d0d0d;color:#e0e0e0;font-family:'Courier New',monospace;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
@@ -19,29 +20,28 @@ button:hover{background:#00b88a}
 .err{color:#e24b4a;font-size:11px;margin-bottom:14px;padding:8px;background:rgba(226,75,74,0.08);border-radius:6px;border:1px solid rgba(226,75,74,0.2)}
 .back{text-align:center;margin-top:16px;font-size:11px;color:#555}
 .back a{color:#00d4a0;text-decoration:none}
-.hint{font-size:10px;color:#444;margin-top:-10px;margin-bottom:14px}
 </style>
 </head>
 <body>
 <div class="box">
   <h1>POSITIVE</h1>
-  <div class="sub">REQUEST ACCESS</div>
+  <div class="sub">{% trans "REQUEST ACCESS" %}</div>
   {% if error %}<div class="err">{{ error }}</div>{% endif %}
   <form method="post">
     {% csrf_token %}
-    <label class="lbl">Username</label>
+    <label class="lbl">{% trans "Username" %}</label>
     <input type="text" name="username" required autocomplete="username">
-    <label class="lbl">Email (optional — for notifications)</label>
+    <label class="lbl">{% trans "Email (optional — for notifications)" %}</label>
     <input type="email" name="email" autocomplete="email">
-    <label class="lbl">Password</label>
+    <label class="lbl">{% trans "Password" %}</label>
     <input type="password" name="password" required autocomplete="new-password">
-    <label class="lbl">Confirm Password</label>
+    <label class="lbl">{% trans "Confirm Password" %}</label>
     <input type="password" name="password2" required autocomplete="new-password">
-    <label class="lbl">Note to admin (optional)</label>
-    <textarea name="note" placeholder="Tell the admin why you'd like access…"></textarea>
-    <button type="submit">SUBMIT REQUEST</button>
+    <label class="lbl">{% trans "Note to admin (optional)" %}</label>
+    <textarea name="note" placeholder="{% trans "Tell the admin why you'd like access…" %}"></textarea>
+    <button type="submit">{% trans "SUBMIT REQUEST" %}</button>
   </form>
-  <div class="back"><a href="/login/">Back to login</a></div>
+  <div class="back"><a href="/login/">{% trans "Back to login" %}</a></div>
 </div>
 </body>
 </html>

@@ -6,7 +6,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /app
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends libjpeg-dev zlib1g-dev && \
+    apt-get install -y --no-install-recommends libjpeg-dev zlib1g-dev gettext && \
     rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
@@ -22,7 +22,8 @@ RUN mkdir -p data \
     media/uploads \
     media/calendar_events \
     static \
-    staticfiles
+    staticfiles \
+    locale
 
 EXPOSE 8000
 

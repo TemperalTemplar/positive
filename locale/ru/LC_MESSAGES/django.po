@@ -1,0 +1,316 @@
+# POSITIVE — Sovereign Intent Engine
+# Russian Translation
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+
+msgid "Dashboard"
+msgstr "Панель управления"
+
+msgid "Library"
+msgstr "Библиотека"
+
+msgid "Vision Boards"
+msgstr "Доски видения"
+
+msgid "Timers"
+msgstr "Таймеры"
+
+msgid "Settings"
+msgstr "Настройки"
+
+msgid "Approvals"
+msgstr "Одобрения"
+
+msgid "logout"
+msgstr "Выйти"
+
+msgid "The Sanctuary"
+msgstr "Святилище"
+
+msgid "Session Type"
+msgstr "Тип сеанса"
+
+msgid "Meditation — 15 min"
+msgstr "Медитация — 15 мин"
+
+msgid "Morning Prayer — 10 min"
+msgstr "Утренняя молитва — 10 мин"
+
+msgid "Deep Focus — 20 min"
+msgstr "Глубокая концентрация — 20 мин"
+
+msgid "Gratitude Practice — 5 min"
+msgstr "Практика благодарности — 5 мин"
+
+msgid "Reading Session — 30 min"
+msgstr "Сеанс чтения — 30 мин"
+
+msgid "Custom…"
+msgstr "Настроить…"
+
+msgid "Custom Duration (minutes)"
+msgstr "Произвольная длительность (минуты)"
+
+msgid "Begin Session"
+msgstr "Начать сеанс"
+
+msgid "Reset"
+msgstr "Сбросить"
+
+msgid "Quick Play"
+msgstr "Быстрое воспроизведение"
+
+msgid "No audio yet."
+msgstr "Аудио ещё нет."
+
+msgid "Upload in library"
+msgstr "Загрузить в библиотеку"
+
+msgid "Repository of Light"
+msgstr "Хранилище света"
+
+msgid "Enter a good thought, prayer, or gratitude…"
+msgstr "Введите добрую мысль, молитву или благодарность…"
+
+msgid "Good Thought"
+msgstr "Добрая мысль"
+
+msgid "Prayer"
+msgstr "Молитва"
+
+msgid "Gratitude"
+msgstr "Благодарность"
+
+msgid "Share with group (posts to Discord / Rocket.Chat)"
+msgstr "Поделиться с группой (публикует в Discord / Rocket.Chat)"
+
+msgid "Log Intent"
+msgstr "Записать намерение"
+
+msgid "Recent Entries"
+msgstr "Последние записи"
+
+msgid "shared"
+msgstr "опубликовано"
+
+msgid "Mark Answered"
+msgstr "Отметить как отвеченную"
+
+msgid "Answered"
+msgstr "Отвечена"
+
+msgid "No entries yet. Log your first intent above."
+msgstr "Записей ещё нет. Запишите своё первое намерение выше."
+
+msgid "Manifestation"
+msgstr "Проявление"
+
+msgid "Thoughts"
+msgstr "Мысли"
+
+msgid "Prayers"
+msgstr "Молитвы"
+
+msgid "No boards yet."
+msgstr "Досок ещё нет."
+
+msgid "Create one"
+msgstr "Создать"
+
+msgid "Manage Boards"
+msgstr "Управление досками"
+
+msgid "Reading Hub"
+msgstr "Центр чтения"
+
+msgid "No active reading."
+msgstr "Нет активного чтения."
+
+msgid "Visit library"
+msgstr "Перейти в библиотеку"
+
+msgid "Prayer Tracker"
+msgstr "Отслеживание молитв"
+
+msgid "Active"
+msgstr "Активные"
+
+msgid "No timers."
+msgstr "Таймеров нет."
+
+msgid "ENTER THE SANCTUARY"
+msgstr "ВОЙТИ В СВЯТИЛИЩЕ"
+
+msgid "Don't have an account?"
+msgstr "Нет аккаунта?"
+
+msgid "Request Access"
+msgstr "Запросить доступ"
+
+msgid "REQUEST ACCESS"
+msgstr "ЗАПРОСИТЬ ДОСТУП"
+
+msgid "Username"
+msgstr "Имя пользователя"
+
+msgid "Email (optional — for notifications)"
+msgstr "Email (необязательно — для уведомлений)"
+
+msgid "Password"
+msgstr "Пароль"
+
+msgid "Confirm Password"
+msgstr "Подтвердить пароль"
+
+msgid "Note to admin (optional)"
+msgstr "Примечание администратору (необязательно)"
+
+msgid "Tell the admin why you'd like access…"
+msgstr "Расскажите администратору, почему вы хотите получить доступ…"
+
+msgid "SUBMIT REQUEST"
+msgstr "ОТПРАВИТЬ ЗАПРОС"
+
+msgid "Back to login"
+msgstr "Вернуться к входу"
+
+msgid "REQUEST SUBMITTED"
+msgstr "ЗАПРОС ОТПРАВЛЕН"
+
+msgid "Pending Requests"
+msgstr "Ожидающие запросы"
+
+msgid "Approve"
+msgstr "Одобрить"
+
+msgid "Deny"
+msgstr "Отклонить"
+
+msgid "Recently Approved"
+msgstr "Недавно одобренные"
+
+msgid "Recently Denied"
+msgstr "Недавно отклонённые"
+
+msgid "Audio — Chants & Guides"
+msgstr "Аудио — Песнопения и руководства"
+
+msgid "Video — Meditations & Prayers"
+msgstr "Видео — Медитации и молитвы"
+
+msgid "Texts — Books & Scripture"
+msgstr "Тексты — Книги и Писание"
+
+msgid "Upload to Library"
+msgstr "Загрузить в библиотеку"
+
+msgid "Title"
+msgstr "Название"
+
+msgid "Type"
+msgstr "Тип"
+
+msgid "Access"
+msgstr "Доступ"
+
+msgid "Description (optional)"
+msgstr "Описание (необязательно)"
+
+msgid "Total Pages"
+msgstr "Всего страниц"
+
+msgid "File"
+msgstr "Файл"
+
+msgid "Upload"
+msgstr "Загрузить"
+
+msgid "Your Vision Boards"
+msgstr "Ваши доски видения"
+
+msgid "Create New Board"
+msgstr "Создать новую доску"
+
+msgid "Board Name"
+msgstr "Название доски"
+
+msgid "Images (select multiple)"
+msgstr "Изображения (выберите несколько)"
+
+msgid "Make public (visible to all users + relay to Discord/RC)"
+msgstr "Сделать публичной (видна всем + отправить в Discord/RC)"
+
+msgid "Build Vision Board"
+msgstr "Создать доску видения"
+
+msgid "Your Intent Timers"
+msgstr "Ваши таймеры намерений"
+
+msgid "Create Timer"
+msgstr "Создать таймер"
+
+msgid "Session Name"
+msgstr "Название сеанса"
+
+msgid "Duration (minutes)"
+msgstr "Длительность (минуты)"
+
+msgid "Linked Audio (optional)"
+msgstr "Связанное аудио (необязательно)"
+
+msgid "Relay on Complete"
+msgstr "Уведомить по завершении"
+
+msgid "Send email notification"
+msgstr "Отправить email-уведомление"
+
+msgid "Post to Discord"
+msgstr "Опубликовать в Discord"
+
+msgid "Post to Rocket.Chat"
+msgstr "Опубликовать в Rocket.Chat"
+
+msgid "Create .ics calendar event"
+msgstr "Создать событие календаря .ics"
+
+msgid "Save Timer"
+msgstr "Сохранить таймер"
+
+msgid "Your Relay Profile"
+msgstr "Ваш профиль уведомлений"
+
+msgid "Personal Email (for timer notifications)"
+msgstr "Личный email (для уведомлений таймера)"
+
+msgid "Save Profile"
+msgstr "Сохранить профиль"
+
+msgid "Server Config"
+msgstr "Настройки сервера"
+
+msgid "Account"
+msgstr "Аккаунт"
+
+msgid "edit"
+msgstr "изменить"
+
+msgid "Save"
+msgstr "Сохранить"
+
+msgid "Cancel"
+msgstr "Отмена"
+
+msgid "Delete this entry?"
+msgstr "Удалить эту запись?"
+
+msgid "Please write something first."
+msgstr "Пожалуйста, сначала что-нибудь напишите."
+
+msgid "Logged."
+msgstr "Записано."
+
+msgid "SOVEREIGN INTENT ENGINE"
+msgstr "СУВЕРЕННЫЙ ДВИЖОК НАМЕРЕНИЙ"

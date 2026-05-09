@@ -1,0 +1,193 @@
+# POSITIVE — Sovereign Intent Engine
+# Japanese Translation
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
+
+msgid "Dashboard"
+msgstr "ダッシュボード"
+
+msgid "Library"
+msgstr "ライブラリ"
+
+msgid "Vision Boards"
+msgstr "ビジョンボード"
+
+msgid "Timers"
+msgstr "タイマー"
+
+msgid "Settings"
+msgstr "設定"
+
+msgid "Approvals"
+msgstr "承認"
+
+msgid "logout"
+msgstr "ログアウト"
+
+msgid "The Sanctuary"
+msgstr "聖域"
+
+msgid "Session Type"
+msgstr "セッションタイプ"
+
+msgid "Meditation — 15 min"
+msgstr "瞑想 — 15分"
+
+msgid "Morning Prayer — 10 min"
+msgstr "朝の祈り — 10分"
+
+msgid "Deep Focus — 20 min"
+msgstr "深い集中 — 20分"
+
+msgid "Gratitude Practice — 5 min"
+msgstr "感謝の実践 — 5分"
+
+msgid "Reading Session — 30 min"
+msgstr "読書セッション — 30分"
+
+msgid "Custom…"
+msgstr "カスタム…"
+
+msgid "Custom Duration (minutes)"
+msgstr "カスタム時間（分）"
+
+msgid "Begin Session"
+msgstr "セッション開始"
+
+msgid "Reset"
+msgstr "リセット"
+
+msgid "Quick Play"
+msgstr "クイック再生"
+
+msgid "No audio yet."
+msgstr "音声がまだありません。"
+
+msgid "Upload in library"
+msgstr "ライブラリにアップロード"
+
+msgid "Repository of Light"
+msgstr "光のリポジトリ"
+
+msgid "Enter a good thought, prayer, or gratitude…"
+msgstr "良い考え、祈り、または感謝を入力してください…"
+
+msgid "Good Thought"
+msgstr "良い考え"
+
+msgid "Prayer"
+msgstr "祈り"
+
+msgid "Gratitude"
+msgstr "感謝"
+
+msgid "Share with group (posts to Discord / Rocket.Chat)"
+msgstr "グループと共有（Discord / Rocket.Chatに投稿）"
+
+msgid "Log Intent"
+msgstr "意図を記録"
+
+msgid "Recent Entries"
+msgstr "最近のエントリー"
+
+msgid "shared"
+msgstr "共有済み"
+
+msgid "Mark Answered"
+msgstr "回答済みとしてマーク"
+
+msgid "Answered"
+msgstr "回答済み"
+
+msgid "No entries yet. Log your first intent above."
+msgstr "まだエントリーがありません。上で最初の意図を記録してください。"
+
+msgid "Manifestation"
+msgstr "顕現"
+
+msgid "Thoughts"
+msgstr "考え"
+
+msgid "Prayers"
+msgstr "祈り"
+
+msgid "No boards yet."
+msgstr "まだボードがありません。"
+
+msgid "Create one"
+msgstr "作成する"
+
+msgid "Manage Boards"
+msgstr "ボードを管理"
+
+msgid "Reading Hub"
+msgstr "読書センター"
+
+msgid "No active reading."
+msgstr "アクティブな読書がありません。"
+
+msgid "Visit library"
+msgstr "ライブラリを訪問"
+
+msgid "Prayer Tracker"
+msgstr "祈り追跡"
+
+msgid "Active"
+msgstr "進行中"
+
+msgid "No timers."
+msgstr "タイマーがありません。"
+
+msgid "ENTER THE SANCTUARY"
+msgstr "聖域に入る"
+
+msgid "Don't have an account?"
+msgstr "アカウントをお持ちでないですか？"
+
+msgid "Request Access"
+msgstr "アクセスをリクエスト"
+
+msgid "Username"
+msgstr "ユーザー名"
+
+msgid "Email (optional — for notifications)"
+msgstr "メール（任意 — 通知用）"
+
+msgid "Password"
+msgstr "パスワード"
+
+msgid "Confirm Password"
+msgstr "パスワードを確認"
+
+msgid "SUBMIT REQUEST"
+msgstr "リクエストを送信"
+
+msgid "Back to login"
+msgstr "ログインに戻る"
+
+msgid "Pending Requests"
+msgstr "保留中のリクエスト"
+
+msgid "Approve"
+msgstr "承認"
+
+msgid "Deny"
+msgstr "拒否"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Cancel"
+msgstr "キャンセル"
+
+msgid "Delete this entry?"
+msgstr "このエントリーを削除しますか？"
+
+msgid "edit"
+msgstr "編集"
+
+msgid "SOVEREIGN INTENT ENGINE"
+msgstr "主権的意図エンジン"

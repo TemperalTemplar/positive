@@ -1,0 +1,319 @@
+# POSITIVE — Sovereign Intent Engine
+# Chinese Simplified Translation
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh-hans\n"
+
+msgid "POSITIVE"
+msgstr "POSITIVE"
+
+msgid "Dashboard"
+msgstr "仪表板"
+
+msgid "Library"
+msgstr "资料库"
+
+msgid "Vision Boards"
+msgstr "愿景板"
+
+msgid "Timers"
+msgstr "计时器"
+
+msgid "Settings"
+msgstr "设置"
+
+msgid "Approvals"
+msgstr "审批"
+
+msgid "logout"
+msgstr "退出"
+
+msgid "The Sanctuary"
+msgstr "圣所"
+
+msgid "Session Type"
+msgstr "课程类型"
+
+msgid "Meditation — 15 min"
+msgstr "冥想 — 15 分钟"
+
+msgid "Morning Prayer — 10 min"
+msgstr "晨祷 — 10 分钟"
+
+msgid "Deep Focus — 20 min"
+msgstr "深度专注 — 20 分钟"
+
+msgid "Gratitude Practice — 5 min"
+msgstr "感恩练习 — 5 分钟"
+
+msgid "Reading Session — 30 min"
+msgstr "阅读课程 — 30 分钟"
+
+msgid "Custom…"
+msgstr "自定义…"
+
+msgid "Custom Duration (minutes)"
+msgstr "自定义时长（分钟）"
+
+msgid "Begin Session"
+msgstr "开始课程"
+
+msgid "Reset"
+msgstr "重置"
+
+msgid "Quick Play"
+msgstr "快速播放"
+
+msgid "No audio yet."
+msgstr "暂无音频。"
+
+msgid "Upload in library"
+msgstr "上传到资料库"
+
+msgid "Repository of Light"
+msgstr "光之储藏所"
+
+msgid "Enter a good thought, prayer, or gratitude…"
+msgstr "输入一个好想法、祷告或感恩…"
+
+msgid "Good Thought"
+msgstr "美好想法"
+
+msgid "Prayer"
+msgstr "祷告"
+
+msgid "Gratitude"
+msgstr "感恩"
+
+msgid "Share with group (posts to Discord / Rocket.Chat)"
+msgstr "与群组分享（发布到 Discord / Rocket.Chat）"
+
+msgid "Log Intent"
+msgstr "记录意图"
+
+msgid "Recent Entries"
+msgstr "最近记录"
+
+msgid "shared"
+msgstr "已分享"
+
+msgid "Mark Answered"
+msgstr "标记为已回应"
+
+msgid "Answered"
+msgstr "已回应"
+
+msgid "No entries yet. Log your first intent above."
+msgstr "暂无记录。请在上方记录您的第一个意图。"
+
+msgid "Manifestation"
+msgstr "显化"
+
+msgid "Thoughts"
+msgstr "想法"
+
+msgid "Prayers"
+msgstr "祷告"
+
+msgid "No boards yet."
+msgstr "暂无愿景板。"
+
+msgid "Create one"
+msgstr "创建一个"
+
+msgid "Manage Boards"
+msgstr "管理愿景板"
+
+msgid "Reading Hub"
+msgstr "阅读中心"
+
+msgid "No active reading."
+msgstr "暂无活跃阅读。"
+
+msgid "Visit library"
+msgstr "访问资料库"
+
+msgid "Prayer Tracker"
+msgstr "祷告追踪"
+
+msgid "Active"
+msgstr "进行中"
+
+msgid "No timers."
+msgstr "暂无计时器。"
+
+msgid "ENTER THE SANCTUARY"
+msgstr "进入圣所"
+
+msgid "Don't have an account?"
+msgstr "还没有账户？"
+
+msgid "Request Access"
+msgstr "申请访问"
+
+msgid "REQUEST ACCESS"
+msgstr "申请访问"
+
+msgid "Username"
+msgstr "用户名"
+
+msgid "Email (optional — for notifications)"
+msgstr "电子邮件（可选 — 用于通知）"
+
+msgid "Password"
+msgstr "密码"
+
+msgid "Confirm Password"
+msgstr "确认密码"
+
+msgid "Note to admin (optional)"
+msgstr "给管理员的备注（可选）"
+
+msgid "Tell the admin why you'd like access…"
+msgstr "告诉管理员您为什么需要访问权限…"
+
+msgid "SUBMIT REQUEST"
+msgstr "提交申请"
+
+msgid "Back to login"
+msgstr "返回登录"
+
+msgid "REQUEST SUBMITTED"
+msgstr "申请已提交"
+
+msgid "Pending Requests"
+msgstr "待审批申请"
+
+msgid "Approve"
+msgstr "批准"
+
+msgid "Deny"
+msgstr "拒绝"
+
+msgid "Recently Approved"
+msgstr "最近批准"
+
+msgid "Recently Denied"
+msgstr "最近拒绝"
+
+msgid "Audio — Chants & Guides"
+msgstr "音频 — 唱诵与引导"
+
+msgid "Video — Meditations & Prayers"
+msgstr "视频 — 冥想与祷告"
+
+msgid "Texts — Books & Scripture"
+msgstr "文本 — 书籍与经文"
+
+msgid "Upload to Library"
+msgstr "上传到资料库"
+
+msgid "Title"
+msgstr "标题"
+
+msgid "Type"
+msgstr "类型"
+
+msgid "Access"
+msgstr "访问权限"
+
+msgid "Description (optional)"
+msgstr "描述（可选）"
+
+msgid "Total Pages"
+msgstr "总页数"
+
+msgid "File"
+msgstr "文件"
+
+msgid "Upload"
+msgstr "上传"
+
+msgid "Your Vision Boards"
+msgstr "您的愿景板"
+
+msgid "Create New Board"
+msgstr "创建新愿景板"
+
+msgid "Board Name"
+msgstr "愿景板名称"
+
+msgid "Images (select multiple)"
+msgstr "图片（可多选）"
+
+msgid "Make public (visible to all users + relay to Discord/RC)"
+msgstr "设为公开（所有用户可见 + 发送到 Discord/RC）"
+
+msgid "Build Vision Board"
+msgstr "构建愿景板"
+
+msgid "Your Intent Timers"
+msgstr "您的意图计时器"
+
+msgid "Create Timer"
+msgstr "创建计时器"
+
+msgid "Session Name"
+msgstr "课程名称"
+
+msgid "Duration (minutes)"
+msgstr "时长（分钟）"
+
+msgid "Linked Audio (optional)"
+msgstr "关联音频（可选）"
+
+msgid "Relay on Complete"
+msgstr "完成时通知"
+
+msgid "Send email notification"
+msgstr "发送电子邮件通知"
+
+msgid "Post to Discord"
+msgstr "发布到 Discord"
+
+msgid "Post to Rocket.Chat"
+msgstr "发布到 Rocket.Chat"
+
+msgid "Create .ics calendar event"
+msgstr "创建 .ics 日历事件"
+
+msgid "Save Timer"
+msgstr "保存计时器"
+
+msgid "Your Relay Profile"
+msgstr "您的通知配置"
+
+msgid "Personal Email (for timer notifications)"
+msgstr "个人电子邮件（用于计时器通知）"
+
+msgid "Save Profile"
+msgstr "保存配置"
+
+msgid "Server Config"
+msgstr "服务器配置"
+
+msgid "Account"
+msgstr "账户"
+
+msgid "edit"
+msgstr "编辑"
+
+msgid "Save"
+msgstr "保存"
+
+msgid "Cancel"
+msgstr "取消"
+
+msgid "Delete this entry?"
+msgstr "删除此记录？"
+
+msgid "Please write something first."
+msgstr "请先写点什么。"
+
+msgid "Logged."
+msgstr "已记录。"
+
+msgid "SOVEREIGN INTENT ENGINE"
+msgstr "主权意图引擎"

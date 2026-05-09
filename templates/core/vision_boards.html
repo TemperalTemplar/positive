@@ -1,58 +1,111 @@
 {% extends "core/base.html" %}
-{% block title %}Vision Boards{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Vision Boards" %}{% endblock %}
 {% block nav_vb %}active{% endblock %}
 {% block content %}
+
+<!-- Edit Modal -->
+<div id="edit-modal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:200;align-items:center;justify-content:center">
+  <div style="background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:24px;width:420px;max-width:95vw">
+    <div class="panel-title" style="margin-bottom:16px">{% trans "Edit Vision Board" %}</div>
+    <form method="post" id="edit-board-form" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group"><label class="form-label">{% trans "Board Name" %}</label><input type="text" name="name" id="edit-name" required></div>
+      <div class="form-group">
+        <label class="form-label">{% trans "Replace Images (optional)" %}</label>
+        <input type="file" name="images" multiple accept="image/*">
+        <div style="font-size:10px;color:var(--muted);margin-top:4px">{% trans "Leave empty to keep existing images." %}</div>
+      </div>
+      <div class="form-group"><label class="form-label">{% trans "Caption for image 1" %}</label><input type="text" name="caption_0"></div>
+      <div class="form-group"><label class="form-label">{% trans "Caption for image 2" %}</label><input type="text" name="caption_1"></div>
+      <div class="checkbox-row" style="margin-bottom:12px">
+        <input type="checkbox" name="is_public" id="edit-public">
+        <label for="edit-public">{% trans "Make public" %}</label>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button type="submit" class="btn btn-primary" style="flex:1">{% trans "Save" %}</button>
+        <button type="button" class="btn btn-muted" style="flex:1" onclick="closeModal()">{% trans "Cancel" %}</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <div class="grid-2">
 <div>
   <div class="panel">
-    <div class="panel-title">Your Vision Boards</div>
+    <div class="panel-title">{% trans "Your Vision Boards" %}</div>
     {% for board in boards %}
-    <div style="padding:10px;background:var(--input);border-radius:6px;border:1px solid var(--border);margin-bottom:8px">
+    <div style="padding:10px;background:var(--input);border-radius:6px;border:1px solid var(--border);margin-bottom:8px" id="board-{{ board.slug }}">
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <div>
+        <div style="flex:1;min-width:0">
           <div style="font-size:13px;margin-bottom:3px">{{ board.name }}</div>
-          <div style="font-size:9px;color:var(--muted)">{{ board.images.count }} image{{ board.images.count|pluralize }} · {{ board.created_at|date:"M d, Y" }} · {% if board.is_public %}Public{% else %}Private{% endif %}</div>
+          <div style="font-size:9px;color:var(--muted)">{{ board.images.count }} {% trans "images" %} · {{ board.created_at|date:"M d, Y" }} · {% if board.is_public %}{% trans "Public" %}{% else %}{% trans "Private" %}{% endif %}</div>
         </div>
-        <div style="display:flex;gap:6px;flex-shrink:0">
-          <a href="{% url 'view_vision_board' board.slug %}" target="_blank" class="btn btn-sm">View</a>
-          {% if board.html_file %}<a href="/media/{{ board.html_file }}" download class="btn btn-sm btn-muted">Download</a>{% endif %}
+        <div style="display:flex;gap:5px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end">
+          <a href="{% url 'view_vision_board' board.slug %}" target="_blank" class="btn btn-sm">{% trans "View" %}</a>
+          {% if board.html_file %}<a href="/media/{{ board.html_file }}" download class="btn btn-sm btn-muted">{% trans "Download" %}</a>{% endif %}
+          <button onclick="openEditModal('{{ board.slug }}','{{ board.name|escapejs }}',{{ board.is_public|yesno:'true,false' }})" class="btn btn-sm btn-muted">{% trans "edit" %}</button>
+          <button onclick="deleteBoard('{{ board.slug }}','{{ board.name|escapejs }}')" class="btn btn-sm btn-danger">&#x2715;</button>
         </div>
       </div>
     </div>
     {% empty %}
-    <div style="font-size:11px;color:var(--muted)">No vision boards yet. Create your first one.</div>
+    <div style="font-size:11px;color:var(--muted)">{% trans "No boards yet. Create your first one." %}</div>
     {% endfor %}
+
     {% if public_boards %}
-    <div class="panel-title" style="margin-top:16px">Community Boards</div>
+    <div class="panel-title" style="margin-top:16px">{% trans "Community Boards" %}</div>
     {% for board in public_boards %}
     <div style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
-      <span style="font-size:11px">{{ board.name }} <span style="color:var(--muted)">by {{ board.owner.username }}</span></span>
-      <a href="{% url 'view_vision_board' board.slug %}" target="_blank" class="btn btn-sm">View</a>
+      <span style="font-size:11px">{{ board.name }} <span style="color:var(--muted)">{% trans "by" %} {{ board.owner.username }}</span></span>
+      <a href="{% url 'view_vision_board' board.slug %}" target="_blank" class="btn btn-sm">{% trans "View" %}</a>
     </div>
     {% endfor %}
     {% endif %}
   </div>
 </div>
+
 <div>
   <div class="panel">
-    <div class="panel-title">Create New Board</div>
+    <div class="panel-title">{% trans "Create New Board" %}</div>
     <form method="post" action="{% url 'create_vision_board' %}" enctype="multipart/form-data">
       {% csrf_token %}
-      <div class="form-group"><label class="form-label">Board Name</label><input type="text" name="name" placeholder="My 2026 Goals" required></div>
-      <div class="form-group"><label class="form-label">Images (select multiple)</label><input type="file" name="images" multiple accept="image/*"></div>
-      <div class="form-group"><label class="form-label">Caption for image 1 (optional)</label><input type="text" name="caption_0"></div>
-      <div class="form-group"><label class="form-label">Caption for image 2 (optional)</label><input type="text" name="caption_1"></div>
-      <div class="form-group"><label class="form-label">Caption for image 3 (optional)</label><input type="text" name="caption_2"></div>
+      <div class="form-group"><label class="form-label">{% trans "Board Name" %}</label><input type="text" name="name" placeholder="{% trans "My 2026 Goals" %}" required></div>
+      <div class="form-group"><label class="form-label">{% trans "Images (select multiple)" %}</label><input type="file" name="images" multiple accept="image/*"></div>
+      <div class="form-group"><label class="form-label">{% trans "Caption for image 1 (optional)" %}</label><input type="text" name="caption_0"></div>
+      <div class="form-group"><label class="form-label">{% trans "Caption for image 2 (optional)" %}</label><input type="text" name="caption_1"></div>
+      <div class="form-group"><label class="form-label">{% trans "Caption for image 3 (optional)" %}</label><input type="text" name="caption_2"></div>
       <div class="checkbox-row" style="margin-bottom:12px">
         <input type="checkbox" name="is_public" id="is_public">
-        <label for="is_public">Make public (visible to all users + relay to Discord/RC)</label>
+        <label for="is_public">{% trans "Make public (visible to all users + relay to Discord/RC)" %}</label>
       </div>
-      <button type="submit" class="btn btn-primary" style="width:100%">Build Vision Board</button>
+      <button type="submit" class="btn btn-primary" style="width:100%">{% trans "Build Vision Board" %}</button>
     </form>
     <div style="margin-top:12px;font-size:10px;color:var(--muted);line-height:1.7">
-      Your board is rendered as a standalone HTML file you can download, share, or display on any device — even offline.
+      {% trans "Your board is rendered as a standalone HTML file you can download, share, or display on any device — even offline." %}
     </div>
   </div>
 </div>
 </div>
+
+<script>
+var csrfToken='{{ csrf_token }}';
+var msgDeleteBoard='{% trans "Delete this vision board? This cannot be undone." %}';
+
+function openEditModal(slug,name,isPublic){
+  document.getElementById('edit-name').value=name;
+  document.getElementById('edit-public').checked=isPublic;
+  document.getElementById('edit-board-form').action='/vision-boards/'+slug+'/edit/';
+  document.getElementById('edit-modal').style.display='flex';
+}
+function closeModal(){document.getElementById('edit-modal').style.display='none';}
+document.getElementById('edit-modal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+
+function deleteBoard(slug,name){
+  if(!confirm(msgDeleteBoard+'\n\n"'+name+'"'))return;
+  var form=document.createElement('form');form.method='POST';form.action='/vision-boards/'+slug+'/delete/';
+  var csrf=document.createElement('input');csrf.type='hidden';csrf.name='csrfmiddlewaretoken';csrf.value=csrfToken;
+  form.appendChild(csrf);document.body.appendChild(form);form.submit();
+}
+</script>
 {% endblock %}
