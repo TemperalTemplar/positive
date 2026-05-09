@@ -4,10 +4,9 @@
 {% block nav_lib %}active{% endblock %}
 {% block content %}
 
-<!-- Edit Modal -->
-<div id="edit-modal" role="dialog" aria-modal="true" aria-labelledby="edit-lib-title" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:200;align-items:center;justify-content:center">
+<div id="edit-modal" role="dialog" aria-modal="true" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.7);z-index:200;align-items:center;justify-content:center">
   <div style="background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:24px;width:380px;max-width:95vw">
-    <div class="panel-title" id="edit-lib-title" style="margin-bottom:16px">{% trans "Edit Library Item" %}</div>
+    <div class="panel-title" style="margin-bottom:16px">{% trans "Edit Library Item" %}</div>
     <form method="post" id="edit-lib-form">
       {% csrf_token %}
       <div class="form-group"><label class="form-label">{% trans "Title" %}</label><input type="text" name="title" id="edit-title" required></div>
@@ -30,27 +29,28 @@
 <div class="grid-2">
 <div>
   <div class="panel">
-    <div class="panel-title">{% trans "Audio — Chants & Guides" %}</div>
+    <div class="panel-title">{% trans "Audio" %}</div>
     {% for item in audio %}
     <div class="media-row" id="lib-{{ item.pk }}">
-      <button class="play-btn" onclick="togglePlay(this,'{{ item.file.url }}')" title="{% trans "Play" %}">&#9654;</button>
       <div style="flex:1;min-width:0">
-        <div style="font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ item.title }}</div>
-        <div style="font-size:9px;color:var(--muted)">{{ item.get_access_level_display }}{% if item.description %} · {{ item.description|truncatechars:40 }}{% endif %}</div>
+        <div style="font-size:12px">{{ item.title }}</div>
+        <div style="font-size:9px;color:var(--muted)">{{ item.get_access_level_display }}</div>
       </div>
-      {% if item.owner == request.user %}
       <div style="display:flex;gap:4px;flex-shrink:0">
-        <button onclick="openEditModal({{ item.pk }},'{{ item.title|escapejs }}','{{ item.description|escapejs }}','{{ item.access_level }}',{{ item.total_pages|default:'null' }},'AUDIO')" class="btn btn-sm btn-muted">{% trans "edit" %}</button>
+        {% if item.file %}<button class="play-btn btn-sm" onclick="togglePlay(this,'{{ item.file.url }}')">&#9654;</button>{% endif %}
+        {% if item.owner == request.user %}
+        <button onclick="openEditModal({{ item.pk }},'{{ item.title|escapejs }}','{{ item.description|escapejs }}','{{ item.access_level }}',null,'AUDIO')" class="btn btn-sm btn-muted">{% trans "edit" %}</button>
         <button onclick="deleteItem({{ item.pk }},this)" class="btn btn-sm btn-danger">&#x2715;</button>
+        {% endif %}
       </div>
-      {% endif %}
     </div>
-    {% empty %}<div style="font-size:11px;color:var(--muted)">{% trans "No audio uploaded yet." %}</div>{% endfor %}
+    {% empty %}<div style="font-size:11px;color:var(--muted)">{% trans "No audio uploaded yet." %}</div>
+    {% endfor %}
     <audio id="audio-player" style="width:100%;margin-top:10px;display:none" controls></audio>
   </div>
 
   <div class="panel">
-    <div class="panel-title">{% trans "Video — Meditations & Prayers" %}</div>
+    <div class="panel-title">{% trans "Video" %}</div>
     {% for item in video %}
     <div class="media-row" id="lib-{{ item.pk }}">
       <div style="flex:1;min-width:0">
@@ -65,19 +65,21 @@
         {% endif %}
       </div>
     </div>
-    {% empty %}<div style="font-size:11px;color:var(--muted)">{% trans "No video uploaded yet." %}</div>{% endfor %}
+    {% empty %}<div style="font-size:11px;color:var(--muted)">{% trans "No video uploaded yet." %}</div>
+    {% endfor %}
   </div>
 
   <div class="panel">
-    <div class="panel-title">{% trans "Texts — Books & Scripture" %}</div>
+    <div class="panel-title">{% trans "Texts" %}</div>
     {% for item in text %}
     <div class="media-row" id="lib-{{ item.pk }}">
       <div style="flex:1;min-width:0">
         <div style="font-size:12px">{{ item.title }}</div>
         <div style="font-size:9px;color:var(--muted)">{% if item.total_pages %}{{ item.total_pages }} {% trans "pages" %} · {% endif %}{{ item.get_access_level_display }}</div>
+        {% if item.description %}<div style="font-size:9px;color:var(--muted)">{{ item.description|truncatechars:60 }}</div>{% endif %}
       </div>
       <div style="display:flex;gap:4px;flex-shrink:0">
-        {% if item.file %}<a href="{{ item.file.url }}" target="_blank" class="btn btn-sm">{% trans "Read" %}</a>{% else %}<span style='font-size:10px;color:var(--muted)'>No file</span>{% endif %}
+        {% if item.file %}<a href="{{ item.file.url }}" target="_blank" class="btn btn-sm">{% trans "Read" %}</a>{% endif %}
         <button class="btn btn-sm btn-muted" onclick="updateReading({{ item.id }},this)">{% trans "Track" %}</button>
         {% if item.owner == request.user %}
         <button onclick="openEditModal({{ item.pk }},'{{ item.title|escapejs }}','{{ item.description|escapejs }}','{{ item.access_level }}',{{ item.total_pages|default:'null' }},'TEXT')" class="btn btn-sm btn-muted">{% trans "edit" %}</button>
@@ -85,7 +87,8 @@
         {% endif %}
       </div>
     </div>
-    {% empty %}<div style="font-size:11px;color:var(--muted)">{% trans "No texts uploaded yet." %}</div>{% endfor %}
+    {% empty %}<div style="font-size:11px;color:var(--muted)">{% trans "No texts uploaded yet." %}</div>
+    {% endfor %}
   </div>
 </div>
 
@@ -97,20 +100,20 @@
       <div class="form-group"><label class="form-label">{% trans "Title" %}</label><input type="text" name="title" required></div>
       <div class="form-group"><label class="form-label">{% trans "Type" %}</label>
         <select name="media_type" id="type-sel" onchange="typeChanged()">
-          <option value="AUDIO">{% trans "Audio (MP3, WAV)" %}</option>
-          <option value="VIDEO">{% trans "Video (MP4, MOV)" %}</option>
-          <option value="TEXT">{% trans "Text (PDF, TXT, EPUB)" %}</option>
+          <option value="AUDIO">{% trans "Audio" %}</option>
+          <option value="VIDEO">{% trans "Video" %}</option>
+          <option value="TEXT">{% trans "Text" %}</option>
         </select>
       </div>
       <div class="form-group"><label class="form-label">{% trans "Access" %}</label>
         <select name="access_level">
-          <option value="PRIVATE">{% trans "Private (you only)" %}</option>
-          <option value="GLOBAL">{% trans "Global (all users)" %}</option>
+          <option value="PRIVATE">{% trans "Private" %}</option>
+          <option value="GLOBAL">{% trans "Global" %}</option>
         </select>
       </div>
       <div class="form-group"><label class="form-label">{% trans "Description (optional)" %}</label><textarea name="description" style="height:50px"></textarea></div>
       <div class="form-group" id="pages-group" style="display:none"><label class="form-label">{% trans "Total Pages" %}</label><input type="number" name="total_pages" min="1"></div>
-      <div class="form-group"><label class="form-label">{% trans "File" %}</label><input type="file" name="file" accept=".mp3,.wav,.ogg,.mp4,.mov,.webm,.pdf,.txt,.epub" required></div>
+      <div class="form-group"><label class="form-label">{% trans "File" %}</label><input type="file" name="file" accept=".mp3,.wav,.mp4,.mov,.pdf,.txt,.epub" required></div>
       <button type="submit" class="btn btn-primary" style="width:100%">{% trans "Upload" %}</button>
     </form>
   </div>
@@ -119,30 +122,13 @@
 
 <script>
 var csrfToken='{{ csrf_token }}';
-var msgDeleteItem='{% trans "Delete this item from the library?" %}';
-
 function typeChanged(){document.getElementById('pages-group').style.display=document.getElementById('type-sel').value==='TEXT'?'block':'none';}
 var ca=null;
-function togglePlay(btn,url){var p=document.getElementById('audio-player');if(ca===url&&!p.paused){p.pause();btn.innerHTML='&#9654;';ca=null;return;}document.querySelectorAll('.play-btn').forEach(function(b){b.innerHTML='&#9654;';});p.src=url;p.style.display='block';p.play();btn.innerHTML='&#9646;&#9646;';ca=url;}
-function updateReading(id,btn){var page=prompt('{% trans "Current page number?" %}');if(!page||isNaN(page))return;fetch('/library/reading/'+id+'/update/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded','X-CSRFToken':csrfToken},body:'page='+parseInt(page)}).then(function(r){return r.json();}).then(function(d){btn.textContent=d.progress_pct+'%';});}
-
-function openEditModal(pk,title,desc,access,pages,type){
-  document.getElementById('edit-title').value=title;
-  document.getElementById('edit-desc').value=desc;
-  document.getElementById('edit-access').value=access;
-  document.getElementById('edit-pages').value=pages||'';
-  document.getElementById('edit-pages-group').style.display=type==='TEXT'?'block':'none';
-  document.getElementById('edit-lib-form').action='/library/'+pk+'/edit/';
-  document.getElementById('edit-modal').style.display='flex';
-}
+function togglePlay(btn,url){var p=document.getElementById('audio-player');if(ca===url&&!p.paused){p.pause();btn.innerHTML='&#9654;';ca=null;return;}p.src=url;p.style.display='block';p.play();btn.innerHTML='&#9646;&#9646;';ca=url;}
+function updateReading(id,btn){var page=prompt('Page number?');if(!page||isNaN(page))return;fetch('/library/reading/'+id+'/update/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded','X-CSRFToken':csrfToken},body:'page='+parseInt(page)}).then(function(r){return r.json();}).then(function(d){btn.textContent=d.progress_pct+'%';});}
+function openEditModal(pk,title,desc,access,pages,type){document.getElementById('edit-title').value=title;document.getElementById('edit-desc').value=desc;document.getElementById('edit-access').value=access;document.getElementById('edit-pages').value=pages||'';document.getElementById('edit-pages-group').style.display=type==='TEXT'?'block':'none';document.getElementById('edit-lib-form').action='/library/'+pk+'/edit/';document.getElementById('edit-modal').style.display='flex';}
 function closeModal(){document.getElementById('edit-modal').style.display='none';}
 document.getElementById('edit-modal').addEventListener('click',function(e){if(e.target===this)closeModal();});
-
-function deleteItem(pk,btn){
-  if(!confirm(msgDeleteItem))return;
-  var form=document.createElement('form');form.method='POST';form.action='/library/'+pk+'/delete/';
-  var csrf=document.createElement('input');csrf.type='hidden';csrf.name='csrfmiddlewaretoken';csrf.value=csrfToken;
-  form.appendChild(csrf);document.body.appendChild(form);form.submit();
-}
+function deleteItem(pk,btn){if(!confirm('Delete this item?'))return;var form=document.createElement('form');form.method='POST';form.action='/library/'+pk+'/delete/';var csrf=document.createElement('input');csrf.type='hidden';csrf.name='csrfmiddlewaretoken';csrf.value=csrfToken;form.appendChild(csrf);document.body.appendChild(form);form.submit();}
 </script>
 {% endblock %}

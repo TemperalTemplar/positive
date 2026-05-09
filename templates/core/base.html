@@ -192,6 +192,8 @@ progress::-moz-progress-bar{background:var(--accent);border-radius:2px}
   <a href="{% url 'settings' %}" onclick="closeMobileNav()" {% if request.resolver_match.url_name == 'settings' %}aria-current="page"{% endif %}>{% trans "Settings" %}</a>
   {% if request.user.is_superuser or request.user.profile.role == 'ARCHITECT' %}
   <a href="{% url 'approvals' %}" onclick="closeMobileNav()" style="color:var(--warn);border-color:var(--warn)" {% if request.resolver_match.url_name == 'approvals' %}aria-current="page"{% endif %}>{% trans "Approvals" %}</a>
+  <a href="/group/" onclick="closeMobileNav()" style="color:var(--accent2);border-color:var(--accent2)">{% trans "Group" %}</a>
+  <a href="/search/" onclick="closeMobileNav()">&#128269; {% trans "Search" %}</a>
   {% endif %}
   <form method="post" action="{% url 'logout' %}" style="width:260px">
     {% csrf_token %}
@@ -213,6 +215,8 @@ progress::-moz-progress-bar{background:var(--accent);border-radius:2px}
     {% if request.user.is_superuser or request.user.profile.role == 'ARCHITECT' %}
     <a href="{% url 'approvals' %}" class="{% block nav_approvals %}{% endblock %}" style="color:var(--warn);border-color:var(--warn)" {% if request.resolver_match.url_name == 'approvals' %}aria-current="page"{% endif %}>{% trans "Approvals" %}</a>
     {% endif %}
+    <a href="/group/" style="color:var(--accent2);border-color:var(--accent2)">{% trans "Group" %}</a>
+    <a href="/search/" title="Search">&#128269;</a>
   </nav>
 
   <div class="user-chip">
