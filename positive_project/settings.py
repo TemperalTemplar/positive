@@ -46,7 +46,8 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-LANGUAGES = [('en', _('English')),('es', _('Spanish')),('fr', _('French')),('de', _('German')),('pt', _('Portuguese')),('ar', _('Arabic')),('zh-hans', _('Chinese (Simplified)')),('ja', _('Japanese')),('ko', _('Korean')),('ru', _('Russian')),('tr', _('Turkish')),]
+LANGUAGES = [('en', _('English')),('es', _('Spanish')),('fr', _('French')),('de', _('German')),('pt', _('Portuguese')),('ar', _('Arabic')),('zh-hans', _('Chinese (Simplified)')),('ja', _('Japanese')),('ko', _('Korean')),('ru', _('Russian')),('tr', _('Turkish')),
+    ('it', _('Italian')),]
 
 LOCALE_PATHS = [BASE_DIR / 'locale']
 STATIC_URL = '/static/'

@@ -1,0 +1,169 @@
+# POSITIVE — Sovereign Intent Engine
+# Italian Translation
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
+
+msgid "Dashboard"
+msgstr "Pannello"
+
+msgid "Library"
+msgstr "Biblioteca"
+
+msgid "Vision Boards"
+msgstr "Bacheche della Visione"
+
+msgid "Timers"
+msgstr "Timer"
+
+msgid "Settings"
+msgstr "Impostazioni"
+
+msgid "Approvals"
+msgstr "Approvazioni"
+
+msgid "logout"
+msgstr "esci"
+
+msgid "The Sanctuary"
+msgstr "Il Santuario"
+
+msgid "Session Type"
+msgstr "Tipo di Sessione"
+
+msgid "Meditation — 15 min"
+msgstr "Meditazione — 15 min"
+
+msgid "Morning Prayer — 10 min"
+msgstr "Preghiera del Mattino — 10 min"
+
+msgid "Deep Focus — 20 min"
+msgstr "Concentrazione Profonda — 20 min"
+
+msgid "Gratitude Practice — 5 min"
+msgstr "Pratica della Gratitudine — 5 min"
+
+msgid "Reading Session — 30 min"
+msgstr "Sessione di Lettura — 30 min"
+
+msgid "Custom…"
+msgstr "Personalizzato…"
+
+msgid "Begin Session"
+msgstr "Inizia Sessione"
+
+msgid "Reset"
+msgstr "Reimposta"
+
+msgid "Repository of Light"
+msgstr "Archivio della Luce"
+
+msgid "Enter a good thought, prayer, or gratitude…"
+msgstr "Inserisci un buon pensiero, una preghiera o gratitudine…"
+
+msgid "Good Thought"
+msgstr "Buon Pensiero"
+
+msgid "Prayer"
+msgstr "Preghiera"
+
+msgid "Gratitude"
+msgstr "Gratitudine"
+
+msgid "Log Intent"
+msgstr "Registra Intenzione"
+
+msgid "Recent Entries"
+msgstr "Voci Recenti"
+
+msgid "Mark Answered"
+msgstr "Segna come Esaudita"
+
+msgid "Answered"
+msgstr "Esaudita"
+
+msgid "Manifestation"
+msgstr "Manifestazione"
+
+msgid "Thoughts"
+msgstr "Pensieri"
+
+msgid "Prayers"
+msgstr "Preghiere"
+
+msgid "Reading Hub"
+msgstr "Centro di Lettura"
+
+msgid "Prayer Tracker"
+msgstr "Tracciamento Preghiere"
+
+msgid "Active"
+msgstr "Attive"
+
+msgid "ENTER THE SANCTUARY"
+msgstr "ENTRA NEL SANTUARIO"
+
+msgid "Don't have an account?"
+msgstr "Non hai un account?"
+
+msgid "Request Access"
+msgstr "Richiedi Accesso"
+
+msgid "Username"
+msgstr "Nome utente"
+
+msgid "Password"
+msgstr "Password"
+
+msgid "Confirm Password"
+msgstr "Conferma Password"
+
+msgid "SUBMIT REQUEST"
+msgstr "INVIA RICHIESTA"
+
+msgid "Back to login"
+msgstr "Torna al login"
+
+msgid "Approve"
+msgstr "Approva"
+
+msgid "Deny"
+msgstr "Rifiuta"
+
+msgid "Save"
+msgstr "Salva"
+
+msgid "Cancel"
+msgstr "Annulla"
+
+msgid "Delete this entry?"
+msgstr "Eliminare questa voce?"
+
+msgid "SOVEREIGN INTENT ENGINE"
+msgstr "MOTORE D'INTENZIONE SOVRANA"
+
+msgid "Upload to Library"
+msgstr "Carica nella Biblioteca"
+
+msgid "Build Vision Board"
+msgstr "Crea Bacheca della Visione"
+
+msgid "Save Timer"
+msgstr "Salva Timer"
+
+msgid "Save Profile"
+msgstr "Salva Profilo"
+
+msgid "READY"
+msgstr "PRONTO"
+
+msgid "PAUSED"
+msgstr "IN PAUSA"
+
+msgid "IN PROGRESS"
+msgstr "IN CORSO"
+
+msgid "COMPLETE"
+msgstr "COMPLETATO"
