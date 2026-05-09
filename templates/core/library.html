@@ -58,7 +58,7 @@
         <div style="font-size:9px;color:var(--muted)">{{ item.get_access_level_display }}</div>
       </div>
       <div style="display:flex;gap:4px;flex-shrink:0">
-        <a href="{{ item.file.url }}" target="_blank" class="btn btn-sm">{% trans "Play" %}</a>
+        {% if item.file %}<a href="{{ item.file.url }}" target="_blank" class="btn btn-sm">{% trans "Play" %}</a>{% endif %}
         {% if item.owner == request.user %}
         <button onclick="openEditModal({{ item.pk }},'{{ item.title|escapejs }}','{{ item.description|escapejs }}','{{ item.access_level }}',null,'VIDEO')" class="btn btn-sm btn-muted">{% trans "edit" %}</button>
         <button onclick="deleteItem({{ item.pk }},this)" class="btn btn-sm btn-danger">&#x2715;</button>
@@ -77,7 +77,7 @@
         <div style="font-size:9px;color:var(--muted)">{% if item.total_pages %}{{ item.total_pages }} {% trans "pages" %} · {% endif %}{{ item.get_access_level_display }}</div>
       </div>
       <div style="display:flex;gap:4px;flex-shrink:0">
-        <a href="{{ item.file.url }}" target="_blank" class="btn btn-sm">{% trans "Read" %}</a>
+        {% if item.file %}<a href="{{ item.file.url }}" target="_blank" class="btn btn-sm">{% trans "Read" %}</a>{% else %}<span style='font-size:10px;color:var(--muted)'>No file</span>{% endif %}
         <button class="btn btn-sm btn-muted" onclick="updateReading({{ item.id }},this)">{% trans "Track" %}</button>
         {% if item.owner == request.user %}
         <button onclick="openEditModal({{ item.pk }},'{{ item.title|escapejs }}','{{ item.description|escapejs }}','{{ item.access_level }}',{{ item.total_pages|default:'null' }},'TEXT')" class="btn btn-sm btn-muted">{% trans "edit" %}</button>
