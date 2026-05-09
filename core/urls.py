@@ -36,6 +36,8 @@ urlpatterns = [
 
     # Settings
     path('settings/', views.profile_settings, name='settings'),
+    path('settings/password/', views.change_password, name='change_password'),
+    path('settings/avatar/', views.update_avatar, name='update_avatar'),
 
     # Group Hub
     path('group/', views.group_hub_view, name='group_hub'),

@@ -5,6 +5,8 @@
 {% block content %}
 <div class="grid-2">
 <div>
+
+  <!-- RELAY PROFILE -->
   <div class="panel">
     <div class="panel-title">{% trans "Your Relay Profile" %}</div>
     <form method="post">
@@ -21,21 +23,84 @@
       <button type="submit" class="btn btn-primary" style="width:100%">{% trans "Save Profile" %}</button>
     </form>
   </div>
+
+  <!-- CHANGE PASSWORD -->
+  <div class="panel">
+    <div class="panel-title">{% trans "Change Password" %}</div>
+    <form method="post" action="{% url 'change_password' %}">
+      {% csrf_token %}
+      <div class="form-group"><label class="form-label">{% trans "Current Password" %}</label><input type="password" name="old_password" required autocomplete="current-password"></div>
+      <div class="form-group"><label class="form-label">{% trans "New Password" %}</label><input type="password" name="new_password1" required autocomplete="new-password"></div>
+      <div class="form-group"><label class="form-label">{% trans "Confirm New Password" %}</label><input type="password" name="new_password2" required autocomplete="new-password"></div>
+      <button type="submit" class="btn btn-primary" style="width:100%">{% trans "Change Password" %}</button>
+    </form>
+  </div>
+
 </div>
 <div>
+
+  <!-- AVATAR & APPEARANCE -->
+  <div class="panel" style="margin-bottom:12px">
+    <div class="panel-title">{% trans "Avatar & Appearance" %}</div>
+
+    <!-- Avatar preview -->
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
+      <div id="avatar-preview" style="width:64px;height:64px;border-radius:50%;background:rgba(0,212,160,0.15);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--accent);font-weight:bold;font-family:'Courier New',monospace">
+        {{ profile.avatar_initial|default:request.user.username|slice:":2"|upper }}
+      </div>
+      <div>
+        <div style="font-size:12px;color:var(--text);margin-bottom:4px">{{ request.user.username }}</div>
+        <div style="font-size:10px;color:var(--muted)">{{ profile.role }}</div>
+      </div>
+    </div>
+
+    <!-- Avatar initial -->
+    <div class="form-group">
+      <label class="form-label">{% trans "Avatar Initials (1-2 characters)" %}</label>
+      <input type="text" id="avatar-initial" maxlength="2" value="{{ profile.avatar_initial|default:request.user.username|slice:':2'|upper }}" oninput="updateAvatarPreview()" style="text-transform:uppercase">
+    </div>
+
+    <!-- Avatar color -->
+    <div class="form-group">
+      <label class="form-label">{% trans "Avatar Color" %}</label>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+        <button onclick="setAvatarColor('#00d4a0',this)" class="color-btn" style="background:#00d4a0" title="Teal" aria-label="Teal"></button>
+        <button onclick="setAvatarColor('#7f77dd',this)" class="color-btn" style="background:#7f77dd" title="Purple" aria-label="Purple"></button>
+        <button onclick="setAvatarColor('#ef9f27',this)" class="color-btn" style="background:#ef9f27" title="Amber" aria-label="Amber"></button>
+        <button onclick="setAvatarColor('#e24b4a',this)" class="color-btn" style="background:#e24b4a" title="Red" aria-label="Red"></button>
+        <button onclick="setAvatarColor('#4a9de2',this)" class="color-btn" style="background:#4a9de2" title="Blue" aria-label="Blue"></button>
+        <button onclick="setAvatarColor('#e24ab5',this)" class="color-btn" style="background:#e24ab5" title="Pink" aria-label="Pink"></button>
+        <button onclick="setAvatarColor('#4ae27a',this)" class="color-btn" style="background:#4ae27a" title="Green" aria-label="Green"></button>
+        <button onclick="setAvatarColor('#ffffff',this)" class="color-btn" style="background:#ffffff;border-color:#444" title="White" aria-label="White"></button>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" style="width:100%;margin-bottom:12px" onclick="saveAvatar()">{% trans "Save Avatar" %}</button>
+
+    <!-- Theme toggle -->
+    <div class="panel-title" style="margin-top:4px">{% trans "Theme" %}</div>
+    <div style="display:flex;gap:8px;margin-top:8px">
+      <button onclick="setTheme('dark')" class="btn btn-sm" id="theme-dark" style="flex:1">&#9790; {% trans "Dark" %}</button>
+      <button onclick="setTheme('light')" class="btn btn-sm btn-muted" id="theme-light" style="flex:1">&#9728; {% trans "Light" %}</button>
+      <button onclick="setTheme('high-contrast')" class="btn btn-sm btn-muted" id="theme-hc" style="flex:1">&#9650; {% trans "High Contrast" %}</button>
+    </div>
+    <div style="margin-top:8px;font-size:10px;color:var(--muted)">{% trans "Theme is saved in your browser and persists across visits." %}</div>
+  </div>
+
+  <!-- SERVER CONFIG & ACCOUNT -->
   <div class="panel" style="margin-bottom:12px">
     <div class="panel-title">{% trans "Server Config" %}</div>
     <div style="font-size:10px;color:var(--muted);line-height:1.8">
-      {% trans "Set these in your" %} <code style="color:var(--accent)">.env</code> {% trans "file, then restart the container" %}:<br><br>
-      <code style="color:var(--muted)">DISCORD_WEBHOOK=https://discord.com/api/webhooks/...</code><br>
-      <code style="color:var(--muted)">ROCKETCHAT_WEBHOOK=https://your-rc.../hooks/...</code><br>
+      {% trans "Set these in your" %} <code style="color:var(--accent)">.env</code> {% trans "file, then restart" %}:<br><br>
+      <code style="color:var(--muted)">DISCORD_WEBHOOK=...</code><br>
+      <code style="color:var(--muted)">ROCKETCHAT_WEBHOOK=...</code><br>
       <code style="color:var(--muted)">EMAIL_HOST=smtp.gmail.com</code><br>
       <code style="color:var(--muted)">EMAIL_HOST_USER=you@gmail.com</code><br>
-      <code style="color:var(--muted)">EMAIL_HOST_PASSWORD=your-app-password</code><br>
+      <code style="color:var(--muted)">EMAIL_HOST_PASSWORD=app-password</code>
     </div>
-    <div style="margin-top:12px;font-size:10px;color:var(--muted)">{% trans "Restart after editing .env" %}:</div>
-    <code style="font-size:10px;color:var(--accent);display:block;margin-top:4px">docker compose restart</code>
+    <code style="font-size:10px;color:var(--accent);display:block;margin-top:8px">docker compose restart</code>
   </div>
+
   <div class="panel">
     <div class="panel-title">{% trans "Account" %}</div>
     <div style="font-size:12px;line-height:2">
@@ -44,9 +109,100 @@
       {% trans "Joined" %}: <span style="color:var(--muted)">{{ request.user.date_joined|date:"M d, Y" }}</span>
     </div>
     {% if request.user.is_superuser %}
-    <a href="/admin/" class="btn btn-sm" style="margin-top:12px;display:inline-block" target="_blank">{% trans "Admin Panel" %} — {% trans "Manage Users" %}</a>
+    <a href="/admin/" class="btn btn-sm" style="margin-top:12px;display:inline-block" target="_blank">{% trans "Admin Panel" %}</a>
     {% endif %}
   </div>
+
 </div>
 </div>
+
+<style>
+.color-btn{width:32px;height:32px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:transform 0.15s,border-color 0.15s}
+.color-btn:hover,.color-btn.selected{transform:scale(1.2);border-color:#fff}
+
+/* Light theme */
+[data-theme="light"]{
+  --bg:#f5f5f5;--panel:#ffffff;--accent:#008060;--accent2:#5a52b0;
+  --text:#1a1a1a;--muted:#888;--border:#ddd;--input:#f0f0f0;
+  --warn:#d4820a;--danger:#cc3333;
+}
+</style>
+
+<script>
+var csrfToken = '{{ csrf_token }}';
+var currentColor = localStorage.getItem('pos_avatar_color') || '#00d4a0';
+
+// Init avatar color
+(function(){
+  var preview = document.getElementById('avatar-preview');
+  if(preview && currentColor){
+    preview.style.borderColor = currentColor;
+    preview.style.color = currentColor;
+    preview.style.background = currentColor + '22';
+  }
+  // Mark selected color btn
+  document.querySelectorAll('.color-btn').forEach(function(b){
+    if(b.style.background === currentColor) b.classList.add('selected');
+  });
+  // Init theme buttons
+  var theme = localStorage.getItem('pos_theme') || 'dark';
+  updateThemeBtns(theme);
+})();
+
+function updateAvatarPreview(){
+  var val = document.getElementById('avatar-initial').value.toUpperCase().slice(0,2);
+  document.getElementById('avatar-preview').textContent = val || '??';
+}
+
+function setAvatarColor(color, btn){
+  currentColor = color;
+  var preview = document.getElementById('avatar-preview');
+  preview.style.borderColor = color;
+  preview.style.color = color;
+  preview.style.background = color + '22';
+  document.querySelectorAll('.color-btn').forEach(function(b){ b.classList.remove('selected'); });
+  btn.classList.add('selected');
+}
+
+function saveAvatar(){
+  var initial = document.getElementById('avatar-initial').value.toUpperCase().slice(0,2);
+  fetch('{% url "update_avatar" %}',{
+    method:'POST',
+    headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'},
+    body:'color='+encodeURIComponent(currentColor)+'&initial='+encodeURIComponent(initial)
+  }).then(function(r){return r.json();}).then(function(d){
+    if(d.status==='ok'){
+      localStorage.setItem('pos_avatar_color', currentColor);
+      // Update all avatars on page
+      document.querySelectorAll('.avatar').forEach(function(a){
+        a.textContent = d.initial;
+        a.style.borderColor = d.color;
+        a.style.color = d.color;
+        a.style.background = d.color + '22';
+      });
+      alert('{% trans "Avatar saved!" %}');
+    }
+  });
+}
+
+function setTheme(theme){
+  if(theme === 'dark'){
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('pos_theme','dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('pos_theme', theme);
+  }
+  updateThemeBtns(theme);
+}
+
+function updateThemeBtns(theme){
+  ['dark','light','hc'].forEach(function(t){
+    var btn = document.getElementById('theme-'+t);
+    if(btn) btn.className = 'btn btn-sm' + (
+      (t==='dark'&&theme==='dark')||(t==='light'&&theme==='light')||(t==='hc'&&theme==='high-contrast') ? '' : ' btn-muted'
+    );
+  });
+}
+</script>
 {% endblock %}

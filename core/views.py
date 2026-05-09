@@ -708,3 +708,46 @@ def delete_community_prayer(request, pk):
 
 # Fix the import at top
 import django.db.models as django_models
+
+
+# ============ PASSWORD CHANGE & AVATAR ============
+
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        old = request.POST.get('old_password', '')
+        new1 = request.POST.get('new_password1', '')
+        new2 = request.POST.get('new_password2', '')
+        error = None
+        if not request.user.check_password(old):
+            error = 'Current password is incorrect.'
+        elif new1 != new2:
+            error = 'New passwords do not match.'
+        elif len(new1) < 8:
+            error = 'Password must be at least 8 characters.'
+        else:
+            request.user.set_password(new1)
+            request.user.save()
+            update_session_auth_hash(request, request.user)
+            messages.success(request, 'Password changed successfully.')
+            return redirect('settings')
+        messages.error(request, error)
+    return redirect('settings')
+
+
+@login_required
+@require_POST
+def update_avatar(request):
+    color = request.POST.get('color', '#00d4a0')
+    initial = request.POST.get('initial', request.user.username[:2].upper())
+    profile, _ = UserProfile.objects.get_or_create(user=request.user)
+    # Store avatar preferences in profile
+    profile.avatar_initial = initial[:2].upper()
+    profile.save()
+    # Store color in session
+    request.session['avatar_color'] = color
+    return JsonResponse({'status': 'ok', 'initial': profile.avatar_initial, 'color': color})

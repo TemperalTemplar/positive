@@ -213,7 +213,6 @@ progress::-moz-progress-bar{background:var(--accent);border-radius:2px}
     {% if request.user.is_superuser or request.user.profile.role == 'ARCHITECT' %}
     <a href="{% url 'approvals' %}" class="{% block nav_approvals %}{% endblock %}" style="color:var(--warn);border-color:var(--warn)" {% if request.resolver_match.url_name == 'approvals' %}aria-current="page"{% endif %}>{% trans "Approvals" %}</a>
     {% endif %}
-    <a href="{% url 'group_hub' %}" class="{% block nav_group %}{% endblock %}" style="color:var(--accent2);border-color:var(--accent2)" {% if request.resolver_match.url_name == 'group_hub' %}aria-current="page"{% endif %}>{% trans "Group" %}</a>
   </nav>
 
   <div class="user-chip">
@@ -286,6 +285,12 @@ progress::-moz-progress-bar{background:var(--accent);border-radius:2px}
 
 <script>
 // ── Accessibility ──
+// Apply light theme CSS
+var lightCSS = `[data-theme="light"]{--bg:#f5f5f5;--panel:#ffffff;--accent:#008060;--accent2:#5a52b0;--text:#1a1a1a;--muted:#888;--border:#ddd;--input:#f0f0f0;--warn:#d4820a;--danger:#cc3333;}`;
+var styleEl = document.createElement('style');
+styleEl.textContent = lightCSS;
+document.head.appendChild(styleEl);
+
 (function(){
   var theme=localStorage.getItem('pos_theme');
   var fs=localStorage.getItem('pos_fontsize');
@@ -293,6 +298,15 @@ progress::-moz-progress-bar{background:var(--accent);border-radius:2px}
   if(fs)document.documentElement.setAttribute('data-fontsize',fs);
   if(theme==='high-contrast'){var b=document.getElementById('btn-hc');if(b)b.setAttribute('aria-pressed','true');}
   if(fs){var b=document.getElementById('btn-fs');if(b)b.textContent=fs==='large'?'A++':fs==='xlarge'?'A':'A+';}
+  // Apply avatar color
+  var avatarColor=localStorage.getItem('pos_avatar_color');
+  if(avatarColor){
+    document.querySelectorAll('.avatar').forEach(function(a){
+      a.style.borderColor=avatarColor;
+      a.style.color=avatarColor;
+      a.style.background=avatarColor+'22';
+    });
+  }
 })();
 
 function toggleHighContrast(){
