@@ -72,22 +72,22 @@ USE_TZ = True
 # Supported languages
 from django.utils.translation import gettext_lazy as _
 LANGUAGES = [
-    ('en', _('English')),
-    ('es', _('Spanish')),
-    ('fr', _('French')),
-    ('de', _('German')),
-    ('pt', _('Portuguese')),
-    ('ar', _('Arabic')),
-    ('zh-hans', _('Chinese (Simplified)')),
-    ('ja', _('Japanese')),
-    ('ko', _('Korean')),
-    ('ru', _('Russian')),
-    ('tr', _('Turkish')),
-    ('it', _('Italian')),
-    ('he', _('Hebrew')),
-    ('ur', _('Urdu')),
-    ('fa', _('Persian/Farsi')),
-    ('hi', _('Hindi')),
+    ('en', 'English'),
+    ('es', 'Español'),
+    ('fr', 'Français'),
+    ('de', 'Deutsch'),
+    ('pt', 'Português'),
+    ('ar', 'العربية'),
+    ('zh-hans', '中文'),
+    ('ja', '日本語'),
+    ('ko', '한국어'),
+    ('ru', 'Русский'),
+    ('tr', 'Türkçe'),
+    ('it', 'Italiano'),
+    ('he', 'עברית'),
+    ('ur', 'اردو'),
+    ('fa', 'فارسی'),
+    ('hi', 'हिन्दी'),
 ]
 
 LOCALE_PATHS = [BASE_DIR / 'locale']
