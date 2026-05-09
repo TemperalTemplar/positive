@@ -1,0 +1,9 @@
+data/
+media/
+staticfiles/
+__pycache__/
+*.pyc
+*.pyo
+.env
+.git
+*.zip

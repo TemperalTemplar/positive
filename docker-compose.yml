@@ -1,0 +1,22 @@
+
+services:
+  positive:
+    build: .
+    container_name: positive_engine
+    ports:
+      - "${PORT:-8178}:8000"
+    volumes:
+      - ./data:/app/data
+      - ./media:/app/media
+    environment:
+      - SECRET_KEY=${SECRET_KEY:-change-this-secret-key-before-production}
+      - DEBUG=${DEBUG:-False}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS:-*}
+      - DISCORD_WEBHOOK=${DISCORD_WEBHOOK:-}
+      - ROCKETCHAT_WEBHOOK=${ROCKETCHAT_WEBHOOK:-}
+      - EMAIL_HOST=${EMAIL_HOST:-smtp.gmail.com}
+      - EMAIL_PORT=${EMAIL_PORT:-587}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER:-}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD:-}
+      - DEFAULT_FROM_EMAIL=${DEFAULT_FROM_EMAIL:-positive@localhost}
+    restart: unless-stopped

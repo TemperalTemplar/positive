@@ -1,0 +1,58 @@
+{% extends "core/base.html" %}
+{% block title %}Vision Boards{% endblock %}
+{% block nav_vb %}active{% endblock %}
+{% block content %}
+<div class="grid-2">
+<div>
+  <div class="panel">
+    <div class="panel-title">Your Vision Boards</div>
+    {% for board in boards %}
+    <div style="padding:10px;background:var(--input);border-radius:6px;border:1px solid var(--border);margin-bottom:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div style="font-size:13px;margin-bottom:3px">{{ board.name }}</div>
+          <div style="font-size:9px;color:var(--muted)">{{ board.images.count }} image{{ board.images.count|pluralize }} · {{ board.created_at|date:"M d, Y" }} · {% if board.is_public %}Public{% else %}Private{% endif %}</div>
+        </div>
+        <div style="display:flex;gap:6px;flex-shrink:0">
+          <a href="{% url 'view_vision_board' board.slug %}" target="_blank" class="btn btn-sm">View</a>
+          {% if board.html_file %}<a href="/media/{{ board.html_file }}" download class="btn btn-sm btn-muted">Download</a>{% endif %}
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div style="font-size:11px;color:var(--muted)">No vision boards yet. Create your first one.</div>
+    {% endfor %}
+    {% if public_boards %}
+    <div class="panel-title" style="margin-top:16px">Community Boards</div>
+    {% for board in public_boards %}
+    <div style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+      <span style="font-size:11px">{{ board.name }} <span style="color:var(--muted)">by {{ board.owner.username }}</span></span>
+      <a href="{% url 'view_vision_board' board.slug %}" target="_blank" class="btn btn-sm">View</a>
+    </div>
+    {% endfor %}
+    {% endif %}
+  </div>
+</div>
+<div>
+  <div class="panel">
+    <div class="panel-title">Create New Board</div>
+    <form method="post" action="{% url 'create_vision_board' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group"><label class="form-label">Board Name</label><input type="text" name="name" placeholder="My 2026 Goals" required></div>
+      <div class="form-group"><label class="form-label">Images (select multiple)</label><input type="file" name="images" multiple accept="image/*"></div>
+      <div class="form-group"><label class="form-label">Caption for image 1 (optional)</label><input type="text" name="caption_0"></div>
+      <div class="form-group"><label class="form-label">Caption for image 2 (optional)</label><input type="text" name="caption_1"></div>
+      <div class="form-group"><label class="form-label">Caption for image 3 (optional)</label><input type="text" name="caption_2"></div>
+      <div class="checkbox-row" style="margin-bottom:12px">
+        <input type="checkbox" name="is_public" id="is_public">
+        <label for="is_public">Make public (visible to all users + relay to Discord/RC)</label>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%">Build Vision Board</button>
+    </form>
+    <div style="margin-top:12px;font-size:10px;color:var(--muted);line-height:1.7">
+      Your board is rendered as a standalone HTML file you can download, share, or display on any device — even offline.
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

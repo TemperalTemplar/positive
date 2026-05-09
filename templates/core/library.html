@@ -1,0 +1,94 @@
+{% extends "core/base.html" %}
+{% block title %}Library{% endblock %}
+{% block nav_lib %}active{% endblock %}
+{% block content %}
+<div class="grid-2">
+<div>
+  <div class="panel">
+    <div class="panel-title">Audio — Chants &amp; Guides</div>
+    {% for item in audio %}
+    <div class="media-row">
+      <button class="play-btn" onclick="togglePlay(this,'{{ item.file.url }}')" title="Play">&#9654;</button>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ item.title }}</div>
+        <div style="font-size:9px;color:var(--muted)">{{ item.get_access_level_display }}{% if item.description %} · {{ item.description|truncatechars:40 }}{% endif %}</div>
+      </div>
+    </div>
+    {% empty %}<div style="font-size:11px;color:var(--muted)">No audio uploaded yet.</div>{% endfor %}
+    <audio id="audio-player" style="width:100%;margin-top:10px;display:none" controls></audio>
+  </div>
+  <div class="panel">
+    <div class="panel-title">Video — Meditations &amp; Prayers</div>
+    {% for item in video %}
+    <div class="media-row">
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px">{{ item.title }}</div>
+        <div style="font-size:9px;color:var(--muted)">{{ item.get_access_level_display }}</div>
+      </div>
+      <a href="{{ item.file.url }}" target="_blank" class="btn btn-sm">Play</a>
+    </div>
+    {% empty %}<div style="font-size:11px;color:var(--muted)">No video uploaded yet.</div>{% endfor %}
+  </div>
+  <div class="panel">
+    <div class="panel-title">Texts — Books &amp; Scripture</div>
+    {% for item in text %}
+    <div class="media-row">
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px">{{ item.title }}</div>
+        <div style="font-size:9px;color:var(--muted)">{% if item.total_pages %}{{ item.total_pages }} pages · {% endif %}{{ item.get_access_level_display }}</div>
+      </div>
+      <div style="display:flex;gap:5px;flex-shrink:0">
+        <a href="{{ item.file.url }}" target="_blank" class="btn btn-sm">Read</a>
+        <button class="btn btn-sm btn-muted" onclick="updateReading({{ item.id }},this)">Track</button>
+      </div>
+    </div>
+    {% empty %}<div style="font-size:11px;color:var(--muted)">No texts uploaded yet.</div>{% endfor %}
+  </div>
+</div>
+<div>
+  <div class="panel">
+    <div class="panel-title">Upload to Library</div>
+    <form method="post" action="{% url 'upload_library_item' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group"><label class="form-label">Title</label><input type="text" name="title" required placeholder="e.g. Morning Chant"></div>
+      <div class="form-group"><label class="form-label">Type</label>
+        <select name="media_type" id="type-sel" onchange="typeChanged()">
+          <option value="AUDIO">Audio (MP3, WAV)</option>
+          <option value="VIDEO">Video (MP4, MOV)</option>
+          <option value="TEXT">Text (PDF, TXT, EPUB)</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Access</label>
+        <select name="access_level">
+          <option value="PRIVATE">Private (you only)</option>
+          <option value="GLOBAL">Global (all users)</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Description (optional)</label><textarea name="description" style="height:50px"></textarea></div>
+      <div class="form-group" id="pages-group" style="display:none"><label class="form-label">Total Pages</label><input type="number" name="total_pages" min="1" placeholder="e.g. 200"></div>
+      <div class="form-group"><label class="form-label">File</label><input type="file" name="file" accept=".mp3,.wav,.ogg,.mp4,.mov,.webm,.pdf,.txt,.epub" required></div>
+      <button type="submit" class="btn btn-primary" style="width:100%">Upload</button>
+    </form>
+  </div>
+</div>
+</div>
+<script>
+function typeChanged(){document.getElementById('pages-group').style.display=document.getElementById('type-sel').value==='TEXT'?'block':'none';}
+var ca=null;
+function togglePlay(btn,url){
+  var p=document.getElementById('audio-player');
+  if(ca===url&&!p.paused){p.pause();btn.innerHTML='&#9654;';ca=null;return;}
+  document.querySelectorAll('.play-btn').forEach(function(b){b.innerHTML='&#9654;';});
+  p.src=url;p.style.display='block';p.play();btn.innerHTML='&#9646;&#9646;';ca=url;
+}
+function updateReading(id,btn){
+  var page=prompt('Current page number?');
+  if(!page||isNaN(page))return;
+  fetch('/library/reading/'+id+'/update/',{
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded','X-CSRFToken':'{{ csrf_token }}'},
+    body:'page='+parseInt(page)
+  }).then(function(r){return r.json();}).then(function(d){btn.textContent=d.progress_pct+'%';});
+}
+</script>
+{% endblock %}

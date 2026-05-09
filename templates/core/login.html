@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Enter the Sanctuary | POSITIVE</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d0d0d;color:#e0e0e0;font-family:'Courier New',monospace;display:flex;align-items:center;justify-content:center;min-height:100vh}
+.box{background:#161616;border:1px solid #252525;border-radius:10px;padding:40px;width:340px}
+h1{color:#00d4a0;font-size:20px;letter-spacing:5px;text-align:center;margin-bottom:4px}
+.sub{color:#444;font-size:9px;text-align:center;letter-spacing:3px;margin-bottom:30px}
+.lbl{font-size:10px;color:#666;letter-spacing:1px;display:block;margin-bottom:4px;text-transform:uppercase}
+input{background:#0a0a0a;color:#e0e0e0;border:1px solid #252525;padding:10px;border-radius:6px;font-family:inherit;font-size:13px;width:100%;margin-bottom:14px;display:block}
+input:focus{outline:none;border-color:#00d4a0}
+button{background:#00d4a0;color:#000;border:none;padding:11px;border-radius:6px;font-family:inherit;font-size:12px;letter-spacing:2px;width:100%;cursor:pointer;font-weight:bold}
+button:hover{background:#00b88a}
+.err{color:#e24b4a;font-size:11px;margin-bottom:12px;padding:8px;background:rgba(226,75,74,0.08);border-radius:6px;border:1px solid rgba(226,75,74,0.2)}
+.divider{border:none;border-top:1px solid #252525;margin:20px 0}
+.register-link{text-align:center;font-size:11px;color:#555}
+.register-link a{color:#00d4a0;text-decoration:none}
+.register-link a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>POSITIVE</h1>
+  <div class="sub">SOVEREIGN INTENT ENGINE</div>
+  {% if form.errors %}<div class="err">Invalid credentials. Please try again.</div>{% endif %}
+  <form method="post">
+    {% csrf_token %}
+    <label class="lbl">Username</label>
+    <input type="text" name="username" autofocus autocomplete="username">
+    <label class="lbl">Password</label>
+    <input type="password" name="password" autocomplete="current-password">
+    <button type="submit">ENTER THE SANCTUARY</button>
+  </form>
+  <hr class="divider">
+  <div class="register-link">
+    Don't have an account? <a href="/register/">Request Access</a>
+  </div>
+</div>
+</body>
+</html>

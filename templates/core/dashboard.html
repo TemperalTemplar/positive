@@ -1,0 +1,271 @@
+{% extends "core/base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block nav_dash %}active{% endblock %}
+{% block content %}
+<div class="grid-3">
+
+<!-- LEFT: SANCTUARY -->
+<div>
+  <div class="panel">
+    <div class="panel-title">The Sanctuary</div>
+    <div class="timer-display" id="t-display">15:00</div>
+    <div style="text-align:center;font-size:10px;color:var(--muted);margin-bottom:12px;letter-spacing:2px" id="t-status">READY</div>
+    <div class="form-group">
+      <label class="form-label">Session Type</label>
+      <select id="t-preset" onchange="presetChanged()">
+        <option value="900">Meditation — 15 min</option>
+        <option value="600">Morning Prayer — 10 min</option>
+        <option value="1200">Deep Focus — 20 min</option>
+        <option value="300">Gratitude Practice — 5 min</option>
+        <option value="1800">Reading Session — 30 min</option>
+        <option value="0">Custom…</option>
+      </select>
+    </div>
+    <div id="custom-row" style="display:none" class="form-group">
+      <label class="form-label">Custom Duration (minutes)</label>
+      <input type="number" id="custom-min" value="10" min="1" max="240" oninput="customChanged()">
+    </div>
+    <button class="btn btn-primary" style="width:100%;margin-bottom:6px" id="t-btn" onclick="toggleTimer()">Begin Session</button>
+    <button class="btn btn-muted" style="width:100%" onclick="resetTimer()">Reset</button>
+    <div class="section-label" style="margin-top:14px">Quick Play</div>
+    {% for item in audio_items|slice:":4" %}
+    <div class="media-row">
+      <button class="play-btn" onclick="togglePlay(this,'{{ item.file.url }}')" title="Play {{ item.title }}">&#9654;</button>
+      <div style="flex:1;min-width:0">
+        <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px">{{ item.title }}</div>
+        <div style="font-size:9px;color:var(--muted)">AUDIO</div>
+      </div>
+    </div>
+    {% empty %}
+    <div style="font-size:11px;color:var(--muted);padding:6px 0">No audio yet. <a href="{% url 'library' %}">Upload in library</a>.</div>
+    {% endfor %}
+    <audio id="audio-player" style="width:100%;margin-top:8px;display:none" controls></audio>
+  </div>
+</div>
+
+<!-- CENTER: REPOSITORY OF LIGHT -->
+<div>
+  <div class="panel">
+    <div class="panel-title">Repository of Light</div>
+    <div class="form-group">
+      <textarea id="entry-content" placeholder="Enter a good thought, prayer, or gratitude…" style="height:80px;resize:vertical"></textarea>
+    </div>
+    <div style="display:flex;gap:5px;margin-bottom:8px">
+      <button type="button" class="btn btn-sm" id="cat-THOUGHT" data-cat="THOUGHT" onclick="setCat('THOUGHT')" style="flex:1;color:#a09ae0;border-color:#7f77dd">Good Thought</button>
+      <button type="button" class="btn btn-sm" id="cat-PRAYER" data-cat="PRAYER" onclick="setCat('PRAYER')" style="flex:1;color:var(--muted);border-color:var(--border)">Prayer</button>
+      <button type="button" class="btn btn-sm" id="cat-GRATITUDE" data-cat="GRATITUDE" onclick="setCat('GRATITUDE')" style="flex:1;color:var(--muted);border-color:var(--border)">Gratitude</button>
+    </div>
+    <div class="checkbox-row" style="margin-bottom:10px">
+      <input type="checkbox" id="share-grp">
+      <label for="share-grp">Share with group (posts to Discord / Rocket.Chat)</label>
+    </div>
+    <button class="btn btn-primary" style="width:100%" onclick="logEntry()">Log Intent</button>
+    <div style="margin-top:1px;font-size:9px;color:var(--muted);text-align:right" id="entry-feedback"></div>
+    <div class="section-label" style="margin-top:14px">Recent Entries</div>
+    <div id="entries-stream" style="max-height:340px;overflow-y:auto">
+      {% for entry in entries %}
+      <div class="entry-item {{ entry.category }}" id="entry-{{ entry.id }}">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <span class="tag tag-{{ entry.category }}">{{ entry.get_category_display }}</span>
+          <div style="display:flex;align-items:center;gap:6px">
+            <span style="font-size:9px;color:var(--muted)">{{ entry.created_at|date:"M d, H:i" }}{% if not entry.is_private %} · shared{% endif %}</span>
+            {% if entry.user == request.user %}
+            <button onclick="editEntry({{ entry.id }})" class="btn btn-sm btn-muted" style="padding:2px 7px;font-size:9px" title="Edit">edit</button>
+            <button onclick="deleteEntry({{ entry.id }})" class="btn btn-sm btn-danger" style="padding:2px 7px;font-size:9px" title="Delete">&#x2715;</button>
+            {% endif %}
+          </div>
+        </div>
+        <div class="entry-content-{{ entry.id }}" style="font-size:12px;line-height:1.5">{{ entry.content }}</div>
+        <div class="entry-edit-form-{{ entry.id }}" style="display:none;margin-top:6px">
+          <textarea class="entry-edit-text-{{ entry.id }}" style="height:60px;font-size:12px;margin-bottom:5px">{{ entry.content }}</textarea>
+          <div style="display:flex;gap:5px">
+            <button onclick="saveEdit({{ entry.id }})" class="btn btn-sm btn-primary">Save</button>
+            <button onclick="cancelEdit({{ entry.id }})" class="btn btn-sm btn-muted">Cancel</button>
+          </div>
+        </div>
+        {% if entry.category == 'PRAYER' and not entry.is_answered %}
+        <button onclick="markAnswered({{ entry.id }},this)" class="btn btn-sm btn-muted" style="margin-top:5px" id="answered-btn-{{ entry.id }}">Mark Answered</button>
+        {% elif entry.category == 'PRAYER' and entry.is_answered %}
+        <span style="font-size:9px;color:var(--accent);margin-top:4px;display:inline-block">&#10003; Answered</span>
+        {% endif %}
+      </div>
+      {% empty %}
+      <div style="font-size:11px;color:var(--muted)">No entries yet. Log your first intent above.</div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- RIGHT: MANIFESTATION -->
+<div>
+  <div class="panel">
+    <div class="panel-title">Manifestation</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:14px">
+      <div class="stat-card"><div class="stat-num" style="color:#a09ae0">{{ stats.thoughts }}</div><div class="stat-lbl">Thoughts</div></div>
+      <div class="stat-card"><div class="stat-num" style="color:var(--warn)">{{ stats.prayers_active }}</div><div class="stat-lbl">Prayers</div></div>
+      <div class="stat-card"><div class="stat-num">{{ stats.gratitude }}</div><div class="stat-lbl">Gratitude</div></div>
+    </div>
+    <div class="section-label">Vision Boards</div>
+    {% for board in boards %}
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--border)">
+      <span style="font-size:11px">{{ board.name }}</span>
+      <a href="{% url 'view_vision_board' board.slug %}" class="btn btn-sm" target="_blank">View</a>
+    </div>
+    {% empty %}
+    <div style="font-size:11px;color:var(--muted)">No boards yet. <a href="{% url 'vision_boards' %}">Create one</a>.</div>
+    {% endfor %}
+    <a href="{% url 'vision_boards' %}" class="btn btn-sm btn-muted" style="margin-top:8px;display:inline-block">Manage Boards</a>
+    <div class="section-label" style="margin-top:14px">Reading Hub</div>
+    {% for rp in reading %}
+    <div style="margin-bottom:10px">
+      <div style="font-size:11px;margin-bottom:2px">{{ rp.item.title }}</div>
+      <progress value="{{ rp.progress_pct }}" max="100"></progress>
+      <div style="font-size:9px;color:var(--muted)">{{ rp.progress_pct }}% · Page {{ rp.current_page }}{% if rp.item.total_pages %} of {{ rp.item.total_pages }}{% endif %}</div>
+    </div>
+    {% empty %}
+    <div style="font-size:11px;color:var(--muted)">No active reading. <a href="{% url 'library' %}">Visit library</a>.</div>
+    {% endfor %}
+    <div class="section-label" style="margin-top:14px">Prayer Tracker</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+      <div class="stat-card"><div class="stat-num" style="color:var(--warn)">{{ stats.prayers_active }}</div><div class="stat-lbl">Active</div></div>
+      <div class="stat-card"><div class="stat-num">{{ stats.prayers_answered }}</div><div class="stat-lbl">Answered</div></div>
+    </div>
+    <div class="section-label" style="margin-top:14px">Active Timers</div>
+    {% for timer in timers %}
+    <div style="font-size:11px;padding:5px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+      <span>{{ timer.title }}</span>
+      <span style="color:var(--muted)">{{ timer.duration_minutes }}min</span>
+    </div>
+    {% empty %}
+    <div style="font-size:11px;color:var(--muted)">No timers. <a href="{% url 'timers' %}">Create one</a>.</div>
+    {% endfor %}
+  </div>
+</div>
+</div>
+
+<script>
+var timerInterval=null,timerRunning=false,timerSecs=900,totalSecs=900,selCat='THOUGHT';
+var csrfToken='{{ csrf_token }}';
+
+function presetChanged(){
+  var v=document.getElementById('t-preset').value;
+  document.getElementById('custom-row').style.display=v==='0'?'block':'none';
+  if(!timerRunning&&v!=='0'){timerSecs=totalSecs=parseInt(v);updateDisp();}
+}
+function customChanged(){
+  var v=parseInt(document.getElementById('custom-min').value)||10;
+  if(!timerRunning){timerSecs=totalSecs=v*60;updateDisp();}
+}
+function updateDisp(){
+  var m=Math.floor(timerSecs/60),s=timerSecs%60;
+  document.getElementById('t-display').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+}
+function toggleTimer(){
+  var btn=document.getElementById('t-btn'),stat=document.getElementById('t-status');
+  if(timerRunning){
+    clearInterval(timerInterval);timerRunning=false;
+    btn.textContent='Resume Session';stat.textContent='PAUSED';
+  } else {
+    timerRunning=true;btn.textContent='Pause';stat.textContent='IN PROGRESS';
+    timerInterval=setInterval(function(){
+      if(timerSecs>0){timerSecs--;updateDisp();}
+      else{clearInterval(timerInterval);timerRunning=false;btn.textContent='Begin Session';stat.textContent='COMPLETE \u2713';}
+    },1000);
+  }
+}
+function resetTimer(){
+  clearInterval(timerInterval);timerRunning=false;
+  var sel=document.getElementById('t-preset');
+  if(sel.value==='0'){timerSecs=totalSecs=(parseInt(document.getElementById('custom-min').value)||10)*60;}
+  else{timerSecs=totalSecs=parseInt(sel.value);}
+  document.getElementById('t-btn').textContent='Begin Session';
+  document.getElementById('t-status').textContent='READY';
+  updateDisp();
+}
+function setCat(cat){
+  selCat=cat;
+  ['THOUGHT','PRAYER','GRATITUDE'].forEach(function(c){
+    var b=document.getElementById('cat-'+c);
+    if(c===cat){
+      if(c==='THOUGHT'){b.style.color='#a09ae0';b.style.borderColor='#7f77dd';}
+      else if(c==='PRAYER'){b.style.color='var(--warn)';b.style.borderColor='var(--warn)';}
+      else{b.style.color='var(--accent)';b.style.borderColor='var(--accent)';}
+    } else {
+      b.style.color='var(--muted)';b.style.borderColor='var(--border)';
+    }
+  });
+}
+function logEntry(){
+  var c=document.getElementById('entry-content').value.trim();
+  if(!c){document.getElementById('entry-feedback').textContent='Please write something first.';return;}
+  var shared=document.getElementById('share-grp').checked;
+  fetch('{% url "add_entry" %}',{
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded','X-CSRFToken':csrfToken},
+    body:'content='+encodeURIComponent(c)+'&category='+selCat+'&is_private='+(shared?'false':'true')
+  }).then(function(r){return r.json();}).then(function(d){
+    if(d.error){document.getElementById('entry-feedback').textContent=d.error;return;}
+    document.getElementById('entry-content').value='';
+    document.getElementById('entry-feedback').textContent='Logged.';
+    setTimeout(function(){document.getElementById('entry-feedback').textContent='';},2000);
+    var stream=document.getElementById('entries-stream');
+    var div=document.createElement('div');
+    div.className='entry-item '+d.category;
+    var answerBtn=d.category==='PRAYER'?'<button onclick="markAnswered('+d.id+',this)" class="btn btn-sm btn-muted" style="margin-top:5px">Mark Answered</button>':'';
+    div.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px"><span class="tag tag-'+d.category+'">'+d.category_display+'</span><span style="font-size:9px;color:var(--muted)">'+d.created_at+(shared?' · shared':'')+'</span></div><div style="font-size:12px;line-height:1.5">'+d.content+'</div>'+answerBtn;
+    stream.insertBefore(div,stream.firstChild);
+  }).catch(function(){document.getElementById('entry-feedback').textContent='Error saving.';});
+}
+function markAnswered(id,btn){
+  fetch('/entries/'+id+'/answered/',{
+    method:'POST',
+    headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'}
+  }).then(function(){
+    btn.replaceWith(Object.assign(document.createElement('span'),{textContent:'\u2713 Answered',style:'font-size:9px;color:var(--accent);margin-top:4px;display:inline-block'}));
+  });
+}
+var currentAudio=null;
+function togglePlay(btn,url){
+  var player=document.getElementById('audio-player');
+  if(currentAudio===url&&!player.paused){player.pause();btn.innerHTML='&#9654;';currentAudio=null;return;}
+  document.querySelectorAll('.play-btn').forEach(function(b){b.innerHTML='&#9654;';});
+  player.src=url;player.style.display='block';player.play();btn.innerHTML='&#9646;&#9646;';currentAudio=url;
+}
+function editEntry(id){
+  document.querySelector('.entry-content-'+id).style.display='none';
+  document.querySelector('.entry-edit-form-'+id).style.display='block';
+  var ta=document.querySelector('.entry-edit-text-'+id);
+  ta.focus();ta.setSelectionRange(ta.value.length,ta.value.length);
+}
+function cancelEdit(id){
+  document.querySelector('.entry-content-'+id).style.display='block';
+  document.querySelector('.entry-edit-form-'+id).style.display='none';
+}
+function saveEdit(id){
+  var content=document.querySelector('.entry-edit-text-'+id).value.trim();
+  if(!content)return;
+  fetch('/entries/'+id+'/edit/',{
+    method:'POST',
+    headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'},
+    body:'content='+encodeURIComponent(content)
+  }).then(function(r){return r.json();}).then(function(d){
+    if(d.error)return;
+    document.querySelector('.entry-content-'+id).textContent=d.content;
+    cancelEdit(id);
+  });
+}
+function deleteEntry(id){
+  if(!confirm('Delete this entry?'))return;
+  fetch('/entries/'+id+'/delete/',{
+    method:'POST',
+    headers:{'X-CSRFToken':csrfToken,'Content-Type':'application/x-www-form-urlencoded'}
+  }).then(function(r){return r.json();}).then(function(d){
+    if(d.status==='ok'){
+      var el=document.getElementById('entry-'+id);
+      el.style.opacity='0';el.style.transition='opacity 0.3s';
+      setTimeout(function(){el.remove();},300);
+    }
+  });
+}
+</script>
+{% endblock %}

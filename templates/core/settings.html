@@ -1,0 +1,51 @@
+{% extends "core/base.html" %}
+{% block title %}Settings{% endblock %}
+{% block nav_settings %}active{% endblock %}
+{% block content %}
+<div class="grid-2">
+<div>
+  <div class="panel">
+    <div class="panel-title">Your Relay Profile</div>
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group"><label class="form-label">Personal Email (for timer notifications)</label><input type="email" name="personal_email" value="{{ profile.personal_email }}" placeholder="you@example.com"></div>
+      <div class="form-group"><label class="form-label">Discord User ID</label><input type="text" name="discord_id" value="{{ profile.discord_id }}" placeholder="Username#1234"></div>
+      <div class="form-group"><label class="form-label">Rocket.Chat Username</label><input type="text" name="rocketchat_id" value="{{ profile.rocketchat_id }}" placeholder="@username"></div>
+      <div class="panel" style="padding:10px;margin-bottom:12px">
+        <div class="panel-title" style="font-size:9px;margin-bottom:8px">Notify Me Via</div>
+        <div class="checkbox-row"><input type="checkbox" name="notify_email" id="ne" {% if profile.notify_email %}checked{% endif %}><label for="ne">Email</label></div>
+        <div class="checkbox-row"><input type="checkbox" name="notify_discord" id="nd" {% if profile.notify_discord %}checked{% endif %}><label for="nd">Discord</label></div>
+        <div class="checkbox-row"><input type="checkbox" name="notify_rocketchat" id="nr" {% if profile.notify_rocketchat %}checked{% endif %}><label for="nr">Rocket.Chat</label></div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%">Save Profile</button>
+    </form>
+  </div>
+</div>
+<div>
+  <div class="panel" style="margin-bottom:12px">
+    <div class="panel-title">Server Config</div>
+    <div style="font-size:10px;color:var(--muted);line-height:1.8">
+      Set these in your <code style="color:var(--accent)">.env</code> file, then restart the container:<br><br>
+      <code style="color:var(--muted)">DISCORD_WEBHOOK=https://discord.com/api/webhooks/...</code><br>
+      <code style="color:var(--muted)">ROCKETCHAT_WEBHOOK=https://your-rc.../hooks/...</code><br>
+      <code style="color:var(--muted)">EMAIL_HOST=smtp.gmail.com</code><br>
+      <code style="color:var(--muted)">EMAIL_HOST_USER=you@gmail.com</code><br>
+      <code style="color:var(--muted)">EMAIL_HOST_PASSWORD=your-app-password</code><br>
+    </div>
+    <div style="margin-top:12px;font-size:10px;color:var(--muted)">Restart after editing .env:</div>
+    <code style="font-size:10px;color:var(--accent);display:block;margin-top:4px">docker compose restart</code>
+  </div>
+  <div class="panel">
+    <div class="panel-title">Account</div>
+    <div style="font-size:12px;line-height:2">
+      Username: <span style="color:var(--accent)">{{ request.user.username }}</span><br>
+      Role: <span style="color:var(--accent)">{{ profile.role }}</span><br>
+      Joined: <span style="color:var(--muted)">{{ request.user.date_joined|date:"M d, Y" }}</span>
+    </div>
+    {% if request.user.is_superuser %}
+    <a href="/admin/" class="btn btn-sm" style="margin-top:12px;display:inline-block" target="_blank">Admin Panel — Manage Users</a>
+    {% endif %}
+  </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "core/base.html" %}
+{% block title %}Timers{% endblock %}
+{% block nav_timers %}active{% endblock %}
+{% block content %}
+<div class="grid-2">
+<div>
+  <div class="panel">
+    <div class="panel-title">Your Intent Timers</div>
+    {% for timer in timers %}
+    <div style="padding:10px;background:var(--input);border-radius:6px;border:1px solid var(--border);margin-bottom:8px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div style="font-size:13px;margin-bottom:3px">{{ timer.title }}</div>
+          <div style="font-size:9px;color:var(--muted)">
+            {{ timer.duration_minutes }} min
+            {% if timer.send_to_email %} · Email{% endif %}
+            {% if timer.send_to_discord %} · Discord{% endif %}
+            {% if timer.send_to_rocketchat %} · Rocket.Chat{% endif %}
+            {% if timer.create_calendar_event %} · Calendar{% endif %}
+          </div>
+          {% if timer.library_item %}<div style="font-size:10px;color:var(--accent);margin-top:2px">&#9654; {{ timer.library_item.title }}</div>{% endif %}
+        </div>
+        <div style="display:flex;gap:5px;flex-shrink:0">
+          <button onclick="startCountdown('{{ timer.title }}',{{ timer.duration_minutes }})" class="btn btn-sm">Start</button>
+          <button onclick="completeTimer({{ timer.pk }},this)" class="btn btn-sm btn-muted" id="complete-{{ timer.pk }}">Complete + Relay</button>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div style="font-size:11px;color:var(--muted)">No timers saved yet. Create one on the right.</div>
+    {% endfor %}
+  </div>
+  <div id="active-panel" style="display:none" class="panel">
+    <div class="panel-title">Active Session</div>
+    <div class="timer-display" id="active-display">00:00</div>
+    <div style="text-align:center;font-size:11px;color:var(--muted);margin-bottom:12px;letter-spacing:1px" id="active-label">—</div>
+    <button class="btn btn-muted" style="width:100%" onclick="stopCountdown()">Stop Session</button>
+  </div>
+</div>
+<div>
+  <div class="panel">
+    <div class="panel-title">Create Timer</div>
+    <form method="post" action="{% url 'create_timer' %}">
+      {% csrf_token %}
+      <div class="form-group"><label class="form-label">Session Name</label><input type="text" name="title" placeholder="Morning Prayer" required></div>
+      <div class="form-group"><label class="form-label">Duration (minutes)</label><input type="number" name="duration" value="15" min="1" max="240"></div>
+      <div class="form-group"><label class="form-label">Linked Audio (optional)</label>
+        <select name="library_item">
+          <option value="">— None —</option>
+          {% for item in audio_items %}<option value="{{ item.pk }}">{{ item.title }}</option>{% endfor %}
+        </select>
+      </div>
+      <div class="panel" style="padding:10px;margin-bottom:10px">
+        <div class="panel-title" style="font-size:9px;margin-bottom:8px">Relay on Complete</div>
+        <div class="checkbox-row"><input type="checkbox" name="send_email" id="se" checked><label for="se">Send email notification</label></div>
+        <div class="checkbox-row"><input type="checkbox" name="send_discord" id="sd"><label for="sd">Post to Discord</label></div>
+        <div class="checkbox-row"><input type="checkbox" name="send_rocketchat" id="sr"><label for="sr">Post to Rocket.Chat</label></div>
+        <div class="checkbox-row"><input type="checkbox" name="create_calendar" id="sc" checked><label for="sc">Create .ics calendar event</label></div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%">Save Timer</button>
+    </form>
+  </div>
+</div>
+</div>
+<script>
+var cInt=null,cSecs=0;
+function startCountdown(title,mins){
+  cSecs=mins*60;
+  document.getElementById('active-panel').style.display='block';
+  document.getElementById('active-label').textContent=title.toUpperCase();
+  updateCD();
+  if(cInt)clearInterval(cInt);
+  cInt=setInterval(function(){if(cSecs>0){cSecs--;updateCD();}else{clearInterval(cInt);document.getElementById('active-label').textContent='COMPLETE \u2713';}},1000);
+}
+function updateCD(){var m=Math.floor(cSecs/60),s=cSecs%60;document.getElementById('active-display').textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function stopCountdown(){clearInterval(cInt);document.getElementById('active-panel').style.display='none';}
+function completeTimer(pk,btn){
+  btn.disabled=true;
+  fetch('/timers/'+pk+'/complete/',{
+    method:'POST',
+    headers:{'X-CSRFToken':'{{ csrf_token }}','Content-Type':'application/x-www-form-urlencoded'}
+  }).then(function(r){return r.json();}).then(function(){
+    btn.textContent='\u2713 Relayed';btn.style.color='var(--accent)';
+  }).catch(function(){btn.disabled=false;});
+}
+</script>
+{% endblock %}

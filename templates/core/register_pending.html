@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Request Submitted | POSITIVE</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d0d0d;color:#e0e0e0;font-family:'Courier New',monospace;display:flex;align-items:center;justify-content:center;min-height:100vh}
+.box{background:#161616;border:1px solid #252525;border-radius:10px;padding:40px;width:360px;text-align:center}
+h1{color:#00d4a0;font-size:18px;letter-spacing:4px;margin-bottom:16px}
+.icon{font-size:36px;margin-bottom:16px}
+p{font-size:12px;color:#888;line-height:1.8;margin-bottom:20px}
+.username{color:#00d4a0}
+a{color:#00d4a0;font-size:11px;text-decoration:none}
+a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="icon">&#9711;</div>
+  <h1>REQUEST SUBMITTED</h1>
+  <p>Your request for <span class="username">{{ username }}</span> has been sent to the admin for review.<br><br>You will be able to log in once your account is approved.</p>
+  <a href="/login/">Back to login</a>
+</div>
+</body>
+</html>
