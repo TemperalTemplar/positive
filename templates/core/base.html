@@ -3,24 +3,29 @@
 <html lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
+<meta name="theme-color" content="#00d4a0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Positive">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="description" content="A self-hosted sanctuary for meditation, prayer, vision boards and gratitude.">
+<link rel="manifest" href="/static/manifest.json">
+<link rel="apple-touch-icon" href="/static/icons/icon-192.png">
 <title>{% block title %}POSITIVE{% endblock %} | {% trans "SOVEREIGN INTENT ENGINE" %}</title>
 <style>
 :root{
   --bg:#0d0d0d;--panel:#161616;--accent:#00d4a0;--accent2:#7f77dd;
   --text:#e0e0e0;--muted:#666;--border:#252525;--input:#0a0a0a;
-  --warn:#ef9f27;--danger:#e24b4a;
-  --font-size:13px;
+  --warn:#ef9f27;--danger:#e24b4a;--font-size:13px;
+  --touch-target:44px;
 }
 
-/* High contrast mode */
 [data-theme="high-contrast"]{
   --bg:#000000;--panel:#0a0a0a;--accent:#00ff00;--accent2:#ffff00;
   --text:#ffffff;--muted:#cccccc;--border:#ffffff;--input:#000000;
   --warn:#ffaa00;--danger:#ff4444;
 }
-
-/* Large text mode */
 [data-fontsize="large"]{ --font-size:16px; }
 [data-fontsize="xlarge"]{ --font-size:20px; }
 
@@ -29,79 +34,101 @@ body{background:var(--bg);color:var(--text);font-family:'Courier New',monospace;
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline}
 
-/* Skip to main content link for screen readers */
 .skip-link{position:absolute;top:-100px;left:0;background:var(--accent);color:#000;padding:8px 16px;font-weight:bold;z-index:9999;border-radius:0 0 6px 0;font-size:14px}
 .skip-link:focus{top:0}
-
-/* Focus styles for keyboard navigation */
 *:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
-button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;flex-wrap:wrap;gap:8px}
-.logo{color:var(--accent);font-size:16px;letter-spacing:4px;font-weight:bold}
-nav{display:flex;gap:4px;flex-wrap:wrap}
-nav a{color:var(--muted);padding:6px 12px;border-radius:6px;border:1px solid transparent;font-size:11px;letter-spacing:1px;display:inline-block;margin:0 2px}
-nav a:hover,nav a.active{color:var(--accent);border-color:var(--border);background:rgba(0,212,160,0.07);text-decoration:none}
-nav a[aria-current="page"]{color:var(--accent);border-color:var(--border);background:rgba(0,212,160,0.07)}
+/* TOPBAR */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:var(--panel);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;gap:8px}
+.logo{color:var(--accent);font-size:16px;letter-spacing:4px;font-weight:bold;flex-shrink:0}
 
-.user-chip{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted)}
-.avatar{width:26px;height:26px;border-radius:50%;background:rgba(0,212,160,0.15);border:1px solid rgba(0,212,160,0.4);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--accent);font-weight:bold;aria-hidden:true}
+/* DESKTOP NAV */
+nav.desktop-nav{display:flex;gap:4px;flex-wrap:wrap}
+nav.desktop-nav a{color:var(--muted);padding:6px 12px;border-radius:6px;border:1px solid transparent;font-size:11px;letter-spacing:1px;display:inline-block}
+nav.desktop-nav a:hover,nav.desktop-nav a.active,nav.desktop-nav a[aria-current="page"]{color:var(--accent);border-color:var(--border);background:rgba(0,212,160,0.07);text-decoration:none}
 
-/* Accessibility toolbar */
+/* HAMBURGER BUTTON */
+.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:var(--touch-target);height:var(--touch-target);background:transparent;border:1px solid var(--border);border-radius:6px;cursor:pointer;flex-shrink:0}
+.hamburger span{display:block;width:20px;height:2px;background:var(--muted);border-radius:2px;transition:all 0.3s}
+.hamburger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);background:var(--accent)}
+.hamburger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);background:var(--accent)}
+
+/* MOBILE NAV DRAWER */
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.95);z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:var(--muted);padding:14px 40px;border-radius:8px;border:1px solid var(--border);font-size:16px;letter-spacing:2px;width:260px;text-align:center;min-height:var(--touch-target);display:flex;align-items:center;justify-content:center}
+.mobile-nav a:hover,nav a[aria-current="page"]{color:var(--accent);border-color:var(--accent);background:rgba(0,212,160,0.07);text-decoration:none}
+.mobile-nav-close{position:absolute;top:16px;right:16px;background:transparent;border:1px solid var(--border);color:var(--muted);width:44px;height:44px;border-radius:8px;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+
+.user-chip{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);flex-shrink:0}
+.avatar{width:26px;height:26px;border-radius:50%;background:rgba(0,212,160,0.15);border:1px solid rgba(0,212,160,0.4);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--accent);font-weight:bold}
+
 .a11y-bar{display:flex;align-items:center;gap:6px}
-.a11y-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:3px 8px;border-radius:4px;cursor:pointer;font-family:inherit;font-size:10px;line-height:1.4}
+.a11y-btn{background:transparent;border:1px solid var(--border);color:var(--muted);padding:3px 8px;border-radius:4px;cursor:pointer;font-family:inherit;font-size:10px;min-height:var(--touch-target);min-width:var(--touch-target);display:flex;align-items:center;justify-content:center}
 .a11y-btn:hover,.a11y-btn[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
 
+.lang-switcher select{background:var(--input);color:var(--muted);border:1px solid var(--border);padding:3px 6px;border-radius:4px;font-family:inherit;font-size:10px;width:auto;cursor:pointer;min-height:var(--touch-target)}
+
+/* CONTENT */
 .content{padding:16px 20px;max-width:1400px;margin:0 auto;padding-bottom:70px}
 .panel{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:16px;margin-bottom:12px}
 .panel-title{color:var(--accent);font-size:10px;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid var(--border);padding-bottom:8px;margin-bottom:14px}
 .section-label{color:var(--muted);font-size:10px;letter-spacing:1px;text-transform:uppercase;margin:12px 0 7px}
 
-.btn{display:inline-block;background:transparent;border:1px solid var(--accent);color:var(--accent);padding:7px 16px;border-radius:6px;cursor:pointer;font-family:inherit;font-size:11px;letter-spacing:1px;text-decoration:none;transition:background 0.15s}
+/* BUTTONS — touch friendly */
+.btn{display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--accent);color:var(--accent);padding:7px 16px;border-radius:6px;cursor:pointer;font-family:inherit;font-size:11px;letter-spacing:1px;text-decoration:none;transition:background 0.15s;min-height:var(--touch-target)}
 .btn:hover{background:rgba(0,212,160,0.1);text-decoration:none}
 .btn-primary{background:var(--accent);color:#000;border-color:var(--accent);font-weight:bold}
 .btn-primary:hover{background:#00b88a}
-.btn-sm{padding:4px 10px;font-size:10px}
+.btn-sm{padding:4px 10px;font-size:10px;min-height:36px}
 .btn-muted{border-color:var(--border);color:var(--muted)}
 .btn-muted:hover{color:var(--text);border-color:var(--muted)}
 .btn-danger{border-color:var(--danger);color:var(--danger)}
 
-input[type=text],input[type=email],input[type=number],input[type=password],input[type=file],select,textarea{background:var(--input);color:var(--text);border:1px solid var(--border);padding:8px 10px;border-radius:6px;font-family:inherit;font-size:var(--font-size);width:100%;display:block}
+/* FORMS */
+input[type=text],input[type=email],input[type=number],input[type=password],input[type=file],select,textarea{background:var(--input);color:var(--text);border:1px solid var(--border);padding:8px 10px;border-radius:6px;font-family:inherit;font-size:var(--font-size);width:100%;display:block;min-height:var(--touch-target)}
+textarea{min-height:80px}
+input[type=file]{min-height:auto}
 input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
 .form-group{margin-bottom:12px}
 .form-label{font-size:10px;color:var(--muted);letter-spacing:1px;display:block;margin-bottom:4px;text-transform:uppercase}
-.checkbox-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:11px;color:var(--muted)}
-.checkbox-row input{width:auto;display:inline}
+.checkbox-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:11px;color:var(--muted);min-height:36px}
+.checkbox-row input[type=checkbox]{width:20px;height:20px;cursor:pointer}
 
+/* MESSAGES */
 .msgs{padding:8px 20px 0}
 .msg{padding:8px 14px;border-radius:6px;margin-bottom:6px;font-size:12px}
 .msg.success{background:rgba(0,212,160,0.08);border:1px solid rgba(0,212,160,0.3);color:var(--accent)}
 .msg.error{background:rgba(226,75,74,0.08);border:1px solid rgba(226,75,74,0.3);color:var(--danger)}
 
-.relay-bar{display:flex;align-items:center;gap:14px;padding:8px 20px;background:#080808;border-top:1px solid var(--border);position:fixed;bottom:0;left:0;right:0;font-size:10px;letter-spacing:1px;flex-wrap:wrap}
+/* RELAY BAR */
+.relay-bar{display:flex;align-items:center;gap:14px;padding:8px 20px;background:#080808;border-top:1px solid var(--border);position:fixed;bottom:0;left:0;right:0;font-size:10px;letter-spacing:1px;flex-wrap:wrap;z-index:100}
 .dot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:4px;vertical-align:middle}
 .dot-on{background:var(--accent)}
 .dot-warn{background:var(--warn)}
 .dot-off{background:var(--muted)}
 
+/* GRIDS */
 .grid-3{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:12px}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:960px){.grid-3{grid-template-columns:1fr}}
-@media(max-width:680px){.grid-2{grid-template-columns:1fr}}
 
+/* TAGS */
 .tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:9px;letter-spacing:1px;font-weight:bold;vertical-align:middle}
 .tag-THOUGHT{background:rgba(127,119,221,0.12);color:#a09ae0;border:1px solid rgba(127,119,221,0.25)}
 .tag-PRAYER{background:rgba(239,159,39,0.12);color:#ef9f27;border:1px solid rgba(239,159,39,0.25)}
 .tag-GRATITUDE{background:rgba(0,212,160,0.1);color:var(--accent);border:1px solid rgba(0,212,160,0.2)}
 
+/* ENTRIES */
 .entry-item{border-left:2px solid var(--border);padding:8px 12px;margin-bottom:8px;border-radius:0 4px 4px 0}
 .entry-item.THOUGHT{border-color:#7f77dd}
 .entry-item.PRAYER{border-color:var(--warn)}
 .entry-item.GRATITUDE{border-color:var(--accent)}
 
+/* MEDIA */
 .media-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border)}
 .media-row:last-child{border:none}
-.play-btn{width:28px;height:28px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;font-family:inherit}
+.play-btn{width:var(--touch-target);height:var(--touch-target);border-radius:50%;border:1px solid var(--accent);color:var(--accent);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-family:inherit}
 .play-btn:hover{background:rgba(0,212,160,0.1)}
 
 progress{width:100%;height:4px;border:none;border-radius:2px;display:block;margin:3px 0}
@@ -114,27 +141,70 @@ progress::-moz-progress-bar{background:var(--accent);border-radius:2px}
 .stat-lbl{font-size:9px;color:var(--muted);letter-spacing:1px;margin-top:3px}
 .timer-display{font-size:44px;text-align:center;color:var(--accent);letter-spacing:5px;font-weight:300;padding:8px 0}
 
-.lang-switcher{display:flex;align-items:center;gap:4px}
-.lang-switcher select{background:var(--input);color:var(--muted);border:1px solid var(--border);padding:3px 6px;border-radius:4px;font-family:inherit;font-size:10px;width:auto;cursor:pointer}
-
+/* RTL support */
 {% if LANGUAGE_BIDI %}
 .entry-item{border-left:none;border-right:2px solid var(--border)}
 .entry-item.THOUGHT{border-right-color:#7f77dd}
 .entry-item.PRAYER{border-right-color:var(--warn)}
 .entry-item.GRATITUDE{border-right-color:var(--accent)}
 {% endif %}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:960px){
+  .grid-3{grid-template-columns:1fr}
+  nav.desktop-nav{display:none}
+  .hamburger{display:flex}
+  .timer-display{font-size:52px}
+  .content{padding:12px}
+  .topbar{padding:8px 12px}
+}
+@media(max-width:680px){
+  .grid-2{grid-template-columns:1fr}
+  .user-chip span:not(.avatar){display:none}
+  .a11y-bar{gap:4px}
+}
+@media(max-width:400px){
+  .timer-display{font-size:40px;letter-spacing:3px}
+  .logo{font-size:14px;letter-spacing:2px}
+}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* PWA install banner */
+.pwa-banner{display:none;position:fixed;bottom:50px;left:16px;right:16px;background:var(--panel);border:1px solid var(--accent);border-radius:10px;padding:14px 16px;z-index:150;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 4px 20px rgba(0,212,160,0.2)}
+.pwa-banner.show{display:flex}
+.pwa-banner-text{font-size:12px;color:var(--text)}
+.pwa-banner-text strong{color:var(--accent);display:block;margin-bottom:2px}
 </style>
 {% block extra_style %}{% endblock %}
 </head>
 <body>
 
-<!-- Skip to main content for screen readers -->
 <a href="#main-content" class="skip-link">{% trans "Skip to main content" %}</a>
+
+<!-- Mobile nav drawer -->
+<nav class="mobile-nav" id="mobile-nav" role="navigation" aria-label="{% trans "Mobile navigation" %}">
+  <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="{% trans "Close menu" %}">&#x2715;</button>
+  <a href="{% url 'dashboard' %}" onclick="closeMobileNav()" {% if request.resolver_match.url_name == 'dashboard' %}aria-current="page"{% endif %}>{% trans "Dashboard" %}</a>
+  <a href="{% url 'library' %}" onclick="closeMobileNav()" {% if request.resolver_match.url_name == 'library' %}aria-current="page"{% endif %}>{% trans "Library" %}</a>
+  <a href="{% url 'vision_boards' %}" onclick="closeMobileNav()" {% if request.resolver_match.url_name == 'vision_boards' %}aria-current="page"{% endif %}>{% trans "Vision Boards" %}</a>
+  <a href="{% url 'timers' %}" onclick="closeMobileNav()" {% if request.resolver_match.url_name == 'timers' %}aria-current="page"{% endif %}>{% trans "Timers" %}</a>
+  <a href="{% url 'settings' %}" onclick="closeMobileNav()" {% if request.resolver_match.url_name == 'settings' %}aria-current="page"{% endif %}>{% trans "Settings" %}</a>
+  {% if request.user.is_superuser or request.user.profile.role == 'ARCHITECT' %}
+  <a href="{% url 'approvals' %}" onclick="closeMobileNav()" style="color:var(--warn);border-color:var(--warn)" {% if request.resolver_match.url_name == 'approvals' %}aria-current="page"{% endif %}>{% trans "Approvals" %}</a>
+  {% endif %}
+  <form method="post" action="{% url 'logout' %}" style="width:260px">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-muted" style="width:100%;margin-top:8px">{% trans "logout" %}</button>
+  </form>
+</nav>
 
 <header role="banner">
 <div class="topbar">
-  <div class="logo" aria-label="Positive — Sovereign Intent Engine">POSITIVE</div>
-  <nav role="navigation" aria-label="{% trans "Main navigation" %}">
+  <div class="logo" aria-label="Positive">POSITIVE</div>
+
+  <!-- Desktop nav -->
+  <nav class="desktop-nav" role="navigation" aria-label="{% trans "Main navigation" %}">
     <a href="{% url 'dashboard' %}" class="{% block nav_dash %}{% endblock %}" {% if request.resolver_match.url_name == 'dashboard' %}aria-current="page"{% endif %}>{% trans "Dashboard" %}</a>
     <a href="{% url 'library' %}" class="{% block nav_lib %}{% endblock %}" {% if request.resolver_match.url_name == 'library' %}aria-current="page"{% endif %}>{% trans "Library" %}</a>
     <a href="{% url 'vision_boards' %}" class="{% block nav_vb %}{% endblock %}" {% if request.resolver_match.url_name == 'vision_boards' %}aria-current="page"{% endif %}>{% trans "Vision Boards" %}</a>
@@ -144,8 +214,8 @@ progress::-moz-progress-bar{background:var(--accent);border-radius:2px}
     <a href="{% url 'approvals' %}" class="{% block nav_approvals %}{% endblock %}" style="color:var(--warn);border-color:var(--warn)" {% if request.resolver_match.url_name == 'approvals' %}aria-current="page"{% endif %}>{% trans "Approvals" %}</a>
     {% endif %}
   </nav>
-  <div class="user-chip">
 
+  <div class="user-chip">
     <!-- Accessibility toolbar -->
     <div class="a11y-bar" role="toolbar" aria-label="{% trans "Accessibility options" %}">
       <button class="a11y-btn" id="btn-hc" onclick="toggleHighContrast()" aria-pressed="false" title="{% trans "Toggle high contrast" %}">HC</button>
@@ -153,34 +223,34 @@ progress::-moz-progress-bar{background:var(--accent);border-radius:2px}
     </div>
 
     <!-- Language switcher -->
-    <div class="lang-switcher" role="region" aria-label="{% trans "Language selection" %}">
-      <form action="{% url 'set_language' %}" method="post" id="lang-form">
-        {% csrf_token %}
-        <input name="next" type="hidden" value="{{ request.path }}">
-        <label for="lang-select" class="sr-only">{% trans "Select language" %}</label>
-        <select name="language" id="lang-select" onchange="document.getElementById('lang-form').submit()" aria-label="{% trans "Select language" %}">
-          {% get_current_language as CURRENT_LANGUAGE %}
-          {% get_available_languages as LANGUAGES %}
-          {% for lang_code, lang_name in LANGUAGES %}
-          <option value="{{ lang_code }}" {% if lang_code == CURRENT_LANGUAGE %}selected{% endif %}>{{ lang_name }}</option>
-          {% endfor %}
-        </select>
-      </form>
-    </div>
+    <form action="{% url 'set_language' %}" method="post" id="lang-form">
+      {% csrf_token %}
+      <input name="next" type="hidden" value="{{ request.path }}">
+      <label for="lang-select" class="sr-only">{% trans "Select language" %}</label>
+      <select name="language" id="lang-select" onchange="document.getElementById('lang-form').submit()" aria-label="{% trans "Select language" %}" style="background:var(--input);color:var(--muted);border:1px solid var(--border);padding:3px 6px;border-radius:4px;font-family:inherit;font-size:10px;width:auto;cursor:pointer">
+        {% get_current_language as CURRENT_LANGUAGE %}
+        {% get_available_languages as LANGUAGES %}
+        {% for lang_code, lang_name in LANGUAGES %}
+        <option value="{{ lang_code }}" {% if lang_code == CURRENT_LANGUAGE %}selected{% endif %}>{{ lang_name }}</option>
+        {% endfor %}
+      </select>
+    </form>
 
     <div class="avatar" aria-hidden="true">{{ request.user.username|slice:":2"|upper }}</div>
-    <span aria-label="{% trans "Logged in as" %} {{ request.user.username }}">{{ request.user.username }}</span>
-    <form method="post" action="{% url 'logout' %}" style="display:inline">
-      {% csrf_token %}
-      <button type="submit" style="background:none;border:none;color:var(--muted);cursor:pointer;font-family:inherit;font-size:11px;padding:0;margin-left:4px" aria-label="{% trans "Log out" %}">{% trans "logout" %}</button>
-    </form>
+    <span class="sr-only">{% trans "Logged in as" %} {{ request.user.username }}</span>
+    <span aria-hidden="true">{{ request.user.username }}</span>
+
+    <!-- Hamburger -->
+    <button class="hamburger" id="hamburger-btn" onclick="toggleMobileNav()" aria-expanded="false" aria-controls="mobile-nav" aria-label="{% trans "Open menu" %}">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </div>
 </header>
 
 {% if messages %}
 <div class="msgs" role="alert" aria-live="polite">
-{% for m in messages %}<div class="msg {{ m.tags }}" role="status">{{ m }}</div>{% endfor %}
+{% for m in messages %}<div class="msg {{ m.tags }}">{{ m }}</div>{% endfor %}
 </div>
 {% endif %}
 
@@ -190,6 +260,18 @@ progress::-moz-progress-bar{background:var(--accent);border-radius:2px}
 </div>
 </main>
 
+<!-- PWA install banner -->
+<div class="pwa-banner" id="pwa-banner" role="complementary" aria-label="Install app">
+  <div class="pwa-banner-text">
+    <strong>{% trans "Install Positive" %}</strong>
+    {% trans "Add to your home screen for the full app experience." %}
+  </div>
+  <div style="display:flex;gap:8px;flex-shrink:0">
+    <button class="btn btn-primary btn-sm" id="pwa-install-btn">{% trans "Install" %}</button>
+    <button class="btn btn-muted btn-sm" onclick="dismissPWA()">{% trans "Not now" %}</button>
+  </div>
+</div>
+
 <footer role="contentinfo">
 <div class="relay-bar" aria-label="{% trans "Relay status" %}">
   <span style="color:var(--muted)" aria-hidden="true">RELAYS</span>
@@ -197,103 +279,102 @@ progress::-moz-progress-bar{background:var(--accent);border-radius:2px}
   <span><span class="dot dot-warn" aria-hidden="true"></span><span style="color:var(--warn)">Rocket.Chat</span></span>
   <span><span class="dot dot-warn" aria-hidden="true"></span><span style="color:var(--warn)">Discord</span></span>
   <span><span class="dot dot-on" aria-hidden="true"></span><span style="color:var(--accent)">Calendar</span></span>
-  <span style="margin-left:auto;color:var(--muted)">Port 8178 · Sovereign · Self-Hosted</span>
+  <span style="margin-left:auto;color:var(--muted)">Sovereign · Self-Hosted</span>
 </div>
 </footer>
 
-<!-- Screen reader only utility class -->
-<style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
-
 <script>
-// Accessibility settings — persist in localStorage
+// ── Accessibility ──
 (function(){
-  var theme = localStorage.getItem('pos_theme');
-  var fs = localStorage.getItem('pos_fontsize');
-  if(theme) document.documentElement.setAttribute('data-theme', theme);
-  if(fs) document.documentElement.setAttribute('data-fontsize', fs);
-  if(theme === 'high-contrast') {
-    var btn = document.getElementById('btn-hc');
-    if(btn) btn.setAttribute('aria-pressed', 'true');
-  }
-  if(fs) {
-    var btn = document.getElementById('btn-fs');
-    if(btn) btn.textContent = fs === 'large' ? 'A++' : fs === 'xlarge' ? 'A' : 'A+';
-  }
+  var theme=localStorage.getItem('pos_theme');
+  var fs=localStorage.getItem('pos_fontsize');
+  if(theme)document.documentElement.setAttribute('data-theme',theme);
+  if(fs)document.documentElement.setAttribute('data-fontsize',fs);
+  if(theme==='high-contrast'){var b=document.getElementById('btn-hc');if(b)b.setAttribute('aria-pressed','true');}
+  if(fs){var b=document.getElementById('btn-fs');if(b)b.textContent=fs==='large'?'A++':fs==='xlarge'?'A':'A+';}
 })();
 
 function toggleHighContrast(){
-  var btn = document.getElementById('btn-hc');
-  var current = document.documentElement.getAttribute('data-theme');
-  if(current === 'high-contrast'){
-    document.documentElement.removeAttribute('data-theme');
-    localStorage.removeItem('pos_theme');
-    btn.setAttribute('aria-pressed', 'false');
-    announceToScreenReader('{% trans "Standard contrast mode" %}');
-  } else {
-    document.documentElement.setAttribute('data-theme', 'high-contrast');
-    localStorage.setItem('pos_theme', 'high-contrast');
-    btn.setAttribute('aria-pressed', 'true');
-    announceToScreenReader('{% trans "High contrast mode enabled" %}');
-  }
+  var btn=document.getElementById('btn-hc');
+  var cur=document.documentElement.getAttribute('data-theme');
+  if(cur==='high-contrast'){document.documentElement.removeAttribute('data-theme');localStorage.removeItem('pos_theme');btn.setAttribute('aria-pressed','false');}
+  else{document.documentElement.setAttribute('data-theme','high-contrast');localStorage.setItem('pos_theme','high-contrast');btn.setAttribute('aria-pressed','true');}
 }
-
-var fontSizes = ['normal', 'large', 'xlarge'];
-var fontLabels = {'normal': 'A+', 'large': 'A++', 'xlarge': 'A'};
+var fontSizes=['normal','large','xlarge'];
+var fontLabels={normal:'A+',large:'A++',xlarge:'A'};
 function cycleFontSize(){
-  var current = document.documentElement.getAttribute('data-fontsize') || 'normal';
-  var idx = fontSizes.indexOf(current);
-  var next = fontSizes[(idx + 1) % fontSizes.length];
-  if(next === 'normal'){
-    document.documentElement.removeAttribute('data-fontsize');
-    localStorage.removeItem('pos_fontsize');
-  } else {
-    document.documentElement.setAttribute('data-fontsize', next);
-    localStorage.setItem('pos_fontsize', next);
-  }
-  document.getElementById('btn-fs').textContent = fontLabels[next];
-  announceToScreenReader('{% trans "Font size changed" %}');
+  var cur=document.documentElement.getAttribute('data-fontsize')||'normal';
+  var next=fontSizes[(fontSizes.indexOf(cur)+1)%fontSizes.length];
+  if(next==='normal'){document.documentElement.removeAttribute('data-fontsize');localStorage.removeItem('pos_fontsize');}
+  else{document.documentElement.setAttribute('data-fontsize',next);localStorage.setItem('pos_fontsize',next);}
+  document.getElementById('btn-fs').textContent=fontLabels[next];
 }
 
-// Keyboard navigation for modals
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape'){
-    var modals = document.querySelectorAll('[role="dialog"]');
+// ── Mobile nav ──
+function toggleMobileNav(){
+  var nav=document.getElementById('mobile-nav');
+  var btn=document.getElementById('hamburger-btn');
+  var open=nav.classList.toggle('open');
+  btn.setAttribute('aria-expanded',open?'true':'false');
+  btn.setAttribute('aria-label',open?'{% trans "Close menu" %}':'{% trans "Open menu" %}');
+  if(open)document.body.style.overflow='hidden';
+  else document.body.style.overflow='';
+}
+function closeMobileNav(){
+  var nav=document.getElementById('mobile-nav');
+  var btn=document.getElementById('hamburger-btn');
+  nav.classList.remove('open');
+  btn.setAttribute('aria-expanded','false');
+  btn.setAttribute('aria-label','{% trans "Open menu" %}');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){
+    closeMobileNav();
+    var modals=document.querySelectorAll('[role="dialog"]');
     modals.forEach(function(m){
-      if(m.style.display !== 'none' && m.style.display !== ''){
-        var closeBtn = m.querySelector('[data-modal-close]');
-        if(closeBtn) closeBtn.click();
+      if(m.style.display!=='none'&&m.style.display!==''){
+        var cb=m.querySelector('[data-modal-close]');
+        if(cb)cb.click();
       }
     });
   }
 });
 
-// Trap focus inside open modals
-function trapFocus(modal){
-  var focusable = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-  var first = focusable[0];
-  var last = focusable[focusable.length - 1];
-  modal.addEventListener('keydown', function(e){
-    if(e.key === 'Tab'){
-      if(e.shiftKey){if(document.activeElement === first){e.preventDefault();last.focus();}}
-      else{if(document.activeElement === last){e.preventDefault();first.focus();}}
-    }
-  });
-  if(first) first.focus();
-}
-
-// Screen reader announcer
-function announceToScreenReader(message){
-  var el = document.getElementById('sr-announcer');
-  if(!el){
-    el = document.createElement('div');
-    el.id = 'sr-announcer';
-    el.setAttribute('aria-live', 'polite');
-    el.setAttribute('aria-atomic', 'true');
-    el.className = 'sr-only';
-    document.body.appendChild(el);
+// ── PWA ──
+var deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',function(e){
+  e.preventDefault();
+  deferredPrompt=e;
+  if(!localStorage.getItem('pos_pwa_dismissed')){
+    document.getElementById('pwa-banner').classList.add('show');
   }
-  el.textContent = '';
-  setTimeout(function(){ el.textContent = message; }, 50);
+});
+document.getElementById('pwa-install-btn').addEventListener('click',function(){
+  if(!deferredPrompt)return;
+  deferredPrompt.prompt();
+  deferredPrompt.userChoice.then(function(){
+    deferredPrompt=null;
+    document.getElementById('pwa-banner').classList.remove('show');
+  });
+});
+function dismissPWA(){
+  document.getElementById('pwa-banner').classList.remove('show');
+  localStorage.setItem('pos_pwa_dismissed','1');
+}
+window.addEventListener('appinstalled',function(){
+  document.getElementById('pwa-banner').classList.remove('show');
+});
+
+// ── Service Worker ──
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('/sw.js').then(function(reg){
+      console.log('SW registered');
+    }).catch(function(err){
+      console.log('SW failed:', err);
+    });
+  });
 }
 </script>
 
