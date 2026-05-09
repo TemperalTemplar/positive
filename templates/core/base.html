@@ -235,7 +235,7 @@ progress::-moz-progress-bar{background:var(--accent);border-radius:2px}
         {% get_current_language as CURRENT_LANGUAGE %}
         {% get_available_languages as LANGUAGES %}
         {% for lang_code, lang_name in LANGUAGES %}
-        <option value="{{ lang_code }}" {% if lang_code == 'en' %}selected{% endif %}>{% if lang_code == 'en' %}🇬🇧{% elif lang_code == 'es' %}🇪🇸{% elif lang_code == 'fr' %}🇫🇷{% elif lang_code == 'de' %}🇩🇪{% elif lang_code == 'pt' %}🇧🇷{% elif lang_code == 'ar' %}🇸🇦{% elif lang_code == 'zh-hans' %}🇨🇳{% elif lang_code == 'ja' %}🇯🇵{% elif lang_code == 'ko' %}🇰🇷{% elif lang_code == 'ru' %}🇷🇺{% elif lang_code == 'tr' %}🇹🇷{% elif lang_code == 'it' %}🇮🇹{% elif lang_code == 'he' %}🇮🇱{% elif lang_code == 'ur' %}🇵🇰{% elif lang_code == 'fa' %}🇮🇷{% elif lang_code == 'hi' %}🇮🇳{% endif %} {{ lang_name }}</option>
+        <option value="{{ lang_code }}" {% if lang_code == CURRENT_LANGUAGE %}selected{% endif %}>{% if lang_code == 'en' %}🇬🇧{% elif lang_code == 'es' %}🇪🇸{% elif lang_code == 'fr' %}🇫🇷{% elif lang_code == 'de' %}🇩🇪{% elif lang_code == 'pt' %}🇧🇷{% elif lang_code == 'ar' %}🇸🇦{% elif lang_code == 'zh-hans' %}🇨🇳{% elif lang_code == 'ja' %}🇯🇵{% elif lang_code == 'ko' %}🇰🇷{% elif lang_code == 'ru' %}🇷🇺{% elif lang_code == 'tr' %}🇹🇷{% elif lang_code == 'it' %}🇮🇹{% elif lang_code == 'he' %}🇮🇱{% elif lang_code == 'ur' %}🇵🇰{% elif lang_code == 'fa' %}🇮🇷{% elif lang_code == 'hi' %}🇮🇳{% endif %} {{ lang_name }}</option>
         {% endfor %}
       </select>
     </form>
