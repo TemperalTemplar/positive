@@ -1048,3 +1048,97 @@ def delete_reading_reminder(request, pk):
     reminder.delete()
     messages.success(request, 'Reading reminder removed.')
     return redirect('reading_reminders')
+
+
+# ─── OIDC / SSO ───────────────────────────────────────────────
+from authlib.integrations.django_client import OAuth as DjangoOAuth
+
+_oauth = DjangoOAuth()
+_authentik = None
+
+def _get_oauth_client():
+    global _authentik
+    if _authentik is None:
+        import os
+        _authentik = _oauth.register(
+            name='authentik',
+            client_id=os.environ.get('OIDC_CLIENT_ID', ''),
+            client_secret=os.environ.get('OIDC_CLIENT_SECRET', ''),
+            server_metadata_url=os.environ.get('OIDC_DISCOVERY_URL', ''),
+            client_kwargs={'scope': 'openid email profile'},
+        )
+    return _authentik
+
+
+def oidc_login(request):
+    import os
+    if not os.environ.get('OIDC_CLIENT_ID'):
+        from django.contrib import messages
+        messages.warning(request, 'SSO not configured.')
+        return redirect('login')
+    client = _get_oauth_client()
+    redirect_uri = os.environ.get('OIDC_REDIRECT_URI', request.build_absolute_uri('/auth/oidc/callback'))
+    return client.authorize_redirect(request, redirect_uri)
+
+
+def oidc_callback(request):
+    import os
+    from django.contrib.auth.models import User
+    from django.contrib.auth import login as auth_login
+    try:
+        client = _get_oauth_client()
+        token = client.authorize_access_token(request)
+        userinfo = token.get('userinfo') or client.userinfo(request)
+    except Exception as e:
+        from django.contrib import messages
+        messages.error(request, 'SSO login failed. Please try again.')
+        return redirect('login')
+
+    sub      = userinfo.get('sub', '')
+    email    = userinfo.get('email', '')
+    username = userinfo.get('preferred_username', sub[:32])
+
+    # Find or create user
+    user = User.objects.filter(username=f'sso_{sub[:24]}').first()
+    if not user:
+        user = User.objects.filter(email=email).first()
+        if not user:
+            base = username[:28].replace(' ', '_')
+            candidate = base
+            n = 1
+            while User.objects.filter(username=candidate).exists():
+                candidate = f'{base}{n}'
+                n += 1
+            user = User.objects.create_user(
+                username=candidate,
+                email=email,
+                password=None,
+            )
+            user.set_unusable_password()
+            # Auto-approve SSO users
+            from core.models import UserProfile
+            profile, _ = UserProfile.objects.get_or_create(user=user)
+            profile.role = 'PRACTITIONER'
+            profile.save()
+        user.save()
+
+    if not user.is_active:
+        from django.contrib import messages
+        messages.error(request, 'Your account is not active.')
+        return redirect('login')
+
+    auth_login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+    return redirect('dashboard')
+
+
+# ─── Custom login view to pass oidc_enabled ───────────────────
+from django.contrib.auth.views import LoginView as BaseLoginView
+import os
+
+class CustomLoginView(BaseLoginView):
+    template_name = 'core/login.html'
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+        ctx['oidc_enabled'] = bool(os.environ.get('OIDC_CLIENT_ID'))
+        return ctx

@@ -51,6 +51,12 @@ button:hover{background:#00b88a}
     <input type="password" name="password" autocomplete="current-password">
     <button type="submit">{% trans "ENTER THE SANCTUARY" %}</button>
   </form>
+  {% if oidc_enabled %}
+  <div style="text-align:center;margin:12px 0;font-size:11px;color:var(--muted)">— or —</div>
+  <a href="/auth/oidc/login/" class="btn btn-muted" style="width:100%;display:block;text-align:center;padding:10px;">
+    &#128274; Login with SSO
+  </a>
+  {% endif %}
   <hr class="divider">
   <div class="register-link">
     {% trans "Don't have an account?" %} <a href="/register/">{% trans "Request Access" %}</a>

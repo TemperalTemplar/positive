@@ -11,7 +11,7 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
 
     # Auth
-    path('login/', auth_views.LoginView.as_view(template_name='core/login.html'), name='login'),
+    path('login/', __import__('core.views', fromlist=['CustomLoginView']).CustomLoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 
     # Password reset flow

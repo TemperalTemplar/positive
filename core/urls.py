@@ -41,6 +41,8 @@ urlpatterns = [
 
     # Settings
     path('settings/', views.profile_settings, name='settings'),
+    path('auth/oidc/login/', views.oidc_login, name='oidc_login'),
+    path('auth/oidc/callback', views.oidc_callback, name='oidc_callback'),
     path('search/', views.search_entries, name='search'),
     path('reminders/', views.reading_reminders, name='reading_reminders'),
     path('reminders/create/', views.create_reading_reminder, name='create_reading_reminder'),
