@@ -243,6 +243,7 @@ progress::-moz-progress-bar{background:var(--accent);border-radius:2px}
     <div class="avatar" aria-hidden="true">{{ request.user.username|slice:":2"|upper }}</div>
     <span class="sr-only">{% trans "Logged in as" %} {{ request.user.username }}</span>
     <span aria-hidden="true">{{ request.user.username }}</span>
+    <form method="post" action="{% url 'logout' %}" style="display:inline;margin-left:4px">{% csrf_token %}<button type="submit" style="background:transparent;border:1px solid var(--border);color:var(--muted);padding:4px 10px;border-radius:6px;font-size:11px;letter-spacing:1px;cursor:pointer">Logout</button></form>
 
     <!-- Hamburger -->
     <button class="hamburger" id="hamburger-btn" onclick="toggleMobileNav()" aria-expanded="false" aria-controls="mobile-nav" aria-label="{% trans "Open menu" %}">

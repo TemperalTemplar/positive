@@ -1,4 +1,5 @@
 from django.urls import path
+from django.contrib.auth.views import LogoutView
 from . import views
 
 urlpatterns = [
@@ -47,6 +48,7 @@ urlpatterns = [
     path('reminders/', views.reading_reminders, name='reading_reminders'),
     path('reminders/create/', views.create_reading_reminder, name='create_reading_reminder'),
     path('reminders/<int:pk>/delete/', views.delete_reading_reminder, name='delete_reading_reminder'),
+    path('logout/', LogoutView.as_view(), name='logout'),
     path('settings/password/', views.change_password, name='change_password'),
     path('settings/avatar/', views.update_avatar, name='update_avatar'),
 

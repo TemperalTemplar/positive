@@ -7,6 +7,7 @@ services:
     volumes:
       - ./data:/app/data
       - ./media:/app/media
+      - ./templates:/app/templates
     env_file:
       - .env
     restart: unless-stopped
